@@ -1,0 +1,8 @@
+
+- (void)handleError:(NSError*)error {
+    [self addChild:_noResultsViewController animated:NO];
+}
+
+- (void)handleError:(NSError*) error more:(something)parameter{
+    [self addChild:_noResultsViewController animated:NO];
+}
