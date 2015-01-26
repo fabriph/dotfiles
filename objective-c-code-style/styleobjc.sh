@@ -1,7 +1,5 @@
 # Simple code syntax for Objective C.
 # Fabricio PH  http://fabricioph.com
-echo "original"
-cat $1
 TMP_FILE='temp.syntax-style'
 
 ## Pointers
@@ -19,7 +17,7 @@ sed -i '' "s,^[ 	]*-[ 	]*(\([^)]*\))[ 	]*,- (\1)," $TMP_FILE
 #echo -e "\nrun 5"
 #OPERANDS='+/='
 #sed "s,[$OPERANDS],AAAA," $TMP_FILE
-echo "####### Result #######"
+
 cat $TMP_FILE
 
 rm $TMP_FILE
