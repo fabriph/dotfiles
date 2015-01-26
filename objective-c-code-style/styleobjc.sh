@@ -8,18 +8,19 @@ TMP_FILE='temp.syntax-style'
 # Removes right spaces.
 sed "s-\*[ 	]*-\*-" $1 > $TMP_FILE
 # Normalizes left spaces.
-sed "s-[ 	]*\*- \*-" $TMP_FILE
+sed -i '' "s-\([^(][^ 	]*\)[ 	]*\*\([^)]\)-\1 \*\2-" $TMP_FILE
 
 ## METHODS
 # Normalizes spaces: '   -   (void)    method' -> '- (void)method'
-sed "s,$[ 	]*-[ 	]*(\([^)]*\))[ 	]*,- (\1)," $TMP_FILE
+sed -i '' "s,$[ 	]*-[ 	]*(\([^)]*\))[ 	]*,- (\1)," $TMP_FILE
 
 # Normalize spaces around '+' '/' '=' '=='
 # '-' and '*' needs a more complex regex)
 #echo -e "\nrun 5"
 #OPERANDS='+/='
 #sed "s,[$OPERANDS],AAAA," $TMP_FILE
-#cat $TMP_FILE
+echo "####### Result #######"
+cat $TMP_FILE
 
 rm $TMP_FILE
 
