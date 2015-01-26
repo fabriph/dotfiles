@@ -12,7 +12,7 @@ sed -i '' "s-\([^(][^ 	]*\)[ 	]*\*\([^)]\)-\1 \*\2-" $TMP_FILE
 
 ## METHODS
 # Normalizes spaces: '   -   (void)    method' -> '- (void)method'
-sed -i '' "s,$[ 	]*-[ 	]*(\([^)]*\))[ 	]*,- (\1)," $TMP_FILE
+sed -i '' "s,^[ 	]*-[ 	]*(\([^)]*\))[ 	]*,- (\1)," $TMP_FILE
 
 # Normalize spaces around '+' '/' '=' '=='
 # '-' and '*' needs a more complex regex)
