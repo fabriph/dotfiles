@@ -11,6 +11,8 @@ sed -i '' "s-\([^(][^ 	]*\)[ 	]*\*\([^)]\)-\1 \*\2-" $TMP_FILE
 ## METHODS
 # Normalizes spaces: '   -   (void)    method' -> '- (void)method'
 sed -i '' "s,^[ 	]*-[ 	]*(\([^)]*\))[ 	]*,- (\1)," $TMP_FILE
+# Normalize spaces after colon in method signature:
+sed -i '' "s,\(^[ 	]*-[ 	]*([^)]*)[ 	]*[^:]*\)[ 	]*:[ 	]*\(([^)]*)\)[ 	]*\([^ 	]*.*{\),\1:\2\3,g" $TMP_FILE
 
 # Normalize spaces around '+' '/' '=' '=='
 # '-' and '*' needs a more complex regex)
