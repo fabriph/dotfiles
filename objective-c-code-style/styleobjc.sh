@@ -9,10 +9,14 @@ sed "s-\*[ 	]*-\*-" $1 > $TMP_FILE
 sed -i '' "s-\([^(][^ 	]*\)[ 	]*\*\([^)]\)-\1 \*\2-" $TMP_FILE
 
 ## METHODS
-# Normalizes spaces: '   -   (void)    method' -> '- (void)method'
+# Normalizes spaces in method return type: '   -   (void)    method' -> '- (void)method'
 sed -i '' "s,^[ 	]*-[ 	]*(\([^)]*\))[ 	]*,- (\1)," $TMP_FILE
-# Normalize spaces after colon in method signature:
-sed -i '' "s,\(^[ 	]*-[ 	]*([^)]*)[ 	]*[^:]*\)[ 	]*:[ 	]*\(([^)]*)\)[ 	]*\([^ 	]*.*{\),\1:\2\3,g" $TMP_FILE
+# Normalize spaces after colon in method signature
+sed -i '' "s,\(^[ 	]*-.*\)[ 	]*:[ 	]*\(.*[ 	]*{\),\1:\2,g" $TMP_FILE
+# Normalize spaces after closing parentesis for parameter tipe: "call:(type) var" -> "call:(type)var"
+sed -i '' "s,\(^[ 	]*-.*:[ 	]*([^)]*)\)[ 	]*\(.*[ 	]*{\),\1\2,g" $TMP_FILE
+# Exactly one space before opening { on method declaration
+sed -i '' "s,\(^[ 	]*-.*[^ 	]\)[ 	]*{,\1 {," $TMP_FILE
 
 # Normalize spaces around '+' '/' '=' '=='
 # '-' and '*' needs a more complex regex)
