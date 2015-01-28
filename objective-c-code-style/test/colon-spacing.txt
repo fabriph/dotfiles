@@ -5,6 +5,7 @@
 
 - (void)handleError:(NSError*) error more: (something)  parameter{
     [ self  addChild: _noResultsViewController animated: NO ];
+    [self par1:var1 par2 :var2 par3: var3 par4 : var4];
 }
 
 - (void)handleError :(NSError*) error more : (something)  parameter{
