@@ -1,12 +1,34 @@
 
-- (void)handleError:(NSError*) error {
-    [self addChild: _noResultsViewController animated: NO];
+- (void)handleError: (NSError*)error {
+    [self addChild:_noResultsViewController animated:NO];
 }
 
-- (void)handleError:(NSError*) error more: (something)  parameter{
-    [ self  addChild: _noResultsViewController animated: NO ];
-    [self par1:var1 par2 :var2 par3: var3 par4 : var4];
+- (void)handleError :(NSError*)error more : (something)parameter {
+    [self addChild : _noResultsViewController animated: NO];
+    [self par1 :var1 par2 : var2 par3  :var3 par4:  var4];
 }
 
-- (void)handleError :(NSError*) error more : (something)  parameter{
+- (void)handleError:(NSError*)error more:(something)parameter {
 }
+
+typedef enum : NSUInteger {
+    UNDEFINED,
+    PORTRAIT,
+} Orientation;
+
+typedef enum: NSUInteger {
+    UNDEFINED
+} Orientation;
+
+typedef enum :NSUInteger {
+    UNDEFINED,
+} Orientation;
+
+myHairIsLong ? yes() : no();
+myHairIsLong ?yes(): no();
+myHairIsLong? yes() :no();
+myHairIsLong ?  yes()  : no();
+variable = somethingToassign  ? 12 :34;
+variable = somethingToassign ?  12: 34;
+variable = somethingToassign?12:34;
+

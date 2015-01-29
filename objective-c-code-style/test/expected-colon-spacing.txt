@@ -10,3 +10,25 @@
 
 - (void)handleError:(NSError*)error more:(something)parameter {
 }
+
+typedef enum : NSUInteger {
+    UNDEFINED,
+    PORTRAIT,
+} Orientation;
+
+typedef enum : NSUInteger {
+    UNDEFINED
+} Orientation;
+
+typedef enum : NSUInteger {
+    UNDEFINED,
+} Orientation;
+
+myHairIsLong ? yes() : no();
+myHairIsLong ? yes() : no();
+myHairIsLong ? yes() : no();
+myHairIsLong ? yes() : no();
+variable = somethingToassign ? 12 : 34;
+variable = somethingToassign ? 12 : 34;
+variable = somethingToassign ? 12 : 34;
+
