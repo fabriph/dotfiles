@@ -1,3 +1,4 @@
+#!/bin/bash
 TMP_OUTPUT="test.styleobjc.tmp"
 
 runWithFile () {
