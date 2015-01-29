@@ -1,5 +1,10 @@
 # Simple code syntax for Objective C.
 # Fabricio PH  http://fabricioph.com
+
+# TODO: accept many files as parameters
+# TODO: show help if non entries, or if -h or --help
+# TODO: default is not inplace, unles -i
+
 TMP_FILE='temp.syntax-style'
 
 cat $1 > $TMP_FILE
