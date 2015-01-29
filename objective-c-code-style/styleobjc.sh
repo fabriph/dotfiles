@@ -4,13 +4,23 @@ TMP_FILE='temp.syntax-style'
 
 cat $1 > $TMP_FILE
 
+# TODO: use with precaution, this script might edit character inside strings.
+# sed -i '' "s,,,g" $TMP_FILE
+
+
 ## GENERAL
 # TODO: this can be better done by analyzing different scenarios.
 # Removing spaces around ':'
 sed -i '' "s,\([^ 	]\)[ 	]*:,\1:,g" $TMP_FILE
 sed -i '' "s,:[ 	]*,:,g" $TMP_FILE
 
-## Pointers
+
+## OPERANDS
+# Spaces around '=' and '=='
+sed -i '' "s;\([^ 	]\)[ 	]*\([=]\{1,\}\)[ 	]*\([^ 	]\);\1 \2 \3;g" $TMP_FILE
+
+
+## POINTERS
 # Removes right spaces.
 sed -i '' "s-\*[ 	]*-\*-" $TMP_FILE
 # Normalizes left spaces.
@@ -35,13 +45,6 @@ sed -i '' "s,^\([ 	]*\[\)[ 	]*\([^ 	].*[^ 	]\)[ 	]*\\(].*\)$,\1\2\3,g" $TMP_FILE
 sed -i '' "s;^\(.*\[.*\)[ 	]\{2,\};\1 ;g" $TMP_FILE
 sed -i '' "s;^\([ 	]*[^ 	].*\)[ 	]\{2,\};\1 ;g" $TMP_FILE
 
-# Normalize spaces around '+' '/' '=' '=='
-# '-' and '*' needs a more complex regex)
-#echo -e "\nrun 5"
-#OPERANDS='+/='
-#sed "s,[$OPERANDS],AAAA," $TMP_FILE
-
-# TODO: normailze spaces around ?: operand, cause might be remobed.
 
 ## REVERTS (Putting spaces back when suitable)
 # Ternary operand like 'condition ? positive : negative'
