@@ -1,0 +1,13 @@
+myVarible = something;
+myVarible = something;
+myVarible = something;
+myVarible = something;
+
+if (mVariable == true) {
+}
+if (mVariable == true) {
+} else if (mVariable == true) {
+}
+if (mVariable == true) {
+}
+

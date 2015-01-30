@@ -1,0 +1,19 @@
+-(void)refreshSettings {
+}
+- (void)  refreshSettings {
+}
+ -(void) refreshSettings {
+}
+  -  (void)	refreshSettings {
+}
+	-	(void)  	withTabs {
+}
+
+- (void)tableViewController:(BasicCellTableViewController *) _tableViewController didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+- (void) something : (type*) variable {
+}
+
+- (void) something : (type*) variable more :( type**  ) something{
+}
+

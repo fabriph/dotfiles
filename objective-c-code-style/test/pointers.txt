@@ -1,0 +1,12 @@
+
+NSString*const variable2 = @"2";
+NSString* const variable2 = @"3";
+NSString *const variable1 = @"1";
+NSString * const variable2 = @"4";
+NSString  *const variable2 = @"5";
+NSString  * const variable2 = @"5";
+NSString   *const variable2 = @"5";
+NSString   * const variable2 = @"5";
+NSString   *  const variable2 = @"5";
+
+@end
