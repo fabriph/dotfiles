@@ -4,7 +4,8 @@ TMP_OUTPUT="test.styleobjc.tmp"
 runWithFile () {
   echo -e "\n$1\n"
   ./styleobjc.sh "./test/$1" > $TMP_OUTPUT
-  diff $TMP_OUTPUT "./test/expected-$1"
+ # TODO:What diff tool is better? diff, git diff, colordiff?
+  git diff $TMP_OUTPUT "./test/expected-$1"
 }
 
 runWithFile "colon-spacing.txt"
