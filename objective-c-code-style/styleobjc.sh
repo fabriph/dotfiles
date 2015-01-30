@@ -4,6 +4,7 @@
 # TODO: accept many files as parameters
 # TODO: show help if non entries, or if -h or --help
 # TODO: default is not inplace, unles -i
+# TODO: option -d --diff to show differences with original file
 
 TMP_FILE='temp.syntax-style'
 
