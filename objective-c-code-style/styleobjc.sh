@@ -67,7 +67,11 @@ function checkstyle {
     cat "$TMP_FILE"
   fi
 
-  rm $TMP_FILE
+  if [ "$INPLACE" = "true" ]; then
+    mv "$TMP_FILE" "$ORIGINAL_FILE"
+  else
+    rm "$TMP_FILE"
+  fi
 }
 
 
@@ -77,7 +81,8 @@ function main {
 
 
 SHOW_DIFF="false"
-while getopts ":e:d" opt; do
+INPLACE="false"
+while getopts ":e:dhi" opt; do
   case $opt in
     e)
       echo "-a was triggered, Parameter: $OPTARG" >&2
@@ -88,6 +93,9 @@ while getopts ":e:d" opt; do
     h)
       echo -e "-d: shows diff instead of full output\n-h: help\n-i: inplace\n"
       exit 0
+      ;;
+    i)
+      INPLACE="true"
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
