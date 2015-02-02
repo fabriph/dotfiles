@@ -1,0 +1,9 @@
+- (void) setLastEditableIndex {
+    [self.elements enumerateObjectsWithOptions: NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        FieldModel *model = [self.elements objectAtIndex: idx];
+        if (model.editing) {
+            self.lastEditableIndex = idx;
+            *stop = YES;
+        }
+    }];
+} // NO NEWLINE
