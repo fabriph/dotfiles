@@ -13,4 +13,5 @@ runWithFile "colon-spacing.txt"
 runWithFile "math-operands.txt"
 runWithFile "method-signature.txt"
 runWithFile "pointers.txt"
+runWithFile "general-code.txt"
 
