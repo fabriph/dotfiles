@@ -12,8 +12,7 @@
 
 
 function checkstyle {
-  ORIGINAL_FILE=$1
-  SHOW_DIFF=$2
+  ORIGINAL_FILE="$1"
   TMP_FILE='./temp.syntax-style'
   cat $ORIGINAL_FILE > $TMP_FILE
 
@@ -65,7 +64,7 @@ function checkstyle {
     echo "TODO showdiff"
     #git diff $ORIGINAL_FILE $TMP_FILE
   else
-    cat $TMP_FILE
+    cat "$TMP_FILE"
   fi
 
   rm $TMP_FILE
@@ -73,7 +72,7 @@ function checkstyle {
 
 
 function main {
-  checkstyle "$1" "$2"
+  checkstyle "$1"
 }
 
 
