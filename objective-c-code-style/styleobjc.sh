@@ -61,8 +61,7 @@ function checkstyle {
   sed -i '' "s;^\([ 	]*\)typedef[ 	]\{1,\}enum[ 	]*:[ 	]*\([^ 	]*\)[ 	]*{$;\1typedef enum : \2 {;" $TMP_FILE
 
   if [ "$SHOW_DIFF" = "true" ]; then
-    echo "TODO showdiff"
-    #git diff $ORIGINAL_FILE $TMP_FILE
+    colordiff $ORIGINAL_FILE $TMP_FILE
   else
     cat "$TMP_FILE"
   fi
