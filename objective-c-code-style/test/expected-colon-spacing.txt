@@ -32,3 +32,8 @@ variable = somethingToassign ? 12 : 34;
 variable = somethingToassign ? 12 : 34;
 variable = somethingToassign ? 12 : 34;
 
+@interface PermissionDataManager : DataManager
+@interface PermissionDataManager : DataManager
+@interface PermissionDataManager : DataManager
+@interface PermissionDataManager : DataManager
+
