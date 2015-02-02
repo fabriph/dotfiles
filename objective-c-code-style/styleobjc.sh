@@ -62,6 +62,9 @@ function checkstyle {
   # Spacing around colon in interface definition:
   sed -i '' "s;^[ 	]*@interface[ 	]*\([^ 	]*\)[ 	]*:[ 	]*\([^ 	]*\)[ 	]*$;@interface \1 : \2;" $TMP_FILE
 
+  #Ensure newline at EOF:
+  sed -i '' -e '$a\' $TMP_FILE
+
   if [ "$SHOW_DIFF" = "true" ]; then
     colordiff $ORIGINAL_FILE $TMP_FILE
   else
