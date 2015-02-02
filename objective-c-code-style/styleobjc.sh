@@ -86,6 +86,10 @@ while getopts ":e:d" opt; do
     d)
       SHOW_DIFF="true"
       ;;
+    h)
+      echo -e "-d: shows diff instead of full output\n-h: help\n-i: inplace\n"
+      exit 0
+      ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
       exit 1
