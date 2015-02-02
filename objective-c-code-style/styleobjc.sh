@@ -61,21 +61,45 @@ function checkstyle {
   # Enums like: 'typedef enum : Type {'
   sed -i '' "s;^\([ 	]*\)typedef[ 	]\{1,\}enum[ 	]*:[ 	]*\([^ 	]*\)[ 	]*{$;\1typedef enum : \2 {;" $TMP_FILE
 
-  if [ $SHOW_DIFF ]; then
-    echo "showdiff"
-    git diff $ORIGINAL_FILE $TMP_FILE
+  if [ "$SHOW_DIFF" = "true" ]; then
+    echo "TODO showdiff"
+    #git diff $ORIGINAL_FILE $TMP_FILE
   else
-    echo "dont show diff"
     cat $TMP_FILE
   fi
 
   rm $TMP_FILE
 }
 
+
 function main {
-  SHOW_DIFF=''
-  ORIGINAL_FILE="$1"
-  checkstyle "$ORIGINAL_FILE" "$SHOW_DIFF"
+  checkstyle "$1" "$2"
 }
-main "$1"
+
+
+SHOW_DIFF="false"
+while getopts ":e:d" opt; do
+  case $opt in
+    e)
+      echo "-a was triggered, Parameter: $OPTARG" >&2
+      ;;
+    d)
+      SHOW_DIFF="true"
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+    :)
+      echo "Option -$OPTARG requires an argument." >&2
+      exit 1
+      ;;
+  esac
+done
+
+argstart=$OPTIND
+for p in "${@:$argstart}"
+  do
+    main "$p" "$SHOW_DIFF"
+  done
 
