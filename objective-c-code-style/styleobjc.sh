@@ -59,6 +59,8 @@ function checkstyle {
   sed -i '' "s,\([^ 	]\)[ 	]*\?[ 	]*\(.*\)[ 	]*:[ 	]*\(.*\)$,\1 ? \2 : \3,g" $TMP_FILE
   # Enums like: 'typedef enum : Type {'
   sed -i '' "s;^\([ 	]*\)typedef[ 	]\{1,\}enum[ 	]*:[ 	]*\([^ 	]*\)[ 	]*{$;\1typedef enum : \2 {;" $TMP_FILE
+  # Spacing around colon in interface definition:
+  sed -i '' "s;^[ 	]*@interface[ 	]*\([^ 	]*\)[ 	]*:[ 	]*\([^ 	]*\)[ 	]*$;@interface \1 : \2;" $TMP_FILE
 
   if [ "$SHOW_DIFF" = "true" ]; then
     colordiff $ORIGINAL_FILE $TMP_FILE
