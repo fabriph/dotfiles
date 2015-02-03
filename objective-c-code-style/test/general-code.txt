@@ -1,3 +1,12 @@
+
+for (FieldModel *model in self.elements) {
+    [model clearValue];
+}
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
+}
+
+
 - (void) setLastEditableIndex {
     [self.elements enumerateObjectsWithOptions: NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         FieldModel *model = [self.elements objectAtIndex: idx];
