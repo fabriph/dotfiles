@@ -49,6 +49,8 @@ function checkstyle {
   sed -i '' "s;\(([^)]*[^ ]\)[ 	]\{1,\}\(\*\);\1\2;g" $TMP_FILE
   #   '(   type*)'
   sed -i '' "s;([ 	]\{1,\}\([^)]*\));(\1);g" $TMP_FILE
+  #   '(type*   )'
+  sed -i '' "s;(\([^)]\{1,\}\)[ 	]\{1,\});(\1);g" $TMP_FILE 
 
 
   ## METHOD CALLING
