@@ -32,7 +32,7 @@ function checkstyle {
   # Removes right spaces.
   sed -i '' "s-\*[ 	]*-\*-" $TMP_FILE
   # Normalizes left spaces.
-  sed -i '' "s-\([^(][^ 	]*\)[ 	]*\*\([^)]\)-\1 \*\2-" $TMP_FILE
+  sed -i '' "s-\([^(][^ 	]\{1,\}\)[ 	]*\*\([^)]\)-\1 \*\2-" $TMP_FILE
 
 
   ## METHOD DECLARATION
@@ -41,7 +41,7 @@ function checkstyle {
   # Normalize spaces after colon in method signature
   sed -i '' "s,\(^[ 	]*-.*\)[ 	]*:[ 	]*\(.*[ 	]*{\),\1:\2,g" $TMP_FILE
   # Normalize spaces after closing parentesis for parameter tipe: "call:(type) var" -> "call:(type)var"
-  sed -i '' "s,\(^[ 	]*-.*:[ 	]*([^)]*)\)[ 	]*\(.*[ 	]*{\),\1\2,g" $TMP_FILE
+  sed -i '' "s,\(^[ 	]*-.*:[ 	]*([^)]*)\)[ 	]*\([^ 	].*{\),\1\2,g" $TMP_FILE
   # Exactly one space before opening { on method declaration
   sed -i '' "s,\(^[ 	]*-.*[^ 	]\)[ 	]*{,\1 {," $TMP_FILE
   # Spacing inside parenthesis:
