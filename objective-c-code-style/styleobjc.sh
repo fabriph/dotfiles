@@ -12,8 +12,7 @@
 
 
 function checkstyle {
-  ORIGINAL_FILE=$1
-  SHOW_DIFF=$2
+  ORIGINAL_FILE="$1"
   TMP_FILE='./temp.syntax-style'
   cat $ORIGINAL_FILE > $TMP_FILE
 
@@ -33,7 +32,7 @@ function checkstyle {
   # Removes right spaces.
   sed -i '' "s-\*[ 	]*-\*-" $TMP_FILE
   # Normalizes left spaces.
-  sed -i '' "s-\([^(][^ 	]*\)[ 	]*\*\([^)]\)-\1 \*\2-" $TMP_FILE
+  sed -i '' "s-\([^(][^ 	]\{1,\}\)[ 	]*\*\([^)]\)-\1 \*\2-" $TMP_FILE
 
 
   ## METHOD DECLARATION
@@ -42,9 +41,16 @@ function checkstyle {
   # Normalize spaces after colon in method signature
   sed -i '' "s,\(^[ 	]*-.*\)[ 	]*:[ 	]*\(.*[ 	]*{\),\1:\2,g" $TMP_FILE
   # Normalize spaces after closing parentesis for parameter tipe: "call:(type) var" -> "call:(type)var"
-  sed -i '' "s,\(^[ 	]*-.*:[ 	]*([^)]*)\)[ 	]*\(.*[ 	]*{\),\1\2,g" $TMP_FILE
+  sed -i '' "s,\(^[ 	]*-.*:[ 	]*([^)]*)\)[ 	]*\([^ 	].*{\),\1\2,g" $TMP_FILE
   # Exactly one space before opening { on method declaration
   sed -i '' "s,\(^[ 	]*-.*[^ 	]\)[ 	]*{,\1 {," $TMP_FILE
+  # Spacing inside parenthesis:
+  #   '(type    *)'
+  sed -i '' "s;\(([^)]*[^ 	)]\)[ 	]\{1,\}\(\*[\* 	]*)\);\1\2;g" $TMP_FILE
+  #   '(   type*)'
+  sed -i '' "s;([ 	]\{1,\}\([^)]*\));(\1);g" $TMP_FILE
+  #   '(type*   )'
+  sed -i '' "s;(\([^)]\{1,\}[^ 	]\)[ 	]\{1,\});(\1);g" $TMP_FILE 
 
 
   ## METHOD CALLING
@@ -60,31 +66,47 @@ function checkstyle {
   sed -i '' "s,\([^ 	]\)[ 	]*\?[ 	]*\(.*\)[ 	]*:[ 	]*\(.*\)$,\1 ? \2 : \3,g" $TMP_FILE
   # Enums like: 'typedef enum : Type {'
   sed -i '' "s;^\([ 	]*\)typedef[ 	]\{1,\}enum[ 	]*:[ 	]*\([^ 	]*\)[ 	]*{$;\1typedef enum : \2 {;" $TMP_FILE
+  # Spacing around colon in interface definition:
+  sed -i '' "s;^[ 	]*@interface[ 	]*\([^ 	]*\)[ 	]*:[ 	]*\([^ 	].*[^ 	]\)[ 	]*$;@interface \1 : \2;" $TMP_FILE
+
+  #Ensure newline at EOF:
+  sed -i '' -e '$a\' $TMP_FILE
 
   if [ "$SHOW_DIFF" = "true" ]; then
-    echo "TODO showdiff"
-    #git diff $ORIGINAL_FILE $TMP_FILE
+    colordiff $ORIGINAL_FILE $TMP_FILE
   else
-    cat $TMP_FILE
+    cat "$TMP_FILE"
   fi
 
-  rm $TMP_FILE
+  if [ "$INPLACE" = "true" ]; then
+    mv "$TMP_FILE" "$ORIGINAL_FILE"
+  else
+    rm "$TMP_FILE"
+  fi
 }
 
 
 function main {
-  checkstyle "$1" "$2"
+  checkstyle "$1"
 }
 
 
 SHOW_DIFF="false"
-while getopts ":e:d" opt; do
+INPLACE="false"
+while getopts ":e:dhi" opt; do
   case $opt in
     e)
       echo "-a was triggered, Parameter: $OPTARG" >&2
       ;;
     d)
       SHOW_DIFF="true"
+      ;;
+    h)
+      echo -e "-d: shows diff instead of full output\n-h: help\n-i: inplace\n"
+      exit 0
+      ;;
+    i)
+      INPLACE="true"
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
