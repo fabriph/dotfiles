@@ -9,11 +9,14 @@
 - (void)withTabs {
 }
 
-- (void)tableViewController:(BasicCellTableViewController *)_tableViewController didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableViewController:(BasicCellTableViewController*)_tableViewController didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
 }
 - (void)something:(type*)variable {
 }
 
 - (void)something:(type*)variable more:(type**)something {
 }
+
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPat
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPat
 

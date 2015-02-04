@@ -17,3 +17,6 @@
 - (void) something : (type*) variable more :( type**  ) something{
 }
 
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPat
+- (UITableViewCell*)tableView:( UITableView* )tableView cellForRowAtIndexPath:(NSIndexPath  *)indexPat
+
