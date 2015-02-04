@@ -37,3 +37,8 @@ variable = somethingToassign?12:34;
 @interface PermissionDataManager :DataManager
 @interface PermissionDataManager : DataManager
 
+@interface SeparatorCell : ReachTextCell <UIWebViewDelegate>
+@interface SeparatorCell :ReachTextCell <UIWebViewDelegate>
+@interface SeparatorCell: ReachTextCell <UIWebViewDelegate>
+@interface SeparatorCell:ReachTextCell <UIWebViewDelegate>
+
