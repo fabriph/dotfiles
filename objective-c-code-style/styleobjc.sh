@@ -2,14 +2,11 @@
 # Simple code syntax for Objective C.
 # Fabricio PH  http://fabricioph.com
 
+# TODO: default to be diff.
+# TODO: add -a to output the whole file.
 # TODO: use with precaution, this script might edit character inside strings.
-# sed -i '' "s,,,g" $TMP_FILE
-
-# TODO: accept many files as parameters
-# TODO: show help if non entries, or if -h or --help
-# TODO: default is not inplace, unles -i
-# TODO: option -d --diff to show differences with original file
-
+# TODO: show help if no input.
+# TODO: automatically detect if colordiff is installed, otherwise use regular diff or git diff.
 
 function checkstyle {
   ORIGINAL_FILE="$1"
