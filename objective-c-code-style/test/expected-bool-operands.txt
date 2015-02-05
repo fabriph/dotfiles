@@ -1,0 +1,25 @@
+myVarible = something;
+myVarible = something;
+myVarible = something;
+myVarible = something;
+
+if (mVariable == true) {
+}
+if (mVariable == true) {
+} else if (mVariable == true) {
+}
+if (mVariable == true) {
+}
+
+assert(cellClass != nil);
+assert(cellClass != nil);
+assert(cellClass != nil);
+assert(cellClass != nil);
+assert(cellClass != nil);
+
+BOOL selected = realModel.selectedValue != nil;
+BOOL selected = realModel.selectedValue != nil;
+BOOL selected = realModel.selectedValue != nil;
+BOOL selected = realModel.selectedValue != nil;
+BOOL selected = realModel.selectedValue != nil;
+
