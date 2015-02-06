@@ -1,4 +1,9 @@
 
+extern NSString * const kEmailsCategory;
+extern NSString *const kEmailsCategory;
+extern NSString* const kEmailsCategory;
+extern NSString  *  const kEmailsCategory;
+
 for (FieldModel *model in self.elements) {
     [model clearValue];
 }

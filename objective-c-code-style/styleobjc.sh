@@ -7,6 +7,7 @@
 # TODO: use with precaution, this script might edit character inside strings.
 # TODO: show help if no input.
 # TODO: automatically detect if colordiff is installed, otherwise use regular diff or git diff.
+# TODO: remove lines that are made of only spaces or tabs.
 
 function checkstyle {
   ORIGINAL_FILE="$1"
