@@ -21,9 +21,8 @@ function checkstyle {
 
 
   ## OPERANDS
-  # Spaces around '=' and '=='
-  sed -i '' "s;\([^ 	]\)[ 	]*\([=]\{1,\}\)[ 	]*\([^ 	]\);\1 \2 \3;g" $TMP_FILE
-
+  # Spaces around '=', '==' and '!='.
+  sed -i '' "s;\([^ 	=!]\)[ 	]*\([!]*[=]\{1,\}\)[ 	]*\([^ 	=!]\);\1 \2 \3;g" $TMP_FILE
 
   ## POINTERS
   # Removes right spaces.
