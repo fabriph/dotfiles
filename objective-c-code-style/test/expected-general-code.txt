@@ -1,0 +1,28 @@
+
+extern NSString * const kEmailsCategory;
+extern NSString * const kEmailsCategory;
+extern NSString * const kEmailsCategory;
+extern NSString * const kEmailsCategory;
+
+for (FieldModel *model in self.elements) {
+    [model clearValue];
+}
+
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
+}
+
+NSLog(@"%@", $(@"WARNING WidgetCellFactory: type code '%@' not found", typeCode));
+
+- (void)getWorkflowForPersonId:(int)identifier jobId:(int)jobId moduleId:(int)moduleId resultsBlock:(resultsBlock)resultsBlock {
+}
+
+- (void)setLastEditableIndex {
+    [self.elements enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        FieldModel *model = [self.elements objectAtIndex:idx];
+        if (model.editing) {
+            self.lastEditableIndex = idx;
+            *stop = YES;
+        }
+    }];
+} // NO NEWLINE
+
