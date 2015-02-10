@@ -1,0 +1,4 @@
+This directory holds the configuration file for using in UncrustifyX[1], a
+syntax style beautifier.
+
+[1] https://github.com/ryanmaxwell/UncrustifyX 

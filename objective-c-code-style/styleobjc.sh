@@ -8,6 +8,7 @@
 # TODO: show help if no input.
 # TODO: automatically detect if colordiff is installed, otherwise use regular diff or git diff.
 # TODO: remove lines that are made of only spaces or tabs.
+# TODO: add cases where methods start with '+' instad of '-'.
 
 function checkstyle {
   ORIGINAL_FILE="$1"
