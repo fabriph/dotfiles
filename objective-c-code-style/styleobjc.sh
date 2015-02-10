@@ -65,6 +65,8 @@ function checkstyle {
   sed -i '' "s;^\([ 	]*\)typedef[ 	]\{1,\}enum[ 	]*:[ 	]*\([^ 	]*\)[ 	]*{$;\1typedef enum : \2 {;" $TMP_FILE
   # Spacing around colon in interface definition:
   sed -i '' "s;^[ 	]*@interface[ 	]*\([^ 	]*\)[ 	]*:[ 	]*\([^ 	].*[^ 	]\)[ 	]*$;@interface \1 : \2;" $TMP_FILE
+  # Spaces around '*' in extern constants definitions:
+  sed -i '' "s,^[ 	]*\(extern .*[^ 	\*]\)[ 	]*\*[ 	]*\([^ 	]*.*\)$,\1 * \2," $TMP_FILE
 
   #Ensure newline at EOF:
   sed -i '' -e '$a\' $TMP_FILE
