@@ -2,8 +2,6 @@
 # Simple code syntax for Objective C.
 # Fabricio PH  http://fabricioph.com
 
-# TODO: default to be diff.
-# TODO: add -a to output the whole file.
 # TODO: use with precaution, this script might edit character inside strings.
 # TODO: show help if no input.
 # TODO: automatically detect if colordiff is installed, otherwise use regular diff or git diff.
@@ -91,18 +89,18 @@ function main {
 }
 
 
-SHOW_DIFF="false"
+SHOW_DIFF="true"
 INPLACE="false"
-while getopts ":e:dhi" opt; do
+while getopts ":ae:hi" opt; do
   case $opt in
     e)
       echo "-a was triggered, Parameter: $OPTARG" >&2
       ;;
-    d)
-      SHOW_DIFF="true"
+    a)
+      SHOW_DIFF="false"
       ;;
     h)
-      echo -e "-d: shows diff instead of full output\n-h: help\n-i: inplace\n"
+      echo -e "-a: shows whole file output instead of diff\n-h: help\n-i: inplace\n"
       exit 0
       ;;
     i)
