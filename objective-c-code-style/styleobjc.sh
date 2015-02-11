@@ -77,7 +77,7 @@ function checkstyle {
   if [ "$SHOW_DIFF" = "true" ]; then
     command -v colordiff >/dev/null 2>&1
     if [[ "$?" -eq 0 ]]; then
-      colordiff $ORIGINAL_FILE $TMP_FILE
+      colordiff $ORIGINAL_FILE $TMP_FILE 2>/dev/null
     else
       diff $ORIGINAL_FILE $TMP_FILE
     fi
