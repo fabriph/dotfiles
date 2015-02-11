@@ -4,8 +4,12 @@ TMP_OUTPUT="test.styleobjc.tmp"
 runWithFile () {
   echo -e "\n$1\n"
   ./styleobjc.sh -a "./test/$1" > $TMP_OUTPUT
- # TODO:What diff tool is better? diff, git diff, colordiff?
-  colordiff $TMP_OUTPUT "./test/expected-$1"
+  command -v colordiff >/dev/null 2>&1
+  if [[ "$?" -eq 0 ]]; then
+    colordiff $TMP_OUTPUT "./test/expected-$1" 2>/dev/null
+  else
+    git diff $ORIGINAL_FILE $TMP_FILE
+  fi
   rm "$TMP_OUTPUT"
 }
 
