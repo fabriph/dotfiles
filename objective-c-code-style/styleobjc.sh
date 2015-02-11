@@ -1,6 +1,7 @@
 #!/bin/bash
+
 # Simple code syntax for Objective C.
-# Fabricio PH  http://fabricioph.com
+# Run 'styleobc -h' for help
 
 # TODO: use with precaution, this script might edit character inside strings.
 # TODO: show help if no input.
@@ -37,7 +38,10 @@ function checkstyle {
   # Normalize spaces after colon in method signature
   sed -i '' "s,\(^[ 	]*-.*\)[ 	]*:[ 	]*\(.*[ 	]*{\),\1:\2,g" $TMP_FILE
   # Normalize spaces after closing parentesis for parameter tipe: "call:(type) var" -> "call:(type)var"
+# TODO: NOT WORKING PROPERLY
   sed -i '' "s,\(^[ 	]*-.*:[ 	]*([^)]*)\)[ 	]*\([^ 	].*{\),\1\2,g" $TMP_FILE
+#echo "- (void)tableViewController:(BasicCellTableViewController*) _tableViewController didSelectRowAtIndexPath:(NSIndexPath*)indexPath {" | sed "s,[ ]*-[ ]*(.*:([^)]*)[ ]*\([^ ]\),%%%\1,g"
+
   # Exactly one space before opening { on method declaration
   sed -i '' "s,\(^[ 	]*-.*[^ 	]\)[ 	]*{,\1 {," $TMP_FILE
   # Spacing inside parenthesis:
