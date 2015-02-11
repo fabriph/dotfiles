@@ -92,6 +92,13 @@ function main {
   checkstyle "$1"
 }
 
+function showHelp {
+  echo "Usage:"
+  echo -e "\t-a: shows whole file output instead of diff."
+  echo -e "\t-h: shows help."
+  echo -e "\t-i: inplace."
+  echo ""
+}
 
 SHOW_DIFF="true"
 INPLACE="false"
@@ -104,7 +111,7 @@ while getopts ":ae:hi" opt; do
       SHOW_DIFF="false"
       ;;
     h)
-      echo -e "-a: shows whole file output instead of diff\n-h: help\n-i: inplace\n"
+      showHelp
       exit 0
       ;;
     i)
@@ -120,6 +127,11 @@ while getopts ":ae:hi" opt; do
       ;;
   esac
 done
+
+if [[ "$#" -eq 0 ]]; then
+  showHelp
+  exit 0
+fi
 
 argstart=$OPTIND
 for p in "${@:$argstart}"
