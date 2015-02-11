@@ -75,7 +75,12 @@ function checkstyle {
   sed -i '' -e '$a\' $TMP_FILE
 
   if [ "$SHOW_DIFF" = "true" ]; then
-    colordiff $ORIGINAL_FILE $TMP_FILE
+    command -v colordiff >/dev/null 2>&1
+    if [[ "$?" -eq 0 ]]; then
+      colordiff $ORIGINAL_FILE $TMP_FILE
+    else
+      diff $ORIGINAL_FILE $TMP_FILE
+    fi
   else
     cat "$TMP_FILE"
   fi
