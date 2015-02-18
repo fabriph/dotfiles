@@ -45,11 +45,11 @@ function checkstyle {
   # Exactly one space before opening { on method declaration
   sed -i '' "s,\(^[ 	]*-.*[^ 	]\)[ 	]*{,\1 {," $TMP_FILE
   # Spacing inside parenthesis:
-  #   '(type    *)'
+  #   '(type    *)' -> '(type *)'
   sed -i '' "s;\(([^)]*[^ 	)]\)[ 	]\{1,\}\(\*[\* 	]*)\);\1\2;g" $TMP_FILE
-  #   '(   type*)'
+  #   '(   type *)' -> '(type *)'
   sed -i '' "s;([ 	]\{1,\}\([^)]*\));(\1);g" $TMP_FILE
-  #   '(type*   )'
+  #   '(type *   )' -> '(type *)'
   sed -i '' "s;(\([^)]\{1,\}[^ 	]\)[ 	]\{1,\});(\1);g" $TMP_FILE 
 
 
