@@ -46,7 +46,7 @@ function checkstyle {
   sed -i '' "s,\(^[ 	]*-.*[^ 	]\)[ 	]*{,\1 {," $TMP_FILE
   # Spacing inside parenthesis:
   #   '(type    *)' -> '(type *)'
-  sed -i '' "s;\(([^)]*[^ 	)]\)[ 	]\{1,\}\(\*[\* 	]*)\);\1\2;g" $TMP_FILE
+  sed -i '' "s;\(([^)]*[^ 	)]\)[ 	]*\(\*[\* 	]*)\);\1 \2;g" $TMP_FILE
   #   '(   type *)' -> '(type *)'
   sed -i '' "s;([ 	]\{1,\}\([^)]*\));(\1);g" $TMP_FILE
   #   '(type *   )' -> '(type *)'
