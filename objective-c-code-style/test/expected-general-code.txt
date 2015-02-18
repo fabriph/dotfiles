@@ -16,6 +16,19 @@ NSLog(@"%@", $(@"WARNING WidgetCellFactory: type code '%@' not found", typeCode)
 - (void)getWorkflowForPersonId:(int)identifier jobId:(int)jobId moduleId:(int)moduleId resultsBlock:(resultsBlock)resultsBlock {
 }
 
+- (Type *)aMethodThatDoesStuffWith:(Parameter *)param {
+    return (Casting *)something;
+}
+- (Type *)aMethodThatDoesStuffWith:(Parameter *)param {
+    return (Casting *)something;
+}
+- (Type *)aMethodThatDoesStuffWith:(Parameter *)param {
+    return (Casting *)something;
+}
+- (Type *)aMethodThatDoesStuffWith:(Parameter *)param {
+    return (Casting *)something;
+}
+
 - (void)setLastEditableIndex {
     [self.elements enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         FieldModel *model = [self.elements objectAtIndex:idx];
