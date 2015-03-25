@@ -1,0 +1,3 @@
+# Allows completition ignoring case.
+set completion-ignore-case on
+
