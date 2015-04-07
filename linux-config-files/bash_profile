@@ -14,6 +14,10 @@ HISTSIZE=5000
 alias ..='cd ..'
 alias grep='grep --color=always'
 alias l='ls -CF'
+# TODO: have a grep always recursive by a command.
+#alias grepr='grep --color=always -r .'
+#function grepr { grep "$1"; }
+#export -f grepr
 
 # Bash completion
 if [ -f /etc/bash_completion ]; then
