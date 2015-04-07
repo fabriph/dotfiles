@@ -9,6 +9,10 @@ white=$(tput setaf 7)
 bold=$(tput bold)
 reset=$(tput sgr0)
 
+#PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
+# Git prompt that shows current branch.
+PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
+
 HISTSIZE=5000
 
 alias ..='cd ..'
@@ -24,26 +28,25 @@ if [ -f /etc/bash_completion ]; then
 . /etc/bash_completion
 fi
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-fi
-
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
-
-if [ -f ~/.git-prompt.sh ]; then
-  source ~/.git-prompt.sh
-fi
-
-# Git prompt that shows current branch.
-PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
-#PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
-
-
 # Coloring in command LS.
 export CLICOLOR=1
 
-# Next line is used for brew.
-export PATH=/usr/local/sbin:$PATH
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Optional GIT stuff
 
+#if [ -f ~/.git-completion.bash ]; then
+#  . ~/.git-completion.bash
+#fi
+
+#if [ -f ~/.git-prompt.sh ]; then
+#  source ~/.git-prompt.sh
+#fi
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Optional Homebrew stuff
+
+#if [ -f `brew --prefix`/etc/bash_completion ]; then
+#    . `brew --prefix`/etc/bash_completion
+#fi
+
+#export PATH=/usr/local/sbin:$PATH
