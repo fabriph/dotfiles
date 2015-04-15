@@ -22,6 +22,7 @@ alias l='ls -CF'
 #alias grepr='grep --color=always -r .'
 #function grepr { grep "$1"; }
 #export -f grepr
+# TODO: add a funcion to easily do 'find . -name "$1"'
 
 # Bash completion
 if [ -f /etc/bash_completion ]; then
