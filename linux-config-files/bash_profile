@@ -17,7 +17,13 @@ HISTSIZE=5000
 
 alias ..='cd ..'
 alias grep='grep --color=always'
+
+alias ls="ls --color=auto"
+# Coloring in command LS. This one only works in OS X
+export CLICOLOR=1
+
 alias l='ls -CF'
+alias la='ls -a'
 # TODO: have a grep always recursive by a command.
 #alias grepr='grep --color=always -r .'
 #function grepr { grep "$1"; }
@@ -28,9 +34,6 @@ alias l='ls -CF'
 if [ -f /etc/bash_completion ]; then
 . /etc/bash_completion
 fi
-
-# Coloring in command LS.
-export CLICOLOR=1
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Optional GIT stuff
