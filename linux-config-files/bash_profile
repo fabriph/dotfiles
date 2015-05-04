@@ -1,4 +1,11 @@
-grey=$(tput setaf 0)
+# Peding things to code
+# - Use functions for magic stuff
+#   - lll () { /bin/ls -aOle "$@" | /usr/bin/more ; }
+# - Improve TAB compeltition:
+#   - http://stackoverflow.com/questions/10942919/customize-tab-completion-in-shell
+#   - http://superuser.com/questions/289539/custom-bash-tab-completion
+
+grey=$(tput setaf 0)  # In fact is black
 red=$(tput setaf 1)
 green=$(tput setaf 2)
 yellow=$(tput setaf 3)
