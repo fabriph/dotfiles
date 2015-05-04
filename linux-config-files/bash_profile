@@ -30,6 +30,11 @@ alias la='ls -a'
 #export -f grepr
 # TODO: add a funcion to easily do 'find . -name "$1"'
 
+# Ignore case completition
+bind "set completion-ignore-case on"
+# Displays all possibilities with only one TAB press.
+bind "set show-all-if-ambiguous on"
+
 # Bash completion
 if [ -f /etc/bash_completion ]; then
 . /etc/bash_completion
