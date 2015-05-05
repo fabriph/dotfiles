@@ -50,13 +50,13 @@ export CLICOLOR=1  # This one only works in OS X
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Optional GIT stuff
 
-#if [ -f ~/.git-completion.bash ]; then
-#  . ~/.git-completion.bash
-#fi
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
 
-#if [ -f ~/.git-prompt.sh ]; then
-#  source ~/.git-prompt.sh
-#fi
+if [ -f ~/.git-prompt.sh ]; then
+  source ~/.git-prompt.sh
+fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Optional Homebrew stuff
