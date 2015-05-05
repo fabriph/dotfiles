@@ -70,24 +70,24 @@ fi
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Stuff used at work
 # TODO: replace this by a ignore case aliases, couldn't get that working right now.
-#alias iBranch=iatsBranch
-#alias ibranch=iatsBranch
-#alias iBranchSubmodule=iatsBranchSubmodule
-#alias ibranchSubmodule=iatsBranchSubmodule
-#alias iMerge=iatsMerge
-#alias imerge=iatsMerge
-#alias iPull=iatsPull
-#alias ipull=iatsPull
-#alias iPush=iatsPush
-#alias ipush=iatsPush
-#alias iReset=iatsReset
-#alias ireset=iatsReset
-#alias iSql=iatsSql
-#alias isql=iatsSql
-#alias iStatus=iatsStatus
-#alias istatus=iatsStatus
-#alias iSwitch=iatsSwitch
-#alias iswitch=iatsSwitch
-#alias gcMobileCore='git commit MobileCore -m "Updated link to submodule."'
-#alias gcmobileCore='git commit MobileCore -m "Updated link to submodule."'
+alias iBranch=iatsBranch
+alias ibranch=iatsBranch
+alias iBranchSubmodule=iatsBranchSubmodule
+alias ibranchSubmodule=iatsBranchSubmodule
+alias iMerge=iatsMerge
+alias imerge=iatsMerge
+alias iPull=iatsPull
+alias ipull=iatsPull
+alias iPush=iatsPush
+alias ipush=iatsPush
+alias iReset=iatsReset
+alias ireset=iatsReset
+alias iSql=iatsSql
+alias isql=iatsSql
+alias iStatus=iatsStatus
+alias istatus=iatsStatus
+alias iSwitch=iatsSwitch
+alias iswitch=iatsSwitch
+alias gcMobileCore='git commit MobileCore -m "Updated link to submodule."'
+alias gcmobileCore='git commit MobileCore -m "Updated link to submodule."'
 
