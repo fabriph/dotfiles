@@ -30,6 +30,7 @@ alias grep='grep --color=always'
 
 alias l='ls -CF'
 alias la='ls -a'
+alias ll='ls -l'
 # TODO: have a grep always recursive by a command.
 alias gr='grep -Rnf /dev/stdin . <<<'
 #alias gr='grep -Rn . <<<'
