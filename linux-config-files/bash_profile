@@ -53,6 +53,8 @@ export CLICOLOR=1  # This one only works in OS X
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Optional GIT stuff
 
+alias gc="git commit --allow-empty -m"
+
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
