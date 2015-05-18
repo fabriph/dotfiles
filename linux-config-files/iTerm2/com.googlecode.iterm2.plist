@@ -45,64 +45,7 @@
 	<key>FsTabDelay</key>
 	<real>0.10000000149011612</real>
 	<key>GlobalKeyMap</key>
-	<dict>
-		<key>0x7f-0x100000</key>
-		<dict>
-			<key>Action</key>
-			<integer>11</integer>
-			<key>Text</key>
-			<string>0x15</string>
-		</dict>
-		<key>0x7f-0x80000</key>
-		<dict>
-			<key>Action</key>
-			<integer>11</integer>
-			<key>Text</key>
-			<string>0x17</string>
-		</dict>
-		<key>0xf702-0x280000</key>
-		<dict>
-			<key>Action</key>
-			<integer>10</integer>
-			<key>Text</key>
-			<string>b</string>
-		</dict>
-		<key>0xf702-0x300000</key>
-		<dict>
-			<key>Action</key>
-			<integer>11</integer>
-			<key>Text</key>
-			<string>0x01</string>
-		</dict>
-		<key>0xf702-0x380000</key>
-		<dict>
-			<key>Action</key>
-			<integer>2</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0xf703-0x280000</key>
-		<dict>
-			<key>Action</key>
-			<integer>10</integer>
-			<key>Text</key>
-			<string>f</string>
-		</dict>
-		<key>0xf703-0x300000</key>
-		<dict>
-			<key>Action</key>
-			<integer>11</integer>
-			<key>Text</key>
-			<string>0x05</string>
-		</dict>
-		<key>0xf703-0x380000</key>
-		<dict>
-			<key>Action</key>
-			<integer>0</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
-	</dict>
+	<dict/>
 	<key>HiddenAFRStrokeThickness</key>
 	<real>0.0</real>
 	<key>HiddenAdvancedFontRendering</key>
@@ -118,7 +61,7 @@
 	<key>HighlightTabLabels</key>
 	<true/>
 	<key>HotKeyBookmark</key>
-	<string>612B3337-7FC1-4080-B429-136F571AF6BC</string>
+	<string>062B23D3-3119-4873-80E2-8E7EFEABB219</string>
 	<key>HotKeyTogglesWindow</key>
 	<false/>
 	<key>Hotkey</key>
@@ -171,7 +114,7 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>689 153 445 396 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>66 234 924 485 0 0 1280 777 </string>
+	<string>127 248 924 485 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>43 46 1110 651 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
@@ -490,6 +433,62 @@
 					<integer>11</integer>
 					<key>Text</key>
 					<string>0x7f</string>
+				</dict>
+				<key>0x7f-0x100000</key>
+				<dict>
+					<key>Action</key>
+					<integer>11</integer>
+					<key>Text</key>
+					<string>0x15</string>
+				</dict>
+				<key>0x7f-0x80000</key>
+				<dict>
+					<key>Action</key>
+					<integer>11</integer>
+					<key>Text</key>
+					<string>0x17</string>
+				</dict>
+				<key>0xf702-0x280000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
+					<string>b</string>
+				</dict>
+				<key>0xf702-0x300000</key>
+				<dict>
+					<key>Action</key>
+					<integer>11</integer>
+					<key>Text</key>
+					<string>0x01</string>
+				</dict>
+				<key>0xf702-0x380000</key>
+				<dict>
+					<key>Action</key>
+					<integer>2</integer>
+					<key>Text</key>
+					<string></string>
+				</dict>
+				<key>0xf703-0x280000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
+					<string>f</string>
+				</dict>
+				<key>0xf703-0x300000</key>
+				<dict>
+					<key>Action</key>
+					<integer>11</integer>
+					<key>Text</key>
+					<string>0x05</string>
+				</dict>
+				<key>0xf703-0x380000</key>
+				<dict>
+					<key>Action</key>
+					<integer>0</integer>
+					<key>Text</key>
+					<string></string>
 				</dict>
 			</dict>
 			<key>Log Directory</key>
