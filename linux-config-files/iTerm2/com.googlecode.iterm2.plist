@@ -19,7 +19,7 @@
 	<key>CheckTestRelease</key>
 	<true/>
 	<key>ClosingHotkeySwitchesSpaces</key>
-	<true/>
+	<false/>
 	<key>CommandSelection</key>
 	<true/>
 	<key>Control</key>
