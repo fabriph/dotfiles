@@ -5,7 +5,6 @@
 # - Improve TAB compeltition:
 #   - http://stackoverflow.com/questions/10942919/customize-tab-completion-in-shell
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
-# - Automatically detect if git is installed and use the cool prompt, otherwise use the regular one.
 # - Implement an easily find command, maybe doing the search path optional.
 # - Do a script to easily download my prompt and install it in a new computer, and maybe implement a script to clean it up and leave the computer in its previous state.
 
@@ -19,10 +18,6 @@ cyan=$(tput setaf 6)
 white=$(tput setaf 7)
 bold=$(tput bold)
 reset=$(tput sgr0)
-
-#PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
-# Git prompt that shows current branch.
-PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
 
 HISTSIZE=5000
 
@@ -50,6 +45,15 @@ fi
 # Coloring in command LS.
 export CLICOLOR=1  # This one only works in OS X
 #alias ls="ls --color=auto"
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Prompt
+command -v __git_ps1 >/dev/null 2>&1
+if [[ "$?" -eq 0 ]]; then
+    PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
+else
+    PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
+fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Optional GIT stuff
