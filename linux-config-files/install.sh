@@ -7,4 +7,5 @@ ln -s ~/dev/scripts/linux-config-files/bash_profile ~/.bash_profile
 ln -s ~/dev/scripts/linux-config-files/vimrc ~/.vimrc
 ln -s ~/dev/scripts/linux-config-files/git/git-prompt.sh ~/.git-prompt.sh
 ln -s ~/dev/scripts/linux-config-files/git/git-completion.bash ~/.git-completion.bash
+ln -s ~/dev/scripts/linux-config-files/sublime/settings ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Preferences.sublime-settings
 
