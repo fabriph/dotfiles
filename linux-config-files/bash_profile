@@ -40,6 +40,8 @@ bind "set show-all-if-ambiguous on"
 # Bash completion
 if [ -f /etc/bash_completion ]; then
 . /etc/bash_completion
+else
+  echo "Missing bash completition"
 fi
 
 # Coloring in command LS.
@@ -62,10 +64,14 @@ alias gc="git commit --allow-empty -m"
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
+else
+  echo "Missing git-completition"
 fi
 
 if [ -f ~/.git-prompt.sh ]; then
   source ~/.git-prompt.sh
+else
+  echo "Missing git-prompt"
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
