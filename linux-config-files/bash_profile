@@ -20,6 +20,7 @@ bold=$(tput bold)
 reset=$(tput sgr0)
 
 HISTSIZE=5000
+export HISTCONTROL=ignoredups:erasedups
 
 alias ..='cd ..'
 alias grep='grep --color=always'
@@ -28,7 +29,7 @@ alias l='ls -CF'
 alias la='ls -a'
 alias ll='ls -l'
 # TODO: have a grep always recursive by a command.
-alias gr='grep -Rnf /dev/stdin . <<<'
+alias gr='grep -RnIf /dev/stdin . <<<'
 #alias gr='grep -Rn . <<<'
 # TODO: add a funcion to easily do 'find . -name "$1"'
 
@@ -49,15 +50,6 @@ export CLICOLOR=1  # This one only works in OS X
 #alias ls="ls --color=auto"
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# Prompt
-command -v __git_ps1 >/dev/null 2>&1
-if [[ "$?" -eq 0 ]]; then
-    PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
-else
-    PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
-fi
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Optional GIT stuff
 
 alias gc="git commit --allow-empty -m"
@@ -72,6 +64,15 @@ if [ -f ~/.git-prompt.sh ]; then
   source ~/.git-prompt.sh
 else
   echo "Missing git-prompt"
+fi
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Prompt
+command -v __git_ps1 >/dev/null 2>&1
+if [[ "$?" -eq 0 ]]; then
+    PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
+else
+    PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
