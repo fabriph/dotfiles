@@ -6,7 +6,6 @@
 #   - http://stackoverflow.com/questions/10942919/customize-tab-completion-in-shell
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
 # - Implement an easily find command, maybe doing the search path optional.
-# - Do a script to easily download my prompt and install it in a new computer, and maybe implement a script to clean it up and leave the computer in its previous state.
 
 grey=$(tput setaf 0)  # In fact is black
 red=$(tput setaf 1)
