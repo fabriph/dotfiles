@@ -109,4 +109,11 @@ alias iSwitch=iatsSwitch
 alias iswitch=iatsSwitch
 alias gcMobileCore='git commit MobileCore -m "Updated link to submodule."'
 alias gcmobileCore='git commit MobileCore -m "Updated link to submodule."'
-
+#function magic {
+#  vim `find . -name "*unit.cpp" | peco`
+#}
+#function i2Switch {
+#  iatsSwitch `iatsListBranches | cut -d"/" -f 2 | peco`
+#}
+alias bt="./tools/buildTests --mock-server"
+alias rt="./bin/runTests"
