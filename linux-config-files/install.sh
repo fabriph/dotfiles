@@ -5,6 +5,12 @@
 #  - If files are already there, ask if wanna remplace them.
 #  - Add the option to keep old files and then easily restore them, just in case I wanna use this install.sh as a temporary fix on somebody else computer.
 
+function rmsoft {
+    TRASH_DIR=~/.tmp-trash
+    mkdir -p $TRASH_DIR
+    mv "$1" "$TRASH_DIR/$(basename $1).$today"
+}
+
 function handle_backup {
     destination="$1"
     if [ -f "$destination.backup" ]; then
@@ -17,9 +23,10 @@ function handle_backup {
         if [[ $REPLY =~ ^[Nn]$ ]]
         then
             echo "    Backup Skipped"
+            rmsoft "$destination"
             return
         else
-            rm -f "$destination.backup"
+            rmsoft "$destination.backup"
         fi
     fi
     mv "$destination" "$destination.backup"
@@ -46,10 +53,16 @@ function install_package {
         then
             handle_backup $destination
         fi
+        if [[ $REPLY =~ ^[Rr]$ ]]
+        then
+            rmsoft "$destination"
+        fi
     fi
     ln -s "$origin" "$destination"
     echo -e "    Successfully installed\n"
 }
+
+today=`date +%Y-%m-%d.%H:%M:%S`
 
 install_package "Bash Profile" ~/dev/scripts/linux-config-files/bash_profile ~/.bash_profile
 
