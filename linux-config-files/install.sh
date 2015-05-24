@@ -9,10 +9,24 @@ function install_package {
     origin="$2"
     destination="$3"
     if [ -f "$destination" ]; then
-      echo "$package is present, whant to (R)eplace, (B)ackup&Replace, (S)kip?"
-    else
-      echo "$package installed. $destination"
+        REPLY=""
+        while [[ ! $REPLY =~ ^[BbRrSs]$ ]]
+        do
+            read -p "$package is present: (R)eplace, (B)ackup, (S)kip? " -n 1 -r
+            echo
+        done
+        if [[ $REPLY =~ ^[Ss]$ ]]
+        then
+            echo "  Skipping"
+            return
+        fi
+        if [[ $REPLY =~ ^[Bb]$ ]]
+        then
+            echo "  Backing up as"
+            return
+        fi
     fi
+    echo "$package installed. $destination"
     #ln -s "$origin" "$destination"
 }
 
