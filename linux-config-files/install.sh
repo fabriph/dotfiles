@@ -4,6 +4,28 @@
 #  - use pwd + local references so we dont need to always checkout this repo on ~/dev/scripts.
 #  - If files are already there, ask if wanna remplace them.
 #  - Add the option to keep old files and then easily restore them, just in case I wanna use this install.sh as a temporary fix on somebody else computer.
+
+function handle_backup {
+    destination="$1"
+    if [ -f "$destination.backup" ]; then
+        REPLY=""
+        while [[ ! $REPLY =~ ^[YyNn]$ ]]
+        do
+            read -p "Backup exists, override? (Y/n)" -n 1 -r
+            echo
+        done
+        if [[ $REPLY =~ ^[Nn]$ ]]
+        then
+            echo "  Backup Skipped"
+            return
+        else
+            rm -f "$destination.backup"
+        fi
+    fi
+    mv "$destination" "$destination.backup"
+    echo "  Backup: $destination.backup"
+}
+
 function install_package {
     package="$1"
     origin="$2"
@@ -17,17 +39,16 @@ function install_package {
         done
         if [[ $REPLY =~ ^[Ss]$ ]]
         then
-            echo "  Skipping"
+            echo "  Skipped"
             return
         fi
         if [[ $REPLY =~ ^[Bb]$ ]]
         then
-            echo "  Backing up as"
-            return
+            handle_backup $destination
         fi
     fi
-    echo "$package installed. $destination"
-    #ln -s "$origin" "$destination"
+    echo -e "$package installed. $destination\n"
+    ln -s "$origin" "$destination"
 }
 
 install_package "Bash Profile" ~/dev/scripts/linux-config-files/bash_profile ~/.bash_profile
