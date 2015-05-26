@@ -1,8 +1,8 @@
-" Behaviour
+" BEHAVIOUR
 scriptencoding utf-8
 set encoding=utf-8
 
-                                " Allows to press ';' instead of ':' for commands
+" Allows to press ';' instead of ':' for commands
 nore ; :
 nore ñ :
 
@@ -11,8 +11,8 @@ set number                      " Line numbers.
 set statusline+=%F\ %=%l\:%c
 set vb                          " No sounds.
 
-" Visual
-syntax on
+" VISUAL
+syntax on                       " Color syntax
 colorscheme peachpuff
 set list                        " Show invisible characters
 set listchars=tab:>·,trail:·    " But only show tabs and trailing whitespace
