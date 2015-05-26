@@ -28,10 +28,10 @@ alias grep='grep --color=always'
 alias l='ls -CF'
 alias la='ls -a'
 alias ll='ls -l'
-# TODO: have a grep always recursive by a command.
 alias gr='grep -RnIf /dev/stdin . <<<'
-#alias gr='grep -Rn . <<<'
-# TODO: add a funcion to easily do 'find . -name "$1"'
+function ffind {
+  find . -name "$1"
+}
 
 # Ignore case completition
 bind "set completion-ignore-case on"
