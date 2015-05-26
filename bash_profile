@@ -83,6 +83,13 @@ command -v brew >/dev/null 2>&1
 if [[ "$?" -eq 0 ]]; then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
+  else
+    echo "Missing brew bash completion"
+  fi
+  if [ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; then
+    source `brew --prefix`/etc/bash_completion.d/vagrant
+  else
+    echo "Missing brew vagrant completion"
   fi
 fi
 
