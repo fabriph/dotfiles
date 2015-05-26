@@ -41,7 +41,7 @@ bind "set show-all-if-ambiguous on"
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 else
-  echo "Missing bash completition"
+  echo "Missing bash completion"
 fi
 
 # Coloring in command LS.
