@@ -1,0 +1,9 @@
+Package Manager http://alcatraz.io/
+Plugins installed:
+  - Backlight: Highlights the current editing line in Xcode.
+  - BBUncrustifyPlugin
+  - Fuzzy Autocomplete
+  - Git Diff
+  - Highlight Selected String
+  - Xcode_beginning_of_line: home key jump to te first non whitespace line…
+  - XToDo

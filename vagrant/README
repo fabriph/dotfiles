@@ -1,0 +1,9 @@
+Used mainly to have headless VMs.
+
+brew cask install vagrant osxfuse virtualbox
+brew install sshfs
+vagrant plugin install vagrant-sshfs
+
+Additionaly:
+  brew install vagrant-completion
+
