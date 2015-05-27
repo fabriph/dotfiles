@@ -57,6 +57,8 @@ function install_package {
         then
             rmsoft "$destination"
         fi
+    else
+        echo "$package:"
     fi
     ln -s "$origin" "$destination"
     echo -e "    Successfully installed\n"
