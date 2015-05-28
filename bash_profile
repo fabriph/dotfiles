@@ -115,6 +115,20 @@ alias istatus=iatsStatus
 alias gcMobileCore='git commit MobileCore -m "Updated link to submodule."'
 alias gcmobileCore=gcMobileCore
 
+function gcDone {
+  caseID=`echo $(__git_ps1 " %s") | sed -E "s/^T([1234567890]+).*$/\1/"`
+  if [ "$caseID" ]; then
+    if [ "$1" ]; then
+      git commit --allow-empty -m "Fix: T#$caseID: $1"
+    else
+      git commit --allow-empty -m "Fix: T#$caseID: done."
+    fi
+  else
+    echo "Coudln't get case ID."
+  fi
+}
+alias gcdone=gcDone
+
 function iSwitch {
   if [ "$#" -eq 0 ]; then
     iatsSwitch `git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
