@@ -112,10 +112,18 @@ alias iSql=iatsSql
 alias isql=iatsSql
 alias iStatus=iatsStatus
 alias istatus=iatsStatus
-alias iSwitch=iatsSwitch
-alias iswitch=iatsSwitch
 alias gcMobileCore='git commit MobileCore -m "Updated link to submodule."'
 alias gcmobileCore='git commit MobileCore -m "Updated link to submodule."'
+
+function iSwitch {
+  if [ "$#" -eq 0 ]; then
+    iatsSwitch `git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
+  else
+    iatsSwitch "$@"
+  fi
+}
+alias iswitch=iSwitch
+
 #function magic {
 #  vim `find . -name "*unit.cpp" | peco`
 #}
