@@ -113,7 +113,7 @@ alias isql=iatsSql
 alias iStatus=iatsStatus
 alias istatus=iatsStatus
 alias gcMobileCore='git commit MobileCore -m "Updated link to submodule."'
-alias gcmobileCore='git commit MobileCore -m "Updated link to submodule."'
+alias gcmobileCore=gcMobileCore
 
 function iSwitch {
   if [ "$#" -eq 0 ]; then
