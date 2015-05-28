@@ -1,7 +1,6 @@
 # TODO:
 #  - Be able to install it as a remote curl, something like curl -fsSL https://raw.githubusercontent.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
 #  - If system is OSX use some naming, otherwise use regular Linux naming (example .bash_profile showuld be .profile).
-#  - use pwd + local references so we dont need to always checkout this repo on ~/dev/scripts.
 #  - Option to restore backup files.
 #  - Detect if Sublime 2 or 3.
 
