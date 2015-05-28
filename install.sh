@@ -75,6 +75,8 @@ install_package "GIT Prompt" "$INSTALL_DIR/git/git-prompt.sh" ~/.git-prompt.sh
 
 install_package "GIT Completition" "$INSTALL_DIR/git/git-completion.bash" ~/.git-completion.bash
 
-install_package "Sublime config" "$INSTALL_DIR/sublime/settings" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Preferences.sublime-settings
+if [ -d ~/Library/Application\ Support/Sublime\ Text\ 2 ]; then
+  install_package "Sublime config" "$INSTALL_DIR/sublime/settings" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Preferences.sublime-settings
 
-install_package "Sublime keyboard" "$INSTALL_DIR/sublime/keyboard" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Default\ \(OSX\).sublime-keymap
+  install_package "Sublime keyboard" "$INSTALL_DIR/sublime/keyboard" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Default\ \(OSX\).sublime-keymap
+fi
