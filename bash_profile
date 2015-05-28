@@ -10,6 +10,8 @@
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
 # - Implement an easily find command, maybe doing the search path optional.
 
+missing=()
+
 grey=$(tput setaf 0)  # In fact is black
 red=$(tput setaf 1)
 green=$(tput setaf 2)
@@ -44,7 +46,7 @@ bind "set show-all-if-ambiguous on"
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 else
-  echo "Missing bash completion"
+  missing+=("Bash completion")
 fi
 
 # Coloring in command LS.
@@ -59,13 +61,13 @@ alias gc="git commit --allow-empty -m"
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 else
-  echo "Missing git-completition"
+  missing+=("git-completition")
 fi
 
 if [ -f ~/.git-prompt.sh ]; then
   source ~/.git-prompt.sh
 else
-  echo "Missing git-prompt"
+  missing+=("git-prompt")
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -87,12 +89,12 @@ if [[ "$?" -eq 0 ]]; then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
   else
-    echo "Missing brew bash completion"
+    missing+=("brew bash completion")
   fi
   if [ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; then
     source `brew --prefix`/etc/bash_completion.d/vagrant
   else
-    echo "Missing brew vagrant completion"
+    missing+=("brew vagrant completion")
   fi
 fi
 
@@ -156,5 +158,11 @@ if [ -f ~/.at-work ]; then
   alias bt="./tools/buildTests --mock-server"
   alias rt="./bin/runTests"
 else
-  echo "At-Work not loaded."
+  missing+=("At-Work")
+fi
+
+if [ ! ${#missing[@]} -eq 0 ]; then
+  output=$(printf ", %s" "${missing[@]}")
+  output=${output:1}
+  echo "Missing: ${output[*]}"
 fi
