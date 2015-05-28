@@ -6,7 +6,6 @@
 #  - Detect if Sublime 2 or 3.
 
 function rmsoft {
-    TRASH_DIR=~/.tmp-trash
     mkdir -p $TRASH_DIR
     mv "$1" "$TRASH_DIR/$(basename $1).$today"
 }
@@ -64,17 +63,18 @@ function install_package {
     echo -e "    Successfully installed\n"
 }
 
+INSTALL_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+TRASH_DIR=~/.tmp-trash
 today=`date +%Y-%m-%d.%H:%M:%S`
 
-install_package "Bash Profile" ~/dev/scripts/bash_profile ~/.bash_profile
+install_package "Bash Profile" "$INSTALL_DIR/bash_profile" ~/.bash_profile
 
-install_package "VIM config file" ~/dev/scripts/vimrc ~/.vimrc
+install_package "VIM config file" "$INSTALL_DIR/vimrc" ~/.vimrc
 
-install_package "GIT Prompt" ~/dev/scripts/git/git-prompt.sh ~/.git-prompt.sh
+install_package "GIT Prompt" "$INSTALL_DIR/git/git-prompt.sh" ~/.git-prompt.sh
 
-install_package "GIT Completition" ~/dev/scripts/git/git-completion.bash ~/.git-completion.bash
+install_package "GIT Completition" "$INSTALL_DIR/git/git-completion.bash" ~/.git-completion.bash
 
-install_package "Sublime config" ~/dev/scripts/sublime/settings ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Preferences.sublime-settings
+install_package "Sublime config" "$INSTALL_DIR/sublime/settings" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Preferences.sublime-settings
 
-install_package "Sublime keyboard" ~/dev/scripts/sublime/keyboard ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Default\ \(OSX\).sublime-keymap
-
+install_package "Sublime keyboard" "$INSTALL_DIR/sublime/keyboard" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Default\ \(OSX\).sublime-keymap
