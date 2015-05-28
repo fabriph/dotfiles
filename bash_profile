@@ -112,9 +112,12 @@ alias iSql=iatsSql
 alias isql=iatsSql
 alias iStatus=iatsStatus
 alias istatus=iatsStatus
+
+# Git Commit Mobile Core: used every time the submodule is uptade.
 alias gcMobileCore='git commit MobileCore -m "Updated link to submodule."'
 alias gcmobileCore=gcMobileCore
 
+# Git Commit Done: used every time a case is finished.
 function gcDone {
   caseID=`echo $(__git_ps1 " %s") | sed -E "s/^T([1234567890]+).*$/\1/"`
   if [ "$caseID" ]; then
@@ -129,6 +132,7 @@ function gcDone {
 }
 alias gcdone=gcDone
 
+# Iats Switch: Easily exchange between local branches.
 function iSwitch {
   if [ "$#" -eq 0 ]; then
     iatsSwitch `git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
