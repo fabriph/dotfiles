@@ -1,3 +1,6 @@
+# Usage:
+# If you want to activate the work related features, create a '.at-work' file in home folder.
+
 # Peding things to code
 # - Use functions for magic stuff
 #   - lll () { /bin/ls -aOle "$@" | /usr/bin/more ; }
@@ -95,9 +98,9 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Stuff used at work
-# In order to avoid bash environment pollution, this is not included unless a '.avature' file exists in home folder.
+# In order to avoid bash environment pollution, this is not included unless a '.at-work' file exists in home folder.
 # TODO: replace repeated commands by a ignore case aliases, couldn't get that working right now.
-if [ -f ~/.avature ]; then
+if [ -f ~/.at-work ]; then
   alias iBranch=iatsBranch
   alias ibranch=iatsBranch
   alias iBranchSubmodule=iatsBranchSubmodule
@@ -153,5 +156,5 @@ if [ -f ~/.avature ]; then
   alias bt="./tools/buildTests --mock-server"
   alias rt="./bin/runTests"
 else
-  echo "Avature not loaded."
+  echo "At-Work not loaded."
 fi
