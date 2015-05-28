@@ -95,58 +95,63 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Stuff used at work
-# TODO: replace this by a ignore case aliases, couldn't get that working right now.
-alias iBranch=iatsBranch
-alias ibranch=iatsBranch
-alias iBranchSubmodule=iatsBranchSubmodule
-alias ibranchSubmodule=iatsBranchSubmodule
-alias iMerge=iatsMerge
-alias imerge=iatsMerge
-alias iPull=iatsPull
-alias ipull=iatsPull
-alias iPush=iatsPush
-alias ipush=iatsPush
-alias iReset=iatsReset
-alias ireset=iatsReset
-alias iSql=iatsSql
-alias isql=iatsSql
-alias iStatus=iatsStatus
-alias istatus=iatsStatus
+# In order to avoid bash environment pollution, this is not included unless a '.avature' file exists in home folder.
+# TODO: replace repeated commands by a ignore case aliases, couldn't get that working right now.
+if [ -f ~/.avature ]; then
+  alias iBranch=iatsBranch
+  alias ibranch=iatsBranch
+  alias iBranchSubmodule=iatsBranchSubmodule
+  alias ibranchSubmodule=iatsBranchSubmodule
+  alias iMerge=iatsMerge
+  alias imerge=iatsMerge
+  alias iPull=iatsPull
+  alias ipull=iatsPull
+  alias iPush=iatsPush
+  alias ipush=iatsPush
+  alias iReset=iatsReset
+  alias ireset=iatsReset
+  alias iSql=iatsSql
+  alias isql=iatsSql
+  alias iStatus=iatsStatus
+  alias istatus=iatsStatus
 
-# Git Commit Mobile Core: used every time the submodule is uptade.
-alias gcMobileCore='git commit MobileCore -m "Updated link to submodule."'
-alias gcmobileCore=gcMobileCore
+  # Git Commit Mobile Core: used every time the submodule is uptade.
+  alias gcMobileCore='git commit MobileCore -m "Updated link to submodule."'
+  alias gcmobileCore=gcMobileCore
 
-# Git Commit Done: used every time a case is finished.
-function gcDone {
-  caseID=`echo $(__git_ps1 " %s") | sed -E "s/^T([1234567890]+).*$/\1/"`
-  if [ "$caseID" ]; then
-    if [ "$1" ]; then
-      git commit --allow-empty -m "Fix: T#$caseID: $1"
+  # Git Commit Done: used every time a case is finished.
+  function gcDone {
+    caseID=`echo $(__git_ps1 " %s") | sed -E "s/^T([1234567890]+).*$/\1/"`
+    if [ "$caseID" ]; then
+      if [ "$1" ]; then
+        git commit --allow-empty -m "Fix: T#$caseID: $1"
+      else
+        git commit --allow-empty -m "Fix: T#$caseID: done."
+      fi
     else
-      git commit --allow-empty -m "Fix: T#$caseID: done."
+      echo "Coudln't get case ID."
     fi
-  else
-    echo "Coudln't get case ID."
-  fi
-}
-alias gcdone=gcDone
+  }
+  alias gcdone=gcDone
 
-# Iats Switch: Easily exchange between local branches.
-function iSwitch {
-  if [ "$#" -eq 0 ]; then
-    iatsSwitch `git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
-  else
-    iatsSwitch "$@"
-  fi
-}
-alias iswitch=iSwitch
+  # Iats Switch: Easily exchange between local branches.
+  function iSwitch {
+    if [ "$#" -eq 0 ]; then
+      iatsSwitch `git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
+    else
+      iatsSwitch "$@"
+    fi
+  }
+  alias iswitch=iSwitch
 
-#function magic {
-#  vim `find . -name "*unit.cpp" | peco`
-#}
-#function i2Switch {
-#  iatsSwitch `iatsListBranches | cut -d"/" -f 2 | peco`
-#}
-alias bt="./tools/buildTests --mock-server"
-alias rt="./bin/runTests"
+  #function magic {
+  #  vim `find . -name "*unit.cpp" | peco`
+  #}
+  #function i2Switch {
+  #  iatsSwitch `iatsListBranches | cut -d"/" -f 2 | peco`
+  #}
+  alias bt="./tools/buildTests --mock-server"
+  alias rt="./bin/runTests"
+else
+  echo "Avature not loaded."
+fi
