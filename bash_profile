@@ -29,6 +29,8 @@ export HISTCONTROL=ignoredups:erasedups
 alias ..='cd ..'
 alias grep='grep --color=always'
 
+export CLICOLOR=1  # This one only works in OS X.
+alias ls="ls --color=auto"  # For other linux.
 alias l='ls -CF'
 alias la='ls -a'
 alias ll='ls -l'
@@ -48,10 +50,6 @@ if [ -f /etc/bash_completion ]; then
 else
   missing+=("Bash completion")
 fi
-
-# Coloring in command LS.
-export CLICOLOR=1  # This one only works in OS X
-#alias ls="ls --color=auto"
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Optional GIT stuff
