@@ -125,6 +125,8 @@ if [ -f ~/.at-work ]; then
   alias gcmobileCore=gcMobileCore
 
   # Git Commit Done: used every time a case is finished.
+  # $1: message.
+  # $2: case ID. If not set, It will parse the one form the current branch.
   function gcDone {
     if [ "$2" ]; then
       caseID="$2"
