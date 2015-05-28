@@ -126,7 +126,11 @@ if [ -f ~/.at-work ]; then
 
   # Git Commit Done: used every time a case is finished.
   function gcDone {
-    caseID=`echo $(__git_ps1 " %s") | sed -E "s/^T([1234567890]+).*$/\1/"`
+    if [ "$2" ]; then
+      caseID="$2"
+    else
+      caseID=`echo $(__git_ps1 " %s") | sed -E "s/^T([1234567890]+).*$/\1/"`
+    fi
     if [ "$caseID" ]; then
       if [ "$1" ]; then
         git commit --allow-empty -m "Fix: T#$caseID: $1"
