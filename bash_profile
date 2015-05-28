@@ -172,3 +172,7 @@ if [ ! ${#missing[@]} -eq 0 ]; then
   output=${output:1}
   echo "Missing: ${output[*]}"
 fi
+
+if [ -f ~/.bash_extended_profile ]; then
+  . ~/.bash_extended_profile
+fi
