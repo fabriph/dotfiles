@@ -1,6 +1,7 @@
 #!/bin/bash
 # Usage:
 #   If you want to activate the work related features, create a '.at-work' file in home folder.
+#   If you want to include additional configs, and do not version them, create a ~/.bash_extended_profile file and put them there.
 
 # Peding things to code
 # - Use functions for magic stuff
