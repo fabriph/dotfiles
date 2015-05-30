@@ -85,8 +85,8 @@ export PATH=/usr/local/sbin:$PATH
 
 command -v brew >/dev/null 2>&1
 if [[ "$?" -eq 0 ]]; then
-  if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
+  if [ -f `brew --repository`/Library/Contributions/brew_bash_completion.sh ]; then
+    . `brew --repository`/Library/Contributions/brew_bash_completion.sh
   else
     missing+=("brew bash completion")
   fi
