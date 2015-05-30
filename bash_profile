@@ -1,3 +1,4 @@
+#!/bin/bash
 # Usage:
 # If you want to activate the work related features, create a '.at-work' file in home folder.
 
