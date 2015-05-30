@@ -6,7 +6,7 @@
 # - Use functions for magic stuff
 #   - lll () { /bin/ls -aOle "$@" | /usr/bin/more ; }
 # - Use an IF to automatically detect if OS X or Linux, to enable ls coloring on each one.
-# - Improve TAB compeltition:
+# - Improve TAB compeltion:
 #   - http://stackoverflow.com/questions/10942919/customize-tab-completion-in-shell
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
 # - Implement an easily find command, maybe doing the search path optional.
