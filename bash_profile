@@ -5,7 +5,6 @@
 # Peding things to code
 # - Use functions for magic stuff
 #   - lll () { /bin/ls -aOle "$@" | /usr/bin/more ; }
-# - Use an IF to automatically detect if OS X or Linux, to enable ls coloring on each one.
 # - Improve TAB compeltion:
 #   - http://stackoverflow.com/questions/10942919/customize-tab-completion-in-shell
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
@@ -30,8 +29,13 @@ export HISTCONTROL=ignoredups:erasedups
 alias ..='cd ..'
 alias grep='grep --color=always'
 
-export CLICOLOR=1  # This one only works in OS X.
-alias ls="ls --color=auto"  # For other linux.
+if [ "$(uname)" == "Darwin" ]; then
+  export CLICOLOR=1
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  alias ls="ls --color=auto"
+else
+  missing+=("LS coloring")
+fi
 alias l='ls -CF'
 alias la='ls -a'
 alias ll='ls -l'
