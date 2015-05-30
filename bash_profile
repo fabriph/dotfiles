@@ -1,6 +1,6 @@
 #!/bin/bash
 # Usage:
-# If you want to activate the work related features, create a '.at-work' file in home folder.
+#   If you want to activate the work related features, create a '.at-work' file in home folder.
 
 # Peding things to code
 # - Use functions for magic stuff
@@ -163,7 +163,7 @@ if [ -f ~/.at-work ]; then
   alias bt="./tools/buildTests --mock-server"
   alias rt="./bin/runTests"
 else
-  missing+=("At-Work")
+  missing+=(".at-work")
 fi
 
 if [ ! ${#missing[@]} -eq 0 ]; then
