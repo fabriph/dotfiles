@@ -8,7 +8,6 @@
 # - Improve TAB compeltion:
 #   - http://stackoverflow.com/questions/10942919/customize-tab-completion-in-shell
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
-# - Implement an easily find command, maybe doing the search path optional.
 
 missing=()
 
@@ -40,8 +39,16 @@ alias l='ls -CF'
 alias la='ls -a'
 alias ll='ls -l'
 alias gr='grep -RnIf /dev/stdin . <<<'
+
+# Find files or directories by name.
+# $1: name/patter(bash).
+# $2: optional root path.
 function ffind {
-  find . -name "$1"
+  if [ "$2" ]; then
+    find "$2" -name "$1"
+  else
+    find . -name "$1"
+  fi
 }
 
 # Ignore case completition
