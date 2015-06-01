@@ -159,7 +159,10 @@ if [ -f ~/.at-work ]; then
   # Iats Switch: Easily exchange between local branches.
   function iSwitch {
     if [ "$#" -eq 0 ]; then
-      iatsSwitch `git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
+      target=`git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
+      if [ "$target" ]; then
+        iatsSwitch "$target"
+      fi
     else
       iatsSwitch "$@"
     fi
