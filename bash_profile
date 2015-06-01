@@ -9,6 +9,7 @@
 # - Improve TAB compeltion:
 #   - http://stackoverflow.com/questions/10942919/customize-tab-completion-in-shell
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
+# - iReset with no parameter may trigger something like 'history | grep "^(iatsReset|iReset|ireset).*$" | peco'.
 
 missing=()
 
