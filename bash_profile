@@ -38,12 +38,13 @@ fi
 alias l='ls -CF'
 alias la='ls -a'
 alias ll='ls -l'
+# Grep Recursive
 alias gr='grep -RnIf /dev/stdin . <<<'
 
 # Find files or directories by name.
-# $1: name/patter(bash).
-# $2: optional root path.
 function ffind {
+#   $1: name/patter(bash).
+#   $2: optional root path.
   if [ "$2" ]; then
     find "$2" -name "$1"
   else
@@ -51,12 +52,11 @@ function ffind {
   fi
 }
 
-# Ignore case completition
+# Ignore case completition.
 bind "set completion-ignore-case on"
 # Displays all possibilities with only one TAB press.
 bind "set show-all-if-ambiguous on"
 
-# Bash completion
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 else
@@ -64,9 +64,8 @@ else
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# Optional GIT stuff
-
-alias gc="git commit --allow-empty -m"
+# GIT
+alias gc="git commit"
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
@@ -91,7 +90,6 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Optional Homebrew stuff
-
 export PATH=/usr/local/sbin:$PATH
 
 command -v brew >/dev/null 2>&1
@@ -135,8 +133,8 @@ if [ -f ~/.at-work ]; then
   alias gcmobileCore=gcMobileCore
 
   # Git Commit Done: used every time a case is finished.
-  # $1: message.
-  # $2: case ID. If not set, It will parse the one form the current branch.
+  #   $1: message.
+  #   $2: case ID. If not set, It will parse the one form the current branch.
   function gcDone {
     if [ "$2" ]; then
       caseID="$2"
