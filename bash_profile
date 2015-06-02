@@ -4,8 +4,6 @@
 #   If you want to include additional configs, and do not version them, create a ~/.bash_extended_profile file and put them there.
 
 # Peding things to code
-# - Use functions for magic stuff
-#   - lll () { /bin/ls -aOle "$@" | /usr/bin/more ; }
 # - Improve TAB compeltion:
 #   - http://stackoverflow.com/questions/10942919/customize-tab-completion-in-shell
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
