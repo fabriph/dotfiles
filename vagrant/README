@@ -4,6 +4,12 @@ brew cask install vagrant osxfuse virtualbox
 brew install sshfs
 vagrant plugin install vagrant-sshfs
 
+Remember to edit hosts fielid:
+  UNIX/Linux:
+    sudo vim /etc/hosts
+  OS X:
+    sudo vim /private/etc/hosts
+
 Additionaly:
   brew install vagrant-completion
 
