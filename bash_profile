@@ -180,12 +180,15 @@ else
   missing+=(".at-work")
 fi
 
+# Show missing files
 if [ ! ${#missing[@]} -eq 0 ]; then
   output=$(printf ", %s" "${missing[@]}")
   output=${output:1}
   echo "Missing: ${output[*]}"
 fi
 
+# Import extended config
 if [ -f ~/.bash_extended_profile ]; then
   . ~/.bash_extended_profile
 fi
+
