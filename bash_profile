@@ -166,12 +166,14 @@ if [ -f ~/.at-work ]; then
   }
   alias iswitch=iSwitch
 
-  #function magic {
-  #  vim `find . -name "*unit.cpp" | peco`
-  #}
   #function i2Switch {
   #  iatsSwitch `iatsListBranches | cut -d"/" -f 2 | peco`
   #}
+  function iListTests {
+    vim `find . -name "*unit.cpp" | peco`
+  }
+  alias ilistTests=iListTests
+
   alias bt="./tools/buildTests --mock-server"
   alias rt="./bin/runTests"
 else
