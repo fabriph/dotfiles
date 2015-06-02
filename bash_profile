@@ -111,21 +111,13 @@ fi
 # In order to avoid bash environment pollution, this is not included unless a '.at-work' file exists in home folder.
 # TODO: replace repeated commands by a ignore case aliases, couldn't get that working right now.
 if [ -f ~/.at-work ]; then
-  alias iBranch=iatsBranch
   alias ibranch=iatsBranch
-  alias iBranchSubmodule=iatsBranchSubmodule
   alias ibranchSubmodule=iatsBranchSubmodule
-  alias iMerge=iatsMerge
   alias imerge=iatsMerge
-  alias iPull=iatsPull
   alias ipull=iatsPull
-  alias iPush=iatsPush
   alias ipush=iatsPush
-  alias iReset=iatsReset
   alias ireset=iatsReset
-  alias iSql=iatsSql
   alias isql=iatsSql
-  alias iStatus=iatsStatus
   alias istatus=iatsStatus
 
   # Git Commit Mobile Core: used every time the submodule is uptade.
