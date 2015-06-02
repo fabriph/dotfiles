@@ -147,6 +147,7 @@ if [ -f ~/.at-work ]; then
 
   # Iats Switch: Easily exchange between local branches.
   function iSwitch {
+    #  iatsSwitch `iatsListBranches | cut -d"/" -f 2 | peco`
     if [ "$#" -eq 0 ]; then
       target=`git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
       if [ "$target" ]; then
@@ -158,9 +159,6 @@ if [ -f ~/.at-work ]; then
   }
   alias iswitch=iSwitch
 
-  #function i2Switch {
-  #  iatsSwitch `iatsListBranches | cut -d"/" -f 2 | peco`
-  #}
   function iListTests {
     vim `find . -name "*unit.cpp" | peco`
   }
