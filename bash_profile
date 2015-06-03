@@ -164,7 +164,7 @@ if [ -f ~/.at-work ]; then
   }
   alias ilistTests=iListTests
 
-  alias bt="./tools/buildTests --mock-server"
+  alias bt="./tools/buildTests"
   alias rt="./bin/runTests"
 else
   missing+=(".at-work")
