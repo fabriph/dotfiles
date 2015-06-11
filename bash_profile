@@ -116,7 +116,6 @@ if [ -f ~/.at-work ]; then
   alias imerge=iatsMerge
   alias ipull=iatsPull
   alias ipush=iatsPush
-  alias ireset=iatsReset
   alias isql=iatsSql
   alias istatus=iatsStatus
 
@@ -163,6 +162,17 @@ if [ -f ~/.at-work ]; then
     vim `find . -name "*unit.cpp" | peco`
   }
   alias ilistTests=iListTests
+
+  function ireset {
+    target=`echo -e "<Empty>\nmobile_EventModule\nmobile_MobileUiTests\n<Exit>" | peco`
+    if [ "$target" == "<Empty>" ]; then
+      iatsReset
+    elif [ "$target" == "<Exit>" ]; then
+      return
+    else
+      iatsReset -s "$target"
+    fi
+  }
 
   alias bt="./tools/buildTests"
   alias rt="./bin/runTests"
