@@ -131,13 +131,12 @@ if [ -f ~/.at-work ]; then
   alias istatus=iatsStatus
 
   # Git Commit Mobile Core: used every time the submodule is uptade.
-  alias gcMobileCore='git commit MobileCore -m "Updated link to submodule."'
-  alias gcmobileCore=gcMobileCore
+  alias gcmobileCore='git commit MobileCore -m "Updated link to submodule."'
 
   # Git Commit Done: used every time a case is finished.
   #   $1: message.
   #   $2: case ID. If not set, It will parse the one form the current branch.
-  function gcDone {
+  function gcdone {
     if [ "$2" ]; then
       caseID="$2"
     else
@@ -153,10 +152,9 @@ if [ -f ~/.at-work ]; then
       echo "Coudln't get case ID."
     fi
   }
-  alias gcdone=gcDone
 
   # Iats Switch: Easily exchange between local branches.
-  function iSwitch {
+  function iswitch {
     #  iatsSwitch `iatsListBranches | cut -d"/" -f 2 | peco`
     if [ "$#" -eq 0 ]; then
       target=`git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
@@ -167,7 +165,6 @@ if [ -f ~/.at-work ]; then
       iatsSwitch "$@"
     fi
   }
-  alias iswitch=iSwitch
 
   function iListTests {
     vim `find . -name "*unit.cpp" | peco`
