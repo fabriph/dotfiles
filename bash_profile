@@ -9,7 +9,6 @@
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
 # - iReset with no parameter may trigger something like 'history | grep "^(iatsReset|iReset|ireset).*$" | peco'.
 # - webdiff: opens a web browser with the diff among the current branch, and master, or between an optional parameter.
-# - use peco to easily delete branches, confirm selection.
 # - use peco to easily merge branches, confirm selection.
 
 missing=()
@@ -182,6 +181,22 @@ if [ -f ~/.at-work ]; then
       return
     else
       iatsReset -s "$target"
+    fi
+  }
+
+  function ideleteLocalBranch {
+    target=`git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
+    if [ "$target" == "" ]; then
+      return
+    fi
+    REPLY=""
+    while [[ ! $REPLY =~ ^[YyNn]$ ]]
+    do
+      read -p "Sure you want to delete $target ? (Y/n)" -n 1 -r
+      echo
+    done
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      git branch -D "$target"
     fi
   }
 
