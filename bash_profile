@@ -43,10 +43,10 @@ alias ll='ls -l'
 # Grep Recursive
 alias gr='grep -RnIf /dev/stdin . <<<'
 
-# Name Find: look for files or directories by name.
+# Find: look for files or directories by name.
 #   $1: name/patter(bash).
 #   $2: optional root path.
-function nfind {
+function ffind {
   if [ "$2" ]; then
     find "$2" -name "$1"
   else
