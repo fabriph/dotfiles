@@ -171,6 +171,7 @@ if [ -f ~/.at-work ]; then
     elif [ "$target" == "<Exit>" ]; then
       return
     else
+      echo -e "Reseting with $target"
       iatsReset -s "$target"
     fi
   }
