@@ -8,6 +8,8 @@
 #   - http://stackoverflow.com/questions/10942919/customize-tab-completion-in-shell
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
 # - iReset with no parameter may trigger something like 'history | grep "^(iatsReset|ireset).*$" | peco'.
+# - webdiff: opens a web browser with the diff among the current branch, and master, or between an optional parameter.
+# - use peco to easily merge branches, confirm selection.
 
 missing=()
 
@@ -79,6 +81,17 @@ else
   missing+=("git-prompt")
 fi
 
+function mergeXcodeProject {
+  projectfile=`find -d . -name 'project.pbxproj'`
+  projectdir=`echo *.xcodeproj`
+  projectfile="${projectdir}/project.pbxproj"
+  tempfile="${projectdir}/project.pbxproj.temp"
+  savefile="${projectdir}/project.pbxproj.original"
+  cat $projectfile | grep -v "<<<<<<< HEAD" | grep -v "=======" | grep -v "^>>>>>>> " > $tempfile
+  cp $projectfile $savefile
+  mv $tempfile $projectfile
+}
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Prompt
 command -v __git_ps1 >/dev/null 2>&1
@@ -120,13 +133,12 @@ if [ -f ~/.at-work ]; then
   alias istatus=iatsStatus
 
   # Git Commit Mobile Core: used every time the submodule is uptade.
-  alias gcMobileCore='git commit MobileCore -m "Updated link to submodule."'
-  alias gcmobileCore=gcMobileCore
+  alias gcmobileCore='git commit MobileCore -m "Updated link to submodule."'
 
   # Git Commit Done: used every time a case is finished.
   #   $1: message.
   #   $2: case ID. If not set, It will parse the one form the current branch.
-  function gcDone {
+  function gcdone {
     if [ "$2" ]; then
       caseID="$2"
     else
@@ -142,10 +154,9 @@ if [ -f ~/.at-work ]; then
       echo "Coudln't get case ID."
     fi
   }
-  alias gcdone=gcDone
 
   # Iats Switch: Easily exchange between local branches.
-  function iSwitch {
+  function iswitch {
     #  iatsSwitch `iatsListBranches | cut -d"/" -f 2 | peco`
     if [ "$#" -eq 0 ]; then
       target=`git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
@@ -156,7 +167,6 @@ if [ -f ~/.at-work ]; then
       iatsSwitch "$@"
     fi
   }
-  alias iswitch=iSwitch
 
   function iListTests {
     vim `find . -name "*unit.cpp" | peco`
@@ -173,6 +183,22 @@ if [ -f ~/.at-work ]; then
     else
       echo -e "Reseting with $target"
       iatsReset -s "$target"
+    fi
+  }
+
+  function ideleteLocalBranch {
+    target=`git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
+    if [ "$target" == "" ]; then
+      return
+    fi
+    REPLY=""
+    while [[ ! $REPLY =~ ^[YyNn]$ ]]
+    do
+      read -p "Sure you want to delete $target ? (Y/n)" -n 1 -r
+      echo
+    done
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      git branch -D "$target"
     fi
   }
 
