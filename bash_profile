@@ -3,11 +3,11 @@
 #   If you want to activate the work related features, create a '.at-work' file in home folder.
 #   If you want to include additional configs, and do not version them, create a ~/.bash_extended_profile file and put them there.
 
-# Peding things to code
+# TO DO list:
 # - Improve TAB compeltion:
 #   - http://stackoverflow.com/questions/10942919/customize-tab-completion-in-shell
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
-# - iReset with no parameter may trigger something like 'history | grep "^(iatsReset|iReset|ireset).*$" | peco'.
+# - iReset with no parameter may trigger something like 'history | grep "^(iatsReset|ireset).*$" | peco'.
 
 missing=()
 
@@ -163,6 +163,7 @@ if [ -f ~/.at-work ]; then
   }
   alias ilistTests=iListTests
 
+  # Iats Reset
   function ireset {
     target=`echo -e "<Empty>\nmobile_EventModule\nmobile_MobileUiTests\n<Exit>" | peco`
     if [ "$target" == "<Empty>" ]; then
