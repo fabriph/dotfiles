@@ -185,6 +185,7 @@ if [ -f ~/.at-work ]; then
   }
 
   function ideleteLocalBranch {
+    # TODO: remove master from the list.
     target=`git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
     if [ "$target" == "" ]; then
       return
