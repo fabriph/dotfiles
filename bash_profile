@@ -9,7 +9,7 @@
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
 # - iReset with no parameter may trigger something like 'history | grep "^(iatsReset|ireset).*$" | peco'.
 # - webdiff: opens a web browser with the diff among the current branch, and master, or between an optional parameter.
-# - use peco to easily merge branches, confirm selection.
+# - use peco to easily merge branches, confirm after selection.
 
 missing=()
 
@@ -201,6 +201,10 @@ if [ -f ~/.at-work ]; then
     if [[ $REPLY =~ ^[Yy]$ ]]; then
       git branch -D "$target"
     fi
+  }
+
+  function webDiff {
+    echo "TBD"
   }
 
   alias bt="./tools/buildTests"
