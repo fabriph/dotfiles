@@ -10,6 +10,7 @@
 # - iReset with no parameter may trigger something like 'history | grep "^(iatsReset|ireset).*$" | peco'.
 # - webdiff: opens a web browser with the diff among the current branch, and master, or between an optional parameter.
 # - use peco to easily merge branches, confirm after selection.
+# - Add a -p parameter to iSwitch so the branch is also pulled from server.
 
 missing=()
 
