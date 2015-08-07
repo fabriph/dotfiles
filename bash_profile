@@ -11,6 +11,7 @@
 # - webdiff: opens a web browser with the diff among the current branch, and master, or between an optional parameter.
 # - use peco to easily merge branches, confirm after selection.
 # - Add a -p parameter to iSwitch so the branch is also pulled from server.
+# - Add ../tools/test.php run `../tools/test.php list | peco` or something like that to easily run tests form IATS.
 
 missing=()
 
