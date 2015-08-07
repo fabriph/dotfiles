@@ -85,7 +85,7 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/dev/scripts/linux-config-files/iTerm2</string>
+	<string>~/dev/scripts/iterm2</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -93,6 +93,8 @@
 	<key>NSRepeatCountBinding</key>
 	<string></string>
 	<key>NSScrollAnimationEnabled</key>
+	<false/>
+	<key>NSScrollViewShouldScrollUnderTitlebar</key>
 	<false/>
 	<key>NSTableView Columns KeyBingingTable</key>
 	<array>
@@ -114,9 +116,9 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>689 153 445 396 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>127 248 924 485 0 0 1280 777 </string>
+	<string>1635 621 606 456 1280 106 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>43 46 1110 651 0 0 1280 777 </string>
+	<string>104 103 1176 674 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>2240 115 956 1048 1280 106 1920 1057 </string>
 	<key>New Bookmarks</key>
@@ -729,11 +731,11 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/fabricio/dev/scripts/linux-config-files/iTerm2</string>
+	<string>/Users/fabricio/dev/scripts/iterm2</string>
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
-	<false/>
+	<true/>
 	<key>RightCommand</key>
 	<integer>8</integer>
 	<key>RightOption</key>
