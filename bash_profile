@@ -10,8 +10,9 @@
 # - iReset with no parameter may trigger something like 'history | grep "^(iatsReset|ireset).*$" | peco'.
 # - webdiff: opens a web browser with the diff among the current branch, and master, or between an optional parameter.
 # - use peco to easily merge branches, confirm after selection.
-# - Add a -p parameter to iSwitch so the branch is also pulled from server.
 # - Add ../tools/test.php run `../tools/test.php list | peco` or something like that to easily run tests form IATS.
+# - Add an easy way to do git stash save -u "Tests for Matrix 1.0".
+# - Move at-wrok comands to a separate private file to avoid showing any confidentail things at all.
 
 missing=()
 
