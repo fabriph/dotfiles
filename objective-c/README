@@ -1,0 +1,55 @@
+_ vs self.
+In the general case, use self.
+
+[somePerson sayHello];
+
+@interface classname : superclassname {
+ // instance variables
+}
++ classMethod1;
++ (return_type)classMethod2;
++ (return_type)classMethod3:(param1_type)param1_varName;
+ 
+- (return_type)instanceMethod1With1Parameter:(param1_type)param1_varName;
+- (return_type)instanceMethod2With2Parameters:(param1_type)param1_varName param2_callName:(param2_type)param2_varName;
+@end
+
+Methods:
+ "-" instance message
+ "+" static messages
+
+Protocols
+Like Java Interface, but a class can not comply entirely with the contract. Methods can be marked as @required or as @optional, means they must or may implement them, respectively.
+http://stackoverflow.com/questions/990360/differences-between-java-interfaces-and-objective-c-protocols
+
+The angle brackets in a class interface definition indicates the protocols that you class is conforming to. There’s no need to redeclare the protocol methods in the class interface—the adoption of the protocol is sufficient.
+
+Additionaly in Objective-C you can declare a variable, argument or instance variable to conform to several protocols as well. Example
+NSObject<NSCoding, UITableViewDelegate> *myVariable;
+The class must conform to both NSCoding and UITableViewDelegate protocols.
+
+Properties
+Objective-C 2.0 introduces a new syntax to declare instance variables as properties, with optional attributes to configure the generation of accessor methods. Properties are, in a sense, public instance variables; that is, declaring an instance variable as a property provides external classes with access (possibly limited, e.g. read only) to that property. A property may be declared as "readonly", and may be provided with storage semantics such as "assign", "copy" or "retain". By default, properties are considered atomic, which results in a lock preventing multiple threads from accessing them at the same time. A property can be declared as "nonatomic", which removes this lock.
+
+Literals
+@“A string”          @42          @51U          @3.14          @YES
+@[@"A", @NO, @2.718]          @{@"someKey" : @"theValue”}
+[NSNull null]
+
+Objective-C Literals
+Returns a pointer to the particular thing:      @Selector      @Protocol
+
+Selectors
+[unsortedStrings sortedArrayUsingSelector:@selector(compare:)];
+[mutableArray sortUsingSelector:@selector(caseInsensitiveCompare:)];
+Me dan un puntero al metodo
+
+-(void)lala:(NSString*)s with:
+self.delete respondsToSelector:@selector(lala:with:)
+
+Categories
+@interface MyMovieViewController (OverlayView)
+[...]
+@end
+A category allows you to add methods to an existing class—even to one for which you do not have the source. Categories are a powerful feature that allows you to extend the functionality of existing classes without subclassing. Using categories, you can also distribute the implementation of your own classes among several files. Class extensions are similar, but allow additional required APIs to be declared for a class in locations other than within the primary class @interface block.
+

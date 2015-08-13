@@ -1,0 +1,11 @@
+IBActions: Methods that are shown in IB. -(IBAction)restoreDefaults:(id)sender; The sender parameter points to the object that was responsible for triggering the action.
+
+Definir IBActions
+Puedo hacer right-click sobre el botón, y hacer drag hasta el controller.m para que cree el código del método automáticamente.
+Definir el metodo a mano y linkearlo desde el IB.
+IBOutlet: Unlike IBAction, IBOutlet is still required for hooking up properties in code with objects in a Storyboard or XIB.
+
+Definir IBOutlet
+Arrastrar el elemento hasta el archivo .m (splited layout for code).
+Control+Drag a la parte superior que dice Exit (recuadro naranja).
+
