@@ -191,6 +191,8 @@ if [ -f ~/.at-work ]; then
 
   function ideleteLocalBranch {
     # TODO: remove master from the list.
+    # TODO: maybe allow the user to delete it remotely:
+    #   git push origin --delete REMOTE_BRANCH_TO_DELETE
     target=`git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
     if [ "$target" == "" ]; then
       return
