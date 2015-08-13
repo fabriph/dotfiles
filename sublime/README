@@ -7,3 +7,8 @@ Package Control: https://packagecontrol.io/installation
         Pretty JSON.
         SQL Beautifier.
         SublimeLinter.
+
+⌘ P: search files by name.
+control R: search methods in a file.
+control shift F
+
