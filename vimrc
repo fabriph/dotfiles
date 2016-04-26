@@ -4,6 +4,7 @@ set encoding=utf-8
 
 " Allows to press ';' instead of ':' for commands
 nore ; :
+" Allows to press 'ñ' for commands in spanish keyboards
 nore ñ :
 
 set cursorline
