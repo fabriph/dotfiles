@@ -35,6 +35,17 @@ function install_package {
     package="$1"
     origin="$2"
     destination="$3"
+    REPLY=""
+    while [[ ! $REPLY =~ ^[YyNn]$ ]]
+        do
+            read -p "Install $package [y/n]? " -n 1 -r
+            echo
+        done
+    if [[ $REPLY =~ ^[Nn]$ ]]
+    then
+        echo -e "    Skipped\n"
+        return
+    fi
     if [ -f "$destination" ]; then
         REPLY=""
         while [[ ! $REPLY =~ ^[BbRrSs]$ ]]
