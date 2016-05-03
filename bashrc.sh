@@ -65,7 +65,7 @@ export EDITOR="subl -w"
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 else
-  missing+=("Bash completion")
+  missing+=("bash-completion")
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -156,7 +156,7 @@ if [[ "$?" -eq 0 ]]; then
   if [ -f `brew --repository`/Library/Contributions/brew_bash_completion.sh ]; then
     . `brew --repository`/Library/Contributions/brew_bash_completion.sh
   else
-    missing+=("brew bash completion")
+    missing+=("brew-bash-completion")
   fi
   # if [ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; then
   #   source `brew --prefix`/etc/bash_completion.d/vagrant
@@ -170,7 +170,7 @@ fi
 if [ -f ~/.bash_google ]; then
   . ~/.bash_google
 else
-  missing+=("Google private scripts")
+  missing+=("Google-private-scripts")
 fi
 
 # Show missing files
