@@ -78,7 +78,7 @@ TRASH_DIR=~/.tmp-trash
 today=`date +%Y-%m-%d.%H:%M:%S`
 
 install_package "Bash Profile (.bashrc)" "$INSTALL_DIR/bashrc.sh" ~/.bashrc
-install_package "Bash SSH placebo" "$INSTALL_DIR/bash_profile.sh" ~/.bash_profile
+install_package "Bash SSH placebo (.bash_profile)" "$INSTALL_DIR/bash_profile.sh" ~/.bash_profile
 
 install_package "VIM config file" "$INSTALL_DIR/vimrc" ~/.vimrc
 
