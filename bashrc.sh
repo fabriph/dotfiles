@@ -37,7 +37,7 @@ fi
 alias grep='grep --color=always'
 
 alias ll='ls -l'
-alias la='ls -a'
+alias la='ls -al'
 alias l='ls -CF'
 alias ..='cd ..'
 
@@ -49,9 +49,9 @@ alias gr='grep -RnIf /dev/stdin . <<<'
 #   $2: optional root path.
 function ffind {
   if [ "$2" ]; then
-    find "$2" -name "$1"
+    find "$2" -name "*$1*"
   else
-    find . -name "$1"
+    find . -name "*$1*"
   fi
 }
 
