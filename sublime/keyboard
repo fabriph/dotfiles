@@ -1,5 +1,5 @@
 [
-    { "keys": ["super+r"], "command": "show_panel", "args": {"panel": "replace"} },
+    { "keys": ["super+h"], "command": "show_panel", "args": {"panel": "replace"} },
     { "keys": ["super+shift+f"], "command": "js_format" },
     { "keys": ["super+d"], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete Line.sublime-macro"} },
 
