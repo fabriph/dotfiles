@@ -121,21 +121,23 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame Preferences</key>
-	<string>853 604 606 456 0 0 2560 1577 </string>
+	<string>853 662 606 456 0 0 2560 1577 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>970 916 620 392 0 0 2560 1600 </string>
+	<key>NSWindow Frame SharedPreferences</key>
+	<string>742 901 1016 502 0 0 2560 1600 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>719 90 1125 652 0 0 2560 1577 </string>
+	<string>1295 47 1125 652 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1486 625 1070 952 0 0 2560 1577 </string>
+	<string>0 225 1125 652 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>1355 166 1125 652 0 0 2560 1577 </string>
+	<string>0 225 1125 652 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>298 0 1125 1177 0 0 2560 1577 </string>
+	<string>752 49 1801 1528 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>0 921 1125 652 0 0 2560 1600 </string>
+	<string>3 104 922 765 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
-	<string>0 94 1125 651 0 0 2560 1577 </string>
+	<string>0 217 1110 652 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
 	<string>0 94 1125 651 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 7</key>
@@ -469,6 +471,13 @@
 					<key>Text</key>
 					<string>0x17</string>
 				</dict>
+				<key>0xd-0x100000</key>
+				<dict>
+					<key>Action</key>
+					<integer>13</integer>
+					<key>Text</key>
+					<string></string>
+				</dict>
 				<key>0xf702-0x280000</key>
 				<dict>
 					<key>Action</key>
@@ -780,7 +789,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-07-25T11:35:51Z</date>
+	<date>2016-09-06T11:08:43Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -828,6 +837,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.4</string>
+	<string>3.0.8</string>
 </dict>
 </plist>
