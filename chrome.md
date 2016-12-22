@@ -5,7 +5,7 @@ I particularly find really dangerous to accidentally press Cmd+Q. A way to disab
 - **Application**: Google Chrome.app
 
 - **Menu title**: 'About Google Chrome' (or anything else you may want to open, this text represents the name of what you want to open from the app menu, the top bar)
-- **Key Shortcut**: press Cmd+Q.
+- **Key Shortcut**: press ⌘Q.
 
-You can also do this for example for Option+Cmd+W that closes all the open tabs.
-I think in OS X you can't map two keyboard shortcuts to the same menu. So you can remap Option+Cmd+W to 'Downloads', for example.
+You can also do this for example for ⌘⌥W that closes all the open tabs.
+I think in OS X you can't map two keyboard shortcuts to the same menu. So you can remap ⌘⌥W to 'Downloads', for example.
