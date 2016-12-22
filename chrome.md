@@ -8,3 +8,4 @@ I particularly find really dangerous to accidentally press Cmd+Q. A way to disab
 - **Key Shortcut**: press Cmd+Q.
 
 You can also do this for example for Option+Cmd+W that closes all the open tabs.
+I think in OS X you can't map two keyboard shortcuts to the same menu. So you can remap Option+Cmd+W to 'Downloads', for example.
