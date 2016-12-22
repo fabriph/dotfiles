@@ -1,6 +1,6 @@
 Tips regarding using Chrome in Mac.
 
-I particularly find really dangerous to accidentally press Cmd+Q. A way to disable this is:
+I particularly find really dangerous to accidentally press ⌘Q. A way to disable this is:
 - Go to System Preferences > Keyboard > Shortcuts > App Shortcuts
 - **Application**: Google Chrome.app
 
