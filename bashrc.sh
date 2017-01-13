@@ -40,6 +40,7 @@ alias ll='ls -l'
 alias la='ls -al'
 alias l='ls -CF'
 alias ..='cd ..'
+alias ...='cd ...'
 
 # Grep Recursive
 alias gr='grep -RnIf /dev/stdin . <<<'
@@ -122,7 +123,14 @@ PS1='\[$cyan$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # GIT
-alias gc="git commit"
+alias gc="git commit -m 'autocommit'"
+alias gco="git checkout"
+
+function git_add_part() {
+  git add --patch "$1"
+}
+alias gcp=git_add_part
+alias gap=git_add_part
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
