@@ -123,7 +123,7 @@ PS1='\[$cyan$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # GIT
-alias gc="git commit -m 'autocommit'"
+alias gc="git commit -m 'autocommit' ${@:2}"
 alias gco="git checkout"
 
 function git_add_part() {
