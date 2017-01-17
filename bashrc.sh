@@ -61,7 +61,7 @@ bind "set completion-ignore-case on"
 # Displays all possibilities with only one TAB press.
 bind "set show-all-if-ambiguous on"
 # Use Sublime Text as the default editor.
-export EDITOR="subl -w"
+export EDITOR="vim"
 
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
