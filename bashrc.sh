@@ -4,10 +4,9 @@
 # - Improve TAB compeltion:
 #   - http://stackoverflow.com/questions/10942919/customize-tab-completion-in-shell
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
-# - webdiff: opens a web browser with the diff among the current branch, and master, or between an optional parameter.
-# - use peco to easily merge branches, confirm after selection.
-# - Add ../tools/test.php run `../tools/test.php list | peco` or something like that to easily run tests form IATS.
+#   - Maybe taking a look at ~/.git-completion.bash helps
 # - Add an easy way to do git stash save -u "Tests for Matrix 1.0".
+# - Compress paths of PS1 if it's too long or too many directories.
 
 missing=()
 
