@@ -165,17 +165,23 @@ white=$(tput setaf 7)
 bold=$(tput bold)
 reset=$(tput sgr0)
 
+if [ "$(uname)" == "Darwin" ]; then
+  ps1_user_color=$cyan  # Mac
+else
+  ps1_user_color=$green  # Linux
+fi
+
 # Normal PS:
-PS1='\[$cyan$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
+PS1='\[$ps1_user_color$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
 # Git PS:
 # command -v __git_ps1 >/dev/null 2>&1
 # if [[ "$?" -eq 0 ]]; then
-#     PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
+#     PS1='\[$ps1_user_color$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
 # else
 #     PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
 # fi
 # Custom PS:
-#PS1='\[$green\]\u\[$reset\]:\[$blue$bold\]$(my_ps_dir)\[$reset\]\$ '
+#PS1='\[$ps1_user_color\]\u\[$reset\]:\[$blue$bold\]$(my_ps_dir)\[$reset\]\$ '
 # Try colors:
 #PS1='\[$grey\]grey\[$red\]red\[$green\]green\[$yellow\]yellow\[$blue\]blue\[$pink\]pink\[$cyan\]cyan\[$white\]white\[$bold\]\[$grey\]grey\[$red\]red\[$green\]green\[$yellow\]yellow\[$blue\]blue\[$pink\]pink\[$cyan\]cyan\[$white\]white\[$reset\]'
 
