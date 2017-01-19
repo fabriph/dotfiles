@@ -69,6 +69,63 @@ else
   missing+=("bash-completion")
 fi
 
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# GIT
+alias gc="git commit -m 'autocommit' ${@:2}"
+alias gco="git checkout"
+alias gs="git status"
+
+function git_add_part() {
+  git add --patch "$1"
+}
+alias gcp=git_add_part
+alias gap=git_add_part
+
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+else
+  missing+=("git-completition")
+  # curl https://raw.github.com/git/git/master/contrib/completion/git-copletion.bash -OL
+fi
+
+if [ -f ~/.git-prompt.sh ]; then
+  source ~/.git-prompt.sh
+else
+  missing+=("git-prompt")
+  # curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -OL
+fi
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Homebrew stuff
+export PATH=$HOME/homebrew/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/homebrew/lib:$LD_LIBRARY_PATH
+
+command -v brew >/dev/null 2>&1
+if [[ "$?" -eq 0 ]]; then
+  if [ -f `brew --repository`/Library/Contributions/brew_bash_completion.sh ]; then
+    . `brew --repository`/Library/Contributions/brew_bash_completion.sh
+  else
+    missing+=("brew-bash-completion")
+  fi
+  # if [ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; then
+  #   source `brew --prefix`/etc/bash_completion.d/vagrant
+  # else
+  #   missing+=("brew vagrant completion")
+  # fi
+fi
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Google
+if [ -f ~/.bash_google ]; then
+  . ~/.bash_google
+else
+  missing+=("Google-scripts")
+fi
+
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Prompt
 # TODO(fabriph):replace by a front matching, printing the rest of the array,
@@ -108,79 +165,22 @@ white=$(tput setaf 7)
 bold=$(tput bold)
 reset=$(tput sgr0)
 
+# Normal PS:
 PS1='\[$cyan$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
-# Automatic git:
+# Git PS:
 # command -v __git_ps1 >/dev/null 2>&1
 # if [[ "$?" -eq 0 ]]; then
 #     PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
 # else
 #     PS1='\[$green$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
 # fi
-# My ps dir:
+# Custom PS:
 #PS1='\[$green\]\u\[$reset\]:\[$blue$bold\]$(my_ps_dir)\[$reset\]\$ '
 # Try colors:
 #PS1='\[$grey\]grey\[$red\]red\[$green\]green\[$yellow\]yellow\[$blue\]blue\[$pink\]pink\[$cyan\]cyan\[$white\]white\[$bold\]\[$grey\]grey\[$red\]red\[$green\]green\[$yellow\]yellow\[$blue\]blue\[$pink\]pink\[$cyan\]cyan\[$white\]white\[$reset\]'
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# GIT
-alias gc="git commit -m 'autocommit' ${@:2}"
-alias gco="git checkout"
-
-function git_add_part() {
-  git add --patch "$1"
-}
-alias gcp=git_add_part
-alias gap=git_add_part
-
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-else
-  missing+=("git-completition")
-fi
-
-if [ -f ~/.git-prompt.sh ]; then
-  source ~/.git-prompt.sh
-else
-  missing+=("git-prompt")
-fi
-
-# function mergeXcodeProject {
-#   projectfile=`find -d . -name 'project.pbxproj'`
-#   projectdir=`echo *.xcodeproj`
-#   projectfile="${projectdir}/project.pbxproj"
-#   tempfile="${projectdir}/project.pbxproj.temp"
-#   savefile="${projectdir}/project.pbxproj.original"
-#   cat $projectfile | grep -v "<<<<<<< HEAD" | grep -v "=======" | grep -v "^>>>>>>> " > $tempfile
-#   cp $projectfile $savefile
-#   mv $tempfile $projectfile
-# }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# Homebrew stuff
-export PATH=$HOME/homebrew/bin:$PATH
-
-command -v brew >/dev/null 2>&1
-if [[ "$?" -eq 0 ]]; then
-  if [ -f `brew --repository`/Library/Contributions/brew_bash_completion.sh ]; then
-    . `brew --repository`/Library/Contributions/brew_bash_completion.sh
-  else
-    missing+=("brew-bash-completion")
-  fi
-  # if [ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; then
-  #   source `brew --prefix`/etc/bash_completion.d/vagrant
-  # else
-  #   missing+=("brew vagrant completion")
-  # fi
-fi
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# Google
-if [ -f ~/.bash_google ]; then
-  . ~/.bash_google
-else
-  missing+=("Google-private-scripts")
-fi
-
 # Show missing files
 if [ ! ${#missing[@]} -eq 0 ]; then
   output=$(printf ", %s" "${missing[@]}")
