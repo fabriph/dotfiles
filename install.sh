@@ -4,6 +4,7 @@
 #  - If system is OSX use some naming, otherwise use regular Linux naming (example .bash_profile showuld be .profile).
 #  - Option to restore backup files.
 #  - Detect if Sublime 2 or 3.
+#  - Remove git completion from the repo and download it every time from git.
 
 function rmsoft {
     mkdir -p $TRASH_DIR
