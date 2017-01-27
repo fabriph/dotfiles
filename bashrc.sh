@@ -85,6 +85,7 @@ function git_add_part() {
 }
 
 # Commits all modified files.
+# TODO: support an optional message for the commit.
 function git_commit_all() {
   files_to_commit=`git status -s | awk '{if ($1 == "M") print $2}' | paste -s -d' ' -`
   gc $files_to_commit
