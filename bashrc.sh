@@ -77,10 +77,17 @@ alias gd="git diff"
 alias gc="git commit -m 'autocommit' ${@:2}"
 alias gap=git_add_part
 alias gcp=git_add_part
+alias gca=git_commit_all
 alias gco="git checkout"
 
 function git_add_part() {
   git add --patch "$1"
+}
+
+# Commits all modified files.
+function git_commit_all() {
+  files_to_commit=`git status -s | awk '{if ($1 == "M") print $2}' | paste -s -d' ' -`
+  gc $files_to_commit
 }
 
 if [ -f ~/.git-completion.bash ]; then
