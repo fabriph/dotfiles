@@ -71,15 +71,17 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # GIT
-alias gc="git commit -m 'autocommit' ${@:2}"
-alias gco="git checkout"
+alias gb="git branch"
 alias gs="git status"
+alias gd="git diff"
+alias gc="git commit -m 'autocommit' ${@:2}"
+alias gap=git_add_part
+alias gcp=git_add_part
+alias gco="git checkout"
 
 function git_add_part() {
   git add --patch "$1"
 }
-alias gcp=git_add_part
-alias gap=git_add_part
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
