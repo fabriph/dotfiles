@@ -125,98 +125,29 @@ fi
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Stuff used at work
 # In order to avoid bash environment pollution, this is not included unless a '.at-work' file exists in home folder.
-# TODO: replace repeated commands by a ignore case aliases, couldn't get that working right now.
-if [ -f ~/.at-work ]; then
-  alias ibranch=iatsBranch
-  alias ibranchSubmodule=iatsBranchSubmodule
-  alias imerge=iatsMerge
-  alias ipull=iatsPull
-  alias ipush=iatsPush
-  alias isql=iatsSql
-  alias istatus=iatsStatus
-
-  # Git Commit Mobile Core: used every time the submodule is uptade.
-  alias gcmobileCore='git commit MobileCore -m "Updated link to submodule."'
-
-  # Git Commit Done: used every time a case is finished.
-  #   $1: message.
-  #   $2: case ID. If not set, It will parse the one form the current branch.
-  function gcdone {
-    if [ "$2" ]; then
-      caseID="$2"
-    else
-      caseID=`echo $(__git_ps1 " %s") | sed -E "s/^T([1234567890]+).*$/\1/"`
-    fi
-    if [ "$caseID" ]; then
-      if [ "$1" ]; then
-        git commit --allow-empty -m "Fix: T#$caseID: $1"
-      else
-        git commit --allow-empty -m "Fix: T#$caseID: done."
-      fi
-    else
-      echo "Coudln't get case ID."
-    fi
-  }
-
-  # Iats Switch: Easily exchange between local branches.
-  function iswitch {
-    #  iatsSwitch `iatsListBranches | cut -d"/" -f 2 | peco`
-    if [ "$#" -eq 0 ]; then
-      target=`git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
-      if [ "$target" ]; then
-        iatsSwitch "$target"
-      fi
-    else
-      iatsSwitch "$@"
-    fi
-  }
-
-  function iListTests {
-    vim `find . -name "*unit.cpp" | peco`
-  }
-  alias ilistTests=iListTests
-
-  # Iats Reset
-  function ireset {
-    target=`echo -e "<Empty>\nmobile_EventModule\nmobile_MobileUiTests\n<Exit>" | peco`
-    if [ "$target" == "<Empty>" ]; then
-      iatsReset
-    elif [ "$target" == "<Exit>" ]; then
-      return
-    else
-      echo -e "Reseting with $target"
-      iatsReset -s "$target"
-    fi
-  }
-
-  function ideleteLocalBranch {
-    # TODO: remove master from the list.
-    # TODO: maybe allow the user to delete it remotely:
-    #   git push origin --delete REMOTE_BRANCH_TO_DELETE
-    target=`git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
-    if [ "$target" == "" ]; then
-      return
-    fi
-    REPLY=""
-    while [[ ! $REPLY =~ ^[YyNn]$ ]]
-    do
-      read -p "Sure you want to delete $target ? (Y/n)" -n 1 -r
-      echo
-    done
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-      git branch -D "$target"
-    fi
-  }
-
-  function webDiff {
-    echo "TBD"
-  }
-
-  alias bt="./tools/buildTests"
-  alias rt="./bin/runTests"
-else
-  missing+=(".at-work")
-fi
+#if [ -f ~/.at-work ]; then
+#
+#  function ideleteLocalBranch {
+#    # TODO: remove master from the list.
+#    # TODO: maybe allow the user to delete it remotely:
+#    #   git push origin --delete REMOTE_BRANCH_TO_DELETE
+#    target=`git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
+#    if [ "$target" == "" ]; then
+#      return
+#    fi
+#    REPLY=""
+#    while [[ ! $REPLY =~ ^[YyNn]$ ]]
+#    do
+#      read -p "Sure you want to delete $target ? (Y/n)" -n 1 -r
+#      echo
+#    done
+#    if [[ $REPLY =~ ^[Yy]$ ]]; then
+#      git branch -D "$target"
+#    fi
+#  }
+#else
+#  missing+=(".at-work")
+#fi
 
 # Show missing files
 if [ ! ${#missing[@]} -eq 0 ]; then
