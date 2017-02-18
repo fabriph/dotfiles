@@ -11,4 +11,5 @@ Plugins installed:
 Interface Builder
 Control+Drag: allows you to add constrains among views (a view view other view or with its super view).
 ⌘⇧O: open file by name.
+⌘⇧J: sync navigator with open file.
 
