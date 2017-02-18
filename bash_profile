@@ -51,7 +51,7 @@ alias gr='grep -RnIf /dev/stdin . <<<'
 # Find: look for files or directories by name.
 #   $1: name/patter(bash).
 #   $2: optional root path.
-function ffind {
+ffind () {
   if [ "$2" ]; then
     find "$2" -name "$1"
   else
@@ -126,7 +126,7 @@ fi
 # In order to avoid bash environment pollution, this is not included unless a '.at-work' file exists in home folder.
 #if [ -f ~/.at-work ]; then
 #
-#  function ideleteLocalBranch {
+#  ideleteLocalBranch () {
 #    # TODO: remove master from the list.
 #    # TODO: maybe allow the user to delete it remotely:
 #    #   git push origin --delete REMOTE_BRANCH_TO_DELETE
