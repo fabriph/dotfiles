@@ -47,7 +47,7 @@ alias gr='grep -RnIf /dev/stdin . <<<'
 # Find: look for files or directories by name.
 #   $1: name/patter(bash).
 #   $2: optional root path.
-function ffind {
+ffind () {
   if [ "$2" ]; then
     find "$2" -name "*$1*"
   else
@@ -63,7 +63,7 @@ bind "set show-all-if-ambiguous on"
 export EDITOR="vim"
 
 if [ -f /etc/bash_completion ]; then
-  . /etc/bash_completion
+  source /etc/bash_completion
 else
   missing+=("bash-completion")
 fi
@@ -80,19 +80,19 @@ alias gcp=git_add_part
 alias gca=git_commit_all
 alias gco="git checkout"
 
-function git_add_part() {
+git_add_part () {
   git add --patch "$1"
 }
 
 # Commits all modified files.
 # TODO: support an optional message for the commit.
-function git_commit_all() {
+git_commit_all () {
   files_to_commit=`git status -s | awk '{if ($1 == "M") print $2}' | paste -s -d' ' -`
   gc $files_to_commit
 }
 
 if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
+  source ~/.git-completion.bash
 else
   missing+=("git-completition")
   # curl https://raw.github.com/git/git/master/contrib/completion/git-copletion.bash -OL
@@ -111,25 +111,32 @@ fi
 export PATH=$HOME/homebrew/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/homebrew/lib:$LD_LIBRARY_PATH
 
-command -v brew >/dev/null 2>&1
-if [[ "$?" -eq 0 ]]; then
+brew_completion () {
   if [ -f `brew --repository`/Library/Contributions/brew_bash_completion.sh ]; then
-    . `brew --repository`/Library/Contributions/brew_bash_completion.sh
+    source `brew --repository`/Library/Contributions/brew_bash_completion.sh
   else
     missing+=("brew-bash-completion")
   fi
-  # if [ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; then
-  #   source `brew --prefix`/etc/bash_completion.d/vagrant
-  # else
-  #   missing+=("brew vagrant completion")
-  # fi
+}
+vagrant_completion () {
+  if [ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; then
+    source `brew --prefix`/etc/bash_completion.d/vagrant
+  else
+    missing+=("brew vagrant completion")
+  fi
+}
+
+command -v brew >/dev/null 2>&1
+if [[ "$?" -eq 0 ]]; then
+  brew_completion
+  vagrant_completion
 fi
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Google
 if [ -f ~/.bash_google ]; then
-  . ~/.bash_google
+  source ~/.bash_google
 else
   missing+=("Google-scripts")
 fi

@@ -6,6 +6,7 @@
 #  - Detect if Sublime 2 or 3.
 #  - Remove git completion from the repo and download it every time from git.
 
+# A soft version of rm.
 function rmsoft {
     mkdir -p $TRASH_DIR
     mv "$1" "$TRASH_DIR/$(basename $1).$today"
