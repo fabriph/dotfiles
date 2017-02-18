@@ -65,7 +65,7 @@ bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
 
 if [ -f /etc/bash_completion ]; then
-  . /etc/bash_completion
+  source /etc/bash_completion
 else
   missing+=("Bash completion")
 fi
@@ -75,7 +75,7 @@ fi
 alias gc="git commit"
 
 if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
+  source ~/.git-completion.bash
 else
   missing+=("git-completition")
 fi
@@ -101,7 +101,7 @@ export PATH=/usr/local/sbin:$PATH
 
 brew_completion () {
   if [ -f `brew --repository`/Library/Contributions/brew_bash_completion.sh ]; then
-    . `brew --repository`/Library/Contributions/brew_bash_completion.sh
+    source `brew --repository`/Library/Contributions/brew_bash_completion.sh
   else
     missing+=("brew bash completion")
   fi
@@ -157,6 +157,6 @@ fi
 
 # Import extended config
 if [ -f ~/.bash_extended_profile ]; then
-  . ~/.bash_extended_profile
+  source ~/.bash_extended_profile
 fi
 
