@@ -30,6 +30,8 @@ reset=$(tput sgr0)
 HISTSIZE=5000
 export HISTCONTROL=ignoredups:erasedups
 
+PATH=~/bin:$PATH
+
 alias ..='cd ..'
 alias grep='grep --color=always'
 
