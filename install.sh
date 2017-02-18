@@ -4,6 +4,7 @@
 #  - Option to restore backup files.
 #  - Detect if Sublime 2 or 3.
 
+# A soft version of rm.
 function rmsoft {
     mkdir -p $TRASH_DIR
     mv "$1" "$TRASH_DIR/$(basename $1).$today"
