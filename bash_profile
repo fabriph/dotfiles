@@ -99,18 +99,26 @@ fi
 # Optional Homebrew stuff
 export PATH=/usr/local/sbin:$PATH
 
-command -v brew >/dev/null 2>&1
-if [[ "$?" -eq 0 ]]; then
+brew_completion () {
   if [ -f `brew --repository`/Library/Contributions/brew_bash_completion.sh ]; then
     . `brew --repository`/Library/Contributions/brew_bash_completion.sh
   else
     missing+=("brew bash completion")
   fi
+}
+
+vagrant_completion () {
   if [ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; then
     source `brew --prefix`/etc/bash_completion.d/vagrant
   else
     missing+=("brew vagrant completion")
   fi
+}
+
+command -v brew >/dev/null 2>&1
+if [[ "$?" -eq 0 ]]; then
+  brew_completion
+  vagrant_completion
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
