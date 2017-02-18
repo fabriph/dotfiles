@@ -122,20 +122,24 @@
 	</dict>
 	<key>NSWindow Frame Preferences</key>
 	<string>853 662 606 456 0 0 2560 1577 </string>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>1080 1096 400 129 0 0 2560 1577 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>970 916 620 392 0 0 2560 1600 </string>
+	<string>970 899 620 392 0 0 2560 1577 </string>
+	<key>NSWindow Frame SessionsPreferences</key>
+	<string>269 839 606 456 0 0 2560 1577 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>742 901 1016 502 0 0 2560 1600 </string>
+	<string>1291 518 796 473 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1295 47 1125 652 0 0 2560 1577 </string>
+	<string>136 80 2175 1336 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 225 1125 652 0 0 2560 1577 </string>
+	<string>1430 122 1025 577 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 225 1125 652 0 0 2560 1577 </string>
+	<string>483 365 1510 1152 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>752 49 1801 1528 0 0 2560 1577 </string>
+	<string>0 225 1125 652 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>3 104 922 765 0 0 1440 877 </string>
+	<string>3 204 1110 652 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
 	<string>0 217 1110 652 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
@@ -711,6 +715,8 @@
 	</array>
 	<key>NoSyncConfirmBeta</key>
 	<true/>
+	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
+	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>B84DA462-A336-4585-951D-598764605C81</string>
 	<key>NoSyncNeverRemindPrefsChangesCopy</key>
@@ -784,7 +790,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-09-06T11:08:43Z</date>
+	<date>2017-01-12T22:56:06Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -832,6 +838,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.8</string>
+	<string>3.0.13</string>
 </dict>
 </plist>
