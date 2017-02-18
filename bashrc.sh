@@ -144,7 +144,7 @@ function my_ps_dir() {
     FS = OFS = "/"
     sub(ENVIRON["HOME"], "~");
     if (length($0) > 24 && NF > 5) {
-      if ( $2 == "google" && $3 == "src" && $4 == "cloud" ) {
+      if ( $4 == "cloud" ) {
         if (NF == 6)
           exit;
         else if (NF == 7)
@@ -155,9 +155,9 @@ function my_ps_dir() {
           print "/"$7,$8,$9
         else
           print "/"$7,"...",$(NF-1),$NF
-        }
-      else
+      } else {
         print $1,$2,"...",$(NF-1),$NF
+      }
     } else
       print $0
   }'
