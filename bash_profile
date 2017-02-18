@@ -86,17 +86,6 @@ else
   missing+=("git-prompt")
 fi
 
-function mergeXcodeProject {
-  projectfile=`find -d . -name 'project.pbxproj'`
-  projectdir=`echo *.xcodeproj`
-  projectfile="${projectdir}/project.pbxproj"
-  tempfile="${projectdir}/project.pbxproj.temp"
-  savefile="${projectdir}/project.pbxproj.original"
-  cat $projectfile | grep -v "<<<<<<< HEAD" | grep -v "=======" | grep -v "^>>>>>>> " > $tempfile
-  cp $projectfile $savefile
-  mv $tempfile $projectfile
-}
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Prompt
 command -v __git_ps1 >/dev/null 2>&1
