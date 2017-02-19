@@ -7,12 +7,12 @@
 #  - Remove git completion from the repo and download it every time from git.
 
 # A soft version of rm.
-function rmsoft {
+rmsoft () {
     mkdir -p $TRASH_DIR
     mv "$1" "$TRASH_DIR/$(basename $1).$today"
 }
 
-function handle_backup {
+handle_backup () {
     destination="$1"
     if [ -f "$destination.backup" ]; then
         REPLY=""
@@ -34,7 +34,7 @@ function handle_backup {
     echo "    Backup: $destination.backup"
 }
 
-function install_package {
+install_package () {
     package="$1"
     origin="$2"
     destination="$3"
