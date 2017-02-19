@@ -5,6 +5,7 @@
 #  - Option to restore backup files.
 #  - Detect if Sublime 2 or 3.
 #  - Remove git completion from the repo and download it every time from git.
+#  - Add hosts as a copy, or maybe a softlink?
 
 # A soft version of rm.
 rmsoft () {
@@ -80,17 +81,15 @@ INSTALL_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 TRASH_DIR=~/.tmp-trash
 today=`date +%Y-%m-%d.%H:%M:%S`
 
-install_package "Bash Profile (.bashrc)" "$INSTALL_DIR/bashrc.sh" ~/.bashrc
+install_package "Bash profile (.bashrc)" "$INSTALL_DIR/bashrc.sh" ~/.bashrc
 install_package "Bash SSH placebo (.bash_profile)" "$INSTALL_DIR/bash_profile.sh" ~/.bash_profile
 
 install_package "VIM config file" "$INSTALL_DIR/vimrc" ~/.vimrc
 
-install_package "GIT Prompt" "$INSTALL_DIR/git/git-prompt.sh" ~/.git-prompt.sh
-
-install_package "GIT Completition" "$INSTALL_DIR/git/git-completion.bash" ~/.git-completion.bash
+install_package "Git prompt" "$INSTALL_DIR/git/git-prompt.sh" ~/.git-prompt.sh
+install_package "Git completition" "$INSTALL_DIR/git/git-completion.bash" ~/.git-completion.bash
 
 if [ -d ~/Library/Application\ Support/Sublime\ Text\ 2 ]; then
   install_package "Sublime config" "$INSTALL_DIR/sublime/settings" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Preferences.sublime-settings
-
   install_package "Sublime keyboard" "$INSTALL_DIR/sublime/keyboard" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Default\ \(OSX\).sublime-keymap
 fi
