@@ -78,7 +78,7 @@ install_package () {
 }
 
 INSTALL_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-TRASH_DIR=~/.tmp-trash
+TRASH_DIR=~/tmp-trash
 today=`date +%Y-%m-%d.%H:%M:%S`
 
 install_package "Bash profile (.bashrc)" "$INSTALL_DIR/bashrc.sh" ~/.bashrc
@@ -93,3 +93,4 @@ if [ -d ~/Library/Application\ Support/Sublime\ Text\ 2 ]; then
   install_package "Sublime config" "$INSTALL_DIR/sublime/settings" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Preferences.sublime-settings
   install_package "Sublime keyboard" "$INSTALL_DIR/sublime/keyboard" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Default\ \(OSX\).sublime-keymap
 fi
+
