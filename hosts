@@ -9,8 +9,9 @@
 255.255.255.255 broadcasthost
 ::1             localhost
 
+# Picked from around the web.
+# Credits and copyrights belong to their original authors. Please check: https://github.com/StevenBlack/hosts
 
-# [General]
 0.0.0.0 lb.usemaxserver.de
 0.0.0.0 tracking.klickthru.com
 0.0.0.0 gsmtop.net
@@ -425,13 +426,6 @@
 0.0.0.0 inneractive-assets.s3.amazonaws.com
 0.0.0.0 strikeadcdn.s3.amazonaws.com
 
-# [Admob]
-0.0.0.0 a.admob.com
-0.0.0.0 analytics.admob.com
-0.0.0.0 c.admob.com
-0.0.0.0 media.admob.com
-0.0.0.0 p.admob.com
-
 # [AdWhirl]
 0.0.0.0 met.adwhirl.com
 0.0.0.0 mob.adwhirl.com
@@ -480,12 +474,6 @@
 0.0.0.0 eviltracker.net
 0.0.0.0 do-not-tracker.org
 
-### Extra rules for @StevenBlack 's hosts project
-### https://github.com/FadeMind/hosts.extras
-### 2o7Net tracking sites based on http://www.hostsfile.org/hosts.html content.
-### http://www.makeuseof.com/tag/that-mysterious-2o7-net-tracking-cookie-all-you-need-to-know/
-### https://en.wikipedia.org/wiki/Omniture
-### <2o7Net> < B E G I N >
 0.0.0.0 102.112.207.net
 0.0.0.0 102.112.2o7.net
 0.0.0.0 102.122.2o7.net
@@ -1594,12 +1582,7 @@
 0.0.0.0 ziffdavisglobal.112.2o7.net
 0.0.0.0 ziffdavispennyarcade.112.2o7.net
 0.0.0.0 zipzoomfly.122.2o7.net
-### <2o7Net> < E N D >
 
-### Extra rules for @StevenBlack 's hosts project
-### https://github.com/FadeMind/hosts.extras
-### Dead sites based on http://www.hostsfile.org/hosts.html content.
-### <Dead> < B E G I N >
 0.0.0.0 adobe-acrobat-reader-upgrade.com
 0.0.0.0 www.adobe-acrobat-reader-upgrade.com
 0.0.0.0 adobe-update.org
@@ -1702,12 +1685,7 @@
 0.0.0.0 www.winmediaplayerplus.com
 0.0.0.0 wwwfacebook.com
 0.0.0.0 www.wwwfacebook.com
-### <Dead> < E N D >
 
-### Extra rules for @StevenBlack 's hosts project
-### https://github.com/FadeMind/hosts.extras
-### Risk: malware, adware and tracking sites based on http://www.hostsfile.org/hosts.html content.
-### <Risk> < B E G I N >
 0.0.0.0 0.r.msn.com
 0.0.0.0 050003.voodoo.com
 0.0.0.0 050005.voodoo.com
@@ -5247,12 +5225,7 @@
 0.0.0.0 zuverink.net
 0.0.0.0 www.zuverink.net
 0.0.0.0 zzz.clickbank.net
-### <Risk> < E N D >
 
-### Extra rules for @StevenBlack 's hosts project
-### https://github.com/FadeMind/hosts.extras
-### SPAM sites based on http://www.hostsfile.org/hosts.html content.
-### <SPAM> < B E G I N >
 0.0.0.0 100.1qingdao.com
 0.0.0.0 100lend.in.net
 0.0.0.0 7minuteworkout.com
@@ -5560,14 +5533,7 @@
 0.0.0.0 www.youronlinenewcamtips.xyz
 0.0.0.0 yourphone.amazingnewphonetips.xyz
 0.0.0.0 yourtravel.onlinenewgreecetrips.xyz
-### <SPAM> < E N D >
-# KAD hosts file
-# Zalecany tylko dla zaawansowanych uzytkownikow
-# Niektore funkcje oferowane przez filtr nie sa dostepne w ponizszym pliku ze wzgledu na ograniczenia hosts.
-# Aktualizacja zbiorowa: 2016112001
 
-
-# Podejrzane i/lub polaczone z innymi przekretami
 0.0.0.0 eonline.pl
 0.0.0.0 maendo.tv
 0.0.0.0 wypaskino.pl
@@ -5972,13 +5938,10 @@
 0.0.0.0 www.updatestar.com
 0.0.0.0 usunwirusa.pl
 
-# Strony z aliasami (lub podobne), ktore nie sa wspierane przez administratorow.
 0.0.0.0 rfv.pl
 0.0.0.0 lnfo.eu
 0.0.0.0 szort.pl
 
-# Przekierowuja one do innych stron z przekretami.
-# Spotykane sa na wielu stronach typu przekret lub postach i komentarzach na portalach spolecznosciowych.
 0.0.0.0 8xs.pl
 0.0.0.0 z0x.pl
 0.0.0.0 uvy3.pl
@@ -6069,7 +6032,6 @@
 0.0.0.0 jhgf.pl
 0.0.0.0 zetnijto.pl
 
-# Szybko wygaszajace
 0.0.0.0 kluski.grejt.pl
 0.0.0.0 poland2.gift-today89.online
 0.0.0.0 koko-kokos.grejt.pl
@@ -6493,7 +6455,6 @@
 0.0.0.0 mobileappscenters.com
 0.0.0.0 mobile-installs.top
 
-# Przekrety
 0.0.0.0 pobierzteraz.mobi
 0.0.0.0 ecda.pl
 0.0.0.0 vodhd.pl
@@ -7266,7 +7227,6 @@
 0.0.0.0 xn--dowiecznoci-mfc.pl
 0.0.0.0 xn--kadrymioci-g0b51a.pl
 
-# Wapster
 0.0.0.0 www.nagroda-sms.pl
 0.0.0.0 bramka-sms-zadarmo.pl
 0.0.0.0 bramka-sms-za-darmo.pl
@@ -7328,7 +7288,6 @@
 0.0.0.0 wapster.pl
 0.0.0.0 sms-za-darmo.pl
 
-# Blogspot
 0.0.0.0 bon1500.blogspot.com
 0.0.0.0 natkaaa1998.blogspot.com
 0.0.0.0 testowanietwojegoiq.blogspot.com
@@ -7425,13 +7384,8 @@
 0.0.0.0 generatorfreegames.blogspot.com
 0.0.0.0 najprzydatniejsze.blogspot.com
 
-# Inne
 0.0.0.0 eforsa.pl
 0.0.0.0 widget-eforsa.pl
-#               MalwareDomainList.com Hosts List           #
-#   http://www.malwaredomainlist.com/hostslist/hosts.txt   #
-#         Last updated: Wed, 16 Nov 16 08:37:46 +0000      #
-
 
 0.0.0.0 109-204-26-16.netconnexion.managedbroadband.co.uk
 0.0.0.0 1866809.securefastserver.com
@@ -8326,33 +8280,7 @@
 0.0.0.0 zous.szm.sk
 0.0.0.0 zt.tim-taxi.com
 0.0.0.0 zyrdu.cruisingsmallship.com
-# This MVPS HOSTS file is a free download from:            #
-# http://winhelp2002.mvps.org/hosts.htm                    #
-#                                                          #
-# Notes: The Operating System does not read the "#" symbol #
-# You can create your own notes, after the # symbol        #
-# This *must* be the first line: 127.0.0.1     localhost   #
-#                                                          #
-#**********************************************************#
-# --------------- Updated: October-20-2016 --------------- #
-#**********************************************************#
-#                                                          #
-# Disclaimer: this file is free to use for personal use    #
-# only. Furthermore it is NOT permitted to copy any of the #
-# contents or host on any other site without permission or #
-# meeting the full criteria of the below license terms.    #
-#                                                          #
-# This work is licensed under the Creative Commons         #
-# Attribution-NonCommercial-ShareAlike License.            #
-# http://creativecommons.org/licenses/by-nc-sa/4.0/        #
-#                                                          #
-# License info for commercial purposes contact Winhelp2002 #
 
-
-
-# [Start of entries generated by MVPS HOSTS]
-#
-# [Misc A - Z]
 0.0.0.0 fr.a2dfp.net
 0.0.0.0 m.fr.a2dfp.net
 0.0.0.0 mfr.a2dfp.net
@@ -9318,7 +9246,6 @@
 0.0.0.0 log.idg.no
 0.0.0.0 adidm07.idmnet.pl
 0.0.0.0 adidm.idmnet.pl
-# 0.0.0.0 mpsnare.iesnare.com #[affects westernunion.com]
 0.0.0.0 adsrv2.ihlassondakika.com
 0.0.0.0 stats.surfaid.ihost.com
 0.0.0.0 k.iinfo.cz
@@ -10296,8 +10223,8 @@
 0.0.0.0 www.trendcounter.com
 0.0.0.0 ads.triada.bg
 0.0.0.0 ads.tripican.com
-# 0.0.0.0 s1.trrsf.com #[affects terra.com]
-# 0.0.0.0 s2.trrsf.com #[affects terra.com]
+0.0.0.0 s1.trrsf.com #[affects terra.com]
+0.0.0.0 s2.trrsf.com #[affects terra.com]
 0.0.0.0 hits.truehits.in.th
 0.0.0.0 lvs.truehits.in.th
 0.0.0.0 tracker.truehits.in.th
@@ -24218,22 +24145,6 @@
 0.0.0.0 woche.oewabox.at
 0.0.0.0 wohnnet.oewabox.at
 0.0.0.0 zfm.oewabox.at
-#</oewabox-sites>
-
-#<ad-sites>
-#<maybe-ads>
-#0.0.0.0 adfarm.mediaplex.com       # may interfere with ebay
-#0.0.0.0 ads.msn.com            #This may cause problems with zone.msn.com
-#0.0.0.0 ak.imgfarm.com     # may cause problems with iwon.com
-#0.0.0.0 click.linksynergy.com
-#0.0.0.0 global.msads.net       #This may cause problems with zone.msn.com
-#0.0.0.0 lads.myspace.com       # blocks myspace media/video players
-#0.0.0.0 refer.ccbill.com       #affiliate program, to add it back, remove the #
-#0.0.0.0 rmads.msn.com          #This may cause problems with zone.msn.com
-#0.0.0.0 www.apmebf.com     #qksrv
-#0.0.0.0 www.tkqlhce.com        #qksrv  #intereferes with video on globeandmail.com
-#0.0.0.0 transfer.go.com        #may interfere with Disney websites
-#</maybe-ads>
 
 # ads
 0.0.0.0 0101011.com
@@ -24599,7 +24510,6 @@
 0.0.0.0 ad.firstadsolution.com
 0.0.0.0 ad.floq.jp
 0.0.0.0 ad-flow.com
-#0.0.0.0 adf.ly
 0.0.0.0 ad.fnnews.com
 0.0.0.0 ad.fo.net
 0.0.0.0 adforce.ads.imgis.com
@@ -31892,52 +31802,10 @@
 0.0.0.0 statsfe2.ws.microsoft.com
 0.0.0.0 telemetry.appex.bing.net #:443
 0.0.0.0 wes.df.telemetry.microsoft.com
-#</Windows10>
 
-# Acknowledgements
-# I'd like to thank the following people for submitting sites, and
-# helping promote the site.
-
-# Bill Allison, Harj Basi, Lance Russhing, Marshall Drew-Brook,
-#  Leigh Brasington, Scott Terbush, Cary Newfeldt, Kaye, Jeff
-#  Scrivener, Mark Hudson, Matt Bells, T. Kim Nguyen, Lino Demasi,
-#  Marcelo Volmaro, Troy Martin, Donald Kerns, B.Patten-Walsh,
-#  bobeangi, Chris Maniscalco, George Gilbert, Kim Nilsson, zeromus,
-#  Robert Petty, Rob Morrison, Clive Smith, Cecilia Varni, OleKing
-#  Cole, William Jones, Brian Small, Raj Tailor, Richard Heritage,
-#  Alan Harrison, Ordorica, Crimson, Joseph Cianci, sirapacz,
-#  Dvixen, Matthew Craig, Tobias Hessem, Kevin F. Quinn, Thomas
-#  Corthals, Chris McBee, Jaime A. Guerra, Anders Josefson,
-#  Simon Manderson, Spectre Ghost, Darren Tay, Dallas Eschenauer, Cecilia
-#  Varni, Adam P. Cole, George Lefkaditis, grzesiek, Adam Howard, Mike
-#  Bizon, Samuel P. Mallare, Leinweber, Walter Novak, Stephen Genus,
-#  Zube, Johny Provoost, Peter Grafton, Johann Burkard, Magus, Ron Karner,
-#  Fredrik Dahlman, Michele Cybula, Bernard Conlu, Riku B, Twillers,
-#  Shaika-Dzari, Vartkes Goetcherian, Michael McCown, Garth, Richard Nairn,
-#  Exzar Reed, Robert Gauthier, Floyd Wilder, Mark Drissel, Kenny Lyons,
-#  Paul Dunne, Tirath Pannu, Mike Lambert, Dan Kolcun, Daniel Aleksandersen,
-#  Chris Heegard, Miles Golding, Daniel Bisca, Frederic Begou, Charles
-#  Fordyce, Mark Lehrer, Sebastien Nadeau-Jean, Russell Gordon, Alexey
-#  Gopachenko, Stirling Pearson, Alan Segal, Bobin Joseph, Chris Wall, Sean
-#  Flesch, Brent Getz, Jerry Cain, Brian Micek, Lee Hancock, Kay Thiele,
-#  Kwan Ting Chan, Wladimir Labeikovsky, Lino Demasi, Bowie Bailey, Andreas
-#  Marschall, Michael Tompkins, Michael O'Donnell, Jos&eacute; Lucas Teixeira
-#  de Oliveira, M. &Ouml;mer G&ouml;lgeli, and Anthony Gelibert for helping to build
-#  the hosts file.
-# Russell O'Connor for OS/2 information
-# kwadronaut for Windows 7 and Vista information
-# John Mueller and Lawrence H Smith for Mac Pre-OSX information
-# Jesse Baird for the Cisco IOS script
-
-### Extra rules for @StevenBlack 's hosts project
-### https://github.com/FadeMind/hosts.extras
-### <SpotifyAds> < B E G I N >
 0.0.0.0 gads.pubmatic.com
 0.0.0.0 spclient.wg.spotify.com
-### <SpotifyAds> < E N D >
-#=====================================
-# Hosts contributed by Steven Black
-# http://stevenblack.com
+
 0.0.0.0 1493361689.rsc.cdn77.org
 0.0.0.0 30-day-change.com
 0.0.0.0 2468.go2cloud.org
@@ -31967,12 +31835,7 @@
 0.0.0.0 www.mywot.com
 0.0.0.0 www.mywot.net
 0.0.0.0 www.torrenty-org.pl
-#=====================================
 
-
-### Extra rules for @StevenBlack 's hosts project
-### https://github.com/FadeMind/hosts.extras
-### <Windows 10 Telemetry> < B E G I N >
 0.0.0.0 a-0001.a-msedge.net
 0.0.0.0 a-0002.a-msedge.net
 0.0.0.0 a-0003.a-msedge.net
@@ -32042,10 +31905,7 @@
 0.0.0.0 watson.telemetry.microsoft.com.nsatc.net
 0.0.0.0 win10.ipv6.microsoft.com
 0.0.0.0 www.msftncsi.com
-### <Windows 10 Telemetry> < E N D >
-### Extra rules for @StevenBlack 's hosts project
-### https://github.com/FadeMind/hosts.extras
-### <UncheckyAds> < B E G I N >
+
 0.0.0.0 tracking.opencandy.com
 0.0.0.0 api.recommendedsw.com
 0.0.0.0 installer.betterinstaller.com
@@ -32074,20 +31934,7 @@
 0.0.0.0 cdn.download.sweetpacks.com
 0.0.0.0 cdn.dpdownload.com
 0.0.0.0 cdn.visualbee.net
-### <UncheckyAds> < E N D >
-# Ad server list for use with hosts files to block ads
-#
-# For more information about this list, see: https://pgl.yoyo.org/adservers/
-# ----
-# last updated:   Thu, 17 Nov 2016 15:34:10 GMT
-# entries:        2361
-# format:         hosts (hosts -- in hosts file format)
-# credits:        Peter Lowe - pgl@yoyo.org - https://pgl.yoyo.org/ - https://twitter.com/pgl
-# this URL:       https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext&useip=0.0.0.0
-# other formats:  https://pgl.yoyo.org/adservers/formats.php
-# policy:         https://pgl.yoyo.org/adservers/policy.php
-#
-# start date:    Sun, 20 Nov 2016 00:00:00
+
 0.0.0.0 101com.com
 0.0.0.0 101order.com
 0.0.0.0 123found.com
