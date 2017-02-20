@@ -182,7 +182,15 @@ bold=$(tput bold)
 reset=$(tput sgr0)
 
 if [ "$(uname)" == "Darwin" ]; then
-  ps1_user_color=$cyan  # Mac
+  # Mac
+  serial="$(system_profiler SPHardwareDataType | awk '/Serial/ {print $4}')"
+  i=$((${#serial}-3))
+  if [ "${serial:$i:3}" == "R53" ]; then
+    # My personal Mac
+    ps1_user_color="$green"
+  else
+    ps1_user_color="$cyan"
+  fi
 else
   # Linux & others
   ps1_user_color="$pink"
