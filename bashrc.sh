@@ -184,7 +184,8 @@ reset=$(tput sgr0)
 if [ "$(uname)" == "Darwin" ]; then
   ps1_user_color=$cyan  # Mac
 else
-  ps1_user_color=$green  # Linux
+  # Linux & others
+  ps1_user_color="$pink"
 fi
 
 # Normal PS:
