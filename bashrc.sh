@@ -192,9 +192,9 @@ fi
 # Git PS:
 command -v __git_ps1 >/dev/null 2>&1
 if [[ "$?" -eq 0 ]]; then
-    PS1='\[$ps1_user_color$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
+    PS1='\[$ps1_user_color\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
 else
-    PS1='\[$ps1_user_color$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
+    PS1='\[$ps1_user_color\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
     missing+=("__git_ps1")
 fi
 # Custom PS:
