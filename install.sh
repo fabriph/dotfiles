@@ -1,5 +1,6 @@
 #!/bin/bash
 # TODO:
+#  - Promt to initialize ~/.gitconfig with username and email
 #  - Be able to install it as a remote curl, something like curl -fsSL https://raw.githubusercontent.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
 #  - If system is OSX use some naming, otherwise use regular Linux naming (example .bash_profile showuld be .profile).
 #  - Option to restore backup files.
