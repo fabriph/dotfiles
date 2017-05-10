@@ -19,13 +19,14 @@ fi
 
 # Check window size after every command. If necessary, updates the values of LINES and COLUMNS.
 shopt -s checkwinsize
-
+# History size
 HISTSIZE=5000
+# Ignore and delete duplicate bash history entries.
 export HISTCONTROL=ignoredups:erasedups
-# append to the history file, don't overwrite it
+# Append to the history file, don't overwrite it
 shopt -s histappend
 
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname)" == "Darwin" ]; then  # Mac
   export CLICOLOR=1
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   alias ls="ls --color=auto"
@@ -44,7 +45,7 @@ alias ...='cd ...'
 # Grep Recursive
 alias gr='grep -RnIf /dev/stdin . <<<'
 
-# Find: look for files or directories by name.
+# File Find: look for files or directories by name (wildcard).
 #   $1: name/patter(bash).
 #   $2: optional root path.
 ffind () {
@@ -115,14 +116,14 @@ brew_completion () {
   if [ -f `brew --repository`/Library/Contributions/brew_bash_completion.sh ]; then
     source `brew --repository`/Library/Contributions/brew_bash_completion.sh
   else
-    missing+=("brew-bash-completion")
+    missing+=("brew-bash")
   fi
 }
 vagrant_completion () {
   if [ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; then
     source `brew --prefix`/etc/bash_completion.d/vagrant
   else
-    missing+=("brew vagrant completion")
+    missing+=("vagrant")
   fi
 }
 
@@ -181,15 +182,16 @@ white=$(tput setaf 7)
 bold=$(tput bold)
 reset=$(tput sgr0)
 
-if [ "$(uname)" == "Darwin" ]; then
-  # Mac
+if [ "$(uname)" == "Darwin" ]; then  # Mac
+  # Switch on serial number
   serial="$(system_profiler SPHardwareDataType | awk '/Serial/ {print $4}')"
   i=$((${#serial}-3))
   if [ "${serial:$i:3}" == "R53" ]; then
-    # My personal Mac
     ps1_user_color="$green"
-  else
+  elif [  "${serial:$i:3}" == "8WL" ]; then
     ps1_user_color="$cyan"
+  else
+    ps1_user_color="$red"
   fi
 else
   # Linux & others
