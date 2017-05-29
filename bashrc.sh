@@ -71,14 +71,16 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # GIT
+alias ga="git add"
 alias gb="git branch"
-alias gs="git status"
-alias gd="git diff"
 alias gc="git commit -m 'autocommit' ${@:2}"
+alias gd="git diff"
+alias gs="git status"
 alias gap=git_add_part
-alias gcp=git_add_part
 alias gca=git_commit_all
+alias gcp=git_add_part
 alias gco="git checkout"
+alias gst="git stash"
 
 git_add_part () {
   git add --patch "$1"
@@ -94,8 +96,8 @@ git_commit_all () {
 if [ -f ~/.git-completion.bash ]; then
   source ~/.git-completion.bash
 else
-  missing+=("git-completition")
-  # curl https://raw.github.com/git/git/master/contrib/completion/git-copletion.bash -OL
+  missing+=("git-completion.bash")
+  # curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -OL
 fi
 
 if [ -f ~/.git-prompt.sh ]; then
