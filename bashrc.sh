@@ -5,7 +5,6 @@
 #   - http://stackoverflow.com/questions/10942919/customize-tab-completion-in-shell
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
 #   - Maybe taking a look at ~/.git-completion.bash helps
-# - Add an easy way to do git stash save -u "Tests for Matrix 1.0".
 # - Compress paths of PS1 if it's too long or too many directories.
 
 missing=()
