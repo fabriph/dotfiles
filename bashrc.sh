@@ -140,7 +140,7 @@ fi
 if [ -f ~/.bash_google ]; then
   source ~/.bash_google
 else
-  missing+=("Google-scripts")
+  missing+=("bash_google")
 fi
 
 
