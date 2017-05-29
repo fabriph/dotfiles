@@ -1,12 +1,11 @@
 {
 	"ensure_newline_at_eof_on_save": true,
-	"font_size": 14.0,
+	"font_size": 16.0,
 	"ignored_packages":
 	[
 		"Vintage"
 	],
 	"open_files_in_new_window": false,
-	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"word_wrap": true
 }
