@@ -1,5 +1,6 @@
 #!/bin/bash
 # TODO:
+#  - Promt to initialize ~/.gitconfig with username and email
 #  - Be able to install it as a remote curl, something like curl -fsSL https://raw.githubusercontent.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
 #  - Install vimrc for root user.
 #  - Option to restore backup files.
