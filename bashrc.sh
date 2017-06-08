@@ -146,6 +146,22 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Prompt
+
+function perforce_client() {
+  pwd | awk -F '/' '{
+    n = split($0,a,"/");
+    if (n < 6) {
+      exit;
+    }
+    if ( a[2] == "google" && a[3] == "src" && a[4] == "cloud" ) {
+      if ( a[5] == "fabriph" )
+        print a[6];
+      else
+        print a[5],"@",a[6];
+    }
+}'
+}
+
 # TODO(fabriph):replace by a front matching, printing the rest of the array,
 # until it's long.
 function my_ps_dir() {
