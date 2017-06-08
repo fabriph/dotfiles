@@ -205,14 +205,17 @@ if [ "$(uname)" == "Darwin" ]; then  # Mac
   # Switch on serial number
   serial="$(system_profiler SPHardwareDataType | awk '/Serial/ {print $4}')"
   i=$((${#serial}-3))
-  if [ "${serial:$i:3}" == "R53" ]; then
+  if [ "${serial:$i:3}" == "R53" ]; then  # Mac 1
     ps1_user_color="$green"
-  elif [  "${serial:$i:3}" == "8WL" ]; then
-    ps1_user_color="$cyan"
-  else
+  elif [  "${serial:$i:3}" == "8WL" ]; then  # Mac 2
+    ps1_user="Mac"
+    #ps1_user_color="$cyan"
+  else  # Unkown Mac
+    ps1_user="Mac?"
     ps1_user_color="$red"
   fi
 else
+  # TODO: find out how to differentiate linux
   # Linux & others
   ps1_user_color="$pink"
 fi
