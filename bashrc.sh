@@ -199,6 +199,8 @@ white=$(tput setaf 7)
 bold=$(tput bold)
 reset=$(tput sgr0)
 
+ps1_user=$USER
+ps1_user_color="$green"
 if [ "$(uname)" == "Darwin" ]; then  # Mac
   # Switch on serial number
   serial="$(system_profiler SPHardwareDataType | awk '/Serial/ {print $4}')"
@@ -222,14 +224,15 @@ command -v __git_ps1 >/dev/null 2>&1
 if [[ "$?" -eq 0 ]]; then
     PS1='\[$ps1_user_color\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
 else
-    PS1='\[$ps1_user_color\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
+    PS1='\[$ps1_user_color\]$ps1_user\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
     missing+=("__git_ps1")
 fi
+
 # Custom PS:
 #PS1='\[$ps1_user_color\]\u\[$reset\]:\[$blue$bold\]$(my_ps_dir)\[$reset\]\$ '
+
 # Try colors:
 #PS1='\[$grey\]grey\[$red\]red\[$green\]green\[$yellow\]yellow\[$blue\]blue\[$pink\]pink\[$cyan\]cyan\[$white\]white\[$bold\]\[$grey\]grey\[$red\]red\[$green\]green\[$yellow\]yellow\[$blue\]blue\[$pink\]pink\[$cyan\]cyan\[$white\]white\[$reset\]'
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Show missing files
