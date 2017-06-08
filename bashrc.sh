@@ -137,8 +137,8 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Google
-if [ -f ~/.bash_google ]; then
-  source ~/.bash_google
+if [ -f ~/.bash_google.sh ]; then
+  source ~/.bash_google.sh
 else
   missing+=("bash_google")
 fi
