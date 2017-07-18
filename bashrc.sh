@@ -215,8 +215,15 @@ if [ "$(uname)" == "Darwin" ]; then  # Mac
     ps1_user_color="$red"
   fi
 else
-  # TODO: find out how to differentiate linux
   # Linux & others
+  node=`uname --nodename | cut -f2 -d'.'`
+  if [ "$node" == "nyc" ] || [ "$node" == "hot" ]; then
+    ps1_user="$node"
+    ps1_user_color="$pink"
+  else  # Uknown Linux
+    ps1_user="Linux?"
+    ps1_user_color="$red"
+  fi
   ps1_user_color="$pink"
 fi
 
