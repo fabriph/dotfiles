@@ -252,11 +252,11 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Show missing files
-if [ ! ${#missing[@]} -eq 0 ]; then
-  output=$(printf ", %s" "${missing[@]}")
-  output=${output:1}
-  echo "Missing: ${output[*]}"
-fi
+#if [ ! ${#missing[@]} -eq 0 ]; then
+#  output=$(printf ", %s" "${missing[@]}")
+#  output=${output:1}
+#  echo "Missing: ${output[*]}"
+#fi
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
