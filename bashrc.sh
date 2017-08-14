@@ -7,6 +7,12 @@
 #   - Maybe taking a look at ~/.git-completion.bash helps
 # - Compress paths of PS1 if it's too long or too many directories.
 
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 missing=()
 
 if [ -d "$HOME/bin" ]; then
