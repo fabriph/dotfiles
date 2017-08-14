@@ -211,9 +211,9 @@ if [ "$(uname)" == "Darwin" ]; then  # Mac
   # Switch on serial number
   serial="$(system_profiler SPHardwareDataType | awk '/Serial/ {print $4}')"
   i=$((${#serial}-3))
-  if [ "${serial:$i:3}" == "R53" ]; then  # Mac 1
+  if [ "${serial:$i:3}" == "R53" ]; then  # Mac personal
     ps1_user_color="$green"
-  elif [  "${serial:$i:3}" == "8WL" ]; then  # Mac 2
+  elif [  "${serial:$i:3}" == "8WL" ]; then  # Mac G
     ps1_user="Mac"
     #ps1_user_color="$cyan"
   else  # Unkown Mac
@@ -221,8 +221,15 @@ if [ "$(uname)" == "Darwin" ]; then  # Mac
     ps1_user_color="$red"
   fi
 else
-  # TODO: find out how to differentiate linux
   # Linux & others
+  node=`uname --nodename | cut -f2 -d'.'`
+  if [ "$node" == "nyc" ] || [ "$node" == "hot" ]; then
+    ps1_user="$node"
+    ps1_user_color="$pink"
+  else  # Uknown Linux
+    ps1_user="Linux?"
+    ps1_user_color="$red"
+  fi
   ps1_user_color="$pink"
 fi
 
