@@ -6,7 +6,9 @@
 		"Vintage"
 	],
 	"open_files_in_new_window": false,
-	"translate_tabs_to_spaces": true,
+	"word_wrap": true,
 	"trim_trailing_white_space_on_save": true,
-	"word_wrap": true
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"detect_indentation": false
 }
