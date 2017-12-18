@@ -4,12 +4,21 @@ brew cask install vagrant osxfuse virtualbox
 brew install sshfs
 vagrant plugin install vagrant-sshfs
 
-Remember to edit hosts fielid:
+Remember to edit hosts file:
   UNIX/Linux:
     sudo vim /etc/hosts
   OS X:
     sudo vim /private/etc/hosts
 
-Additionaly:
+Optionally, for bash completion install:
   brew install vagrant-completion
+
+List of boxes:
+https://www.vagrantup.com/docs/boxes.html
+
+Usage:
+  vagrant init ubuntu/xenial64  # check other boxes. This creates a vagrant file in the current directory
+  vagrant up
+  vagrant ssh
+  vagrant halt  # halts the machine
 
