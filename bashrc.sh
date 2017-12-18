@@ -5,8 +5,13 @@
 #   - http://stackoverflow.com/questions/10942919/customize-tab-completion-in-shell
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
 #   - Maybe taking a look at ~/.git-completion.bash helps
-# - Add an easy way to do git stash save -u "Tests for Matrix 1.0".
 # - Compress paths of PS1 if it's too long or too many directories.
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
 missing=()
 
@@ -72,14 +77,16 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # GIT
+alias ga="git add"
 alias gb="git branch"
-alias gs="git status"
-alias gd="git diff"
 alias gc="git commit -m 'autocommit' ${@:2}"
+alias gd="git diff"
+alias gs="git status"
 alias gap=git_add_part
-alias gcp=git_add_part
 alias gca=git_commit_all
+alias gcp=git_add_part
 alias gco="git checkout"
+alias gst="git stash"
 
 git_add_part () {
   git add --patch "$1"
@@ -95,8 +102,8 @@ git_commit_all () {
 if [ -f ~/.git-completion.bash ]; then
   source ~/.git-completion.bash
 else
-  missing+=("git-completition")
-  # curl https://raw.github.com/git/git/master/contrib/completion/git-copletion.bash -OL
+  missing+=("git-completion.bash")
+  # curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -OL
 fi
 
 if [ -f ~/.git-prompt.sh ]; then
@@ -136,15 +143,31 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Google
-if [ -f ~/.bash_google ]; then
-  source ~/.bash_google
+if [ -f ~/.bash_google.sh ]; then
+  source ~/.bash_google.sh
 else
-  missing+=("Google-scripts")
+  missing+=("bash_google")
 fi
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Prompt
+
+function perforce_client() {
+  pwd | awk -F '/' '{
+    n = split($0,a,"/");
+    if (n < 6) {
+      exit;
+    }
+    if ( a[2] == "google" && a[3] == "src" && a[4] == "cloud" ) {
+      if ( a[5] == "fabriph" )
+        print a[6];
+      else
+        print a[5],"@",a[6];
+    }
+}'
+}
+
 # TODO(fabriph):replace by a front matching, printing the rest of the array,
 # until it's long.
 function my_ps_dir() {
@@ -182,45 +205,65 @@ white=$(tput setaf 7)
 bold=$(tput bold)
 reset=$(tput sgr0)
 
+ps1_user=$USER
+ps1_user_color="$green"
 if [ "$(uname)" == "Darwin" ]; then  # Mac
   # Switch on serial number
   serial="$(system_profiler SPHardwareDataType | awk '/Serial/ {print $4}')"
   i=$((${#serial}-3))
-  if [ "${serial:$i:3}" == "R53" ]; then
+  if [ "${serial:$i:3}" == "R53" ]; then  # Mac personal
     ps1_user_color="$green"
-  elif [  "${serial:$i:3}" == "8WL" ]; then
-    ps1_user_color="$cyan"
-  else
+  elif [  "${serial:$i:3}" == "8WL" ]; then  # Mac G
+    ps1_user="Mac"
+    #ps1_user_color="$cyan"
+  else  # Unkown Mac
+    ps1_user="Mac?"
     ps1_user_color="$red"
   fi
 else
   # Linux & others
+  node=`uname --nodename | cut -f2 -d'.'`
+  if [ "$node" == "nyc" ] || [ "$node" == "hot" ]; then
+    ps1_user="$node"
+    ps1_user_color="$pink"
+  else  # Uknown Linux
+    ps1_user="Linux?"
+    ps1_user_color="$red"
+  fi
   ps1_user_color="$pink"
 fi
 
 # Normal PS:
 #PS1='\[$ps1_user_color$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
+
+# Perforce PS:
+#PS1='\[$green\]\u\[$reset\]:\[$cyan\]$(perforce_client)\[$blue$bold\]$(my_ps_dir)\[$reset\]\$ '
+
 # Git PS:
 command -v __git_ps1 >/dev/null 2>&1
 if [[ "$?" -eq 0 ]]; then
-    PS1='\[$ps1_user_color\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
+    # Normal Git
+    #PS1='\[$ps1_user_color\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
+    # Compound Git + Perforce
+    PS1='\[$ps1_user_color\]$ps1_user\[$reset\]:\[$cyan\]$(perforce_client)\[$blue$bold\]$(my_ps_dir)\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
 else
-    PS1='\[$ps1_user_color\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
+    PS1='\[$ps1_user_color\]$ps1_user\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
     missing+=("__git_ps1")
 fi
+
 # Custom PS:
 #PS1='\[$ps1_user_color\]\u\[$reset\]:\[$blue$bold\]$(my_ps_dir)\[$reset\]\$ '
+
 # Try colors:
 #PS1='\[$grey\]grey\[$red\]red\[$green\]green\[$yellow\]yellow\[$blue\]blue\[$pink\]pink\[$cyan\]cyan\[$white\]white\[$bold\]\[$grey\]grey\[$red\]red\[$green\]green\[$yellow\]yellow\[$blue\]blue\[$pink\]pink\[$cyan\]cyan\[$white\]white\[$reset\]'
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Show missing files
-if [ ! ${#missing[@]} -eq 0 ]; then
-  output=$(printf ", %s" "${missing[@]}")
-  output=${output:1}
-  echo "Missing: ${output[*]}"
-fi
+#if [ ! ${#missing[@]} -eq 0 ]; then
+#  output=$(printf ", %s" "${missing[@]}")
+#  output=${output:1}
+#  echo "Missing: ${output[*]}"
+#fi
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
