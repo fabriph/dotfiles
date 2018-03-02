@@ -9,6 +9,12 @@
 255.255.255.255 broadcasthost
 ::1             localhost
 
+##
+# TODO: block coin miners
+#
+# 0.0.0.0 coin-hive.com
+
+
 # Picked from around the web.
 # Credits and copyrights belong to their original authors. Please check: https://github.com/StevenBlack/hosts
 
