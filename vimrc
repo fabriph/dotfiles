@@ -11,6 +11,7 @@ set cursorline
 set number                      " Line numbers.
 set statusline+=%F\ %=%l\:%c
 set vb                          " No sounds.
+set t_vb=                       " No visual bell
 
 " VISUAL
 syntax on                       " Color syntax
