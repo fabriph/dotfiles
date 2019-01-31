@@ -91,8 +91,13 @@ install_package "Git prompt" "$INSTALL_DIR/git/git-prompt.sh" ~/.git-prompt.sh
 install_package "Git completition" "$INSTALL_DIR/git/git-completion.bash" ~/.git-completion.bash
 
 if [ -d ~/Library/Application\ Support/Sublime\ Text\ 2 ]; then
-  install_package "Sublime config" "$INSTALL_DIR/sublime/settings" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Preferences.sublime-settings
-  install_package "Sublime keyboard" "$INSTALL_DIR/sublime/keyboard" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Default\ \(OSX\).sublime-keymap
+  install_package "Sublime 2 config" "$INSTALL_DIR/sublime/settings" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Preferences.sublime-settings
+  install_package "Sublime 2 keyboard" "$INSTALL_DIR/sublime/keyboard" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Default\ \(OSX\).sublime-keymap
   echo "You may want to run: sudo ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl"
 fi
 
+if [ -d ~/Library/Application\ Support/Sublime\ Text\ 3 ]; then
+  install_package "Sublime 3 config" "$INSTALL_DIR/sublime/settings" ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
+  install_package "Sublime 3 keyboard" "$INSTALL_DIR/sublime/keyboard" ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Default\ \(OSX\).sublime-keymap
+  echo "You may want to run: sudo ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl"
+fi
