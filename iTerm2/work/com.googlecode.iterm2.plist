@@ -91,8 +91,10 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/dev/scripts/iTerm2/work</string>
+	<string>~/Documents</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
+	<string>{712, 448}</string>
+	<key>NSNavPanelExpandedSizeForSaveMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
@@ -126,15 +128,15 @@
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>970 900 620 392 0 0 2560 1577 </string>
+	<string>530 487 620 392 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>939 994 796 473 0 0 2560 1577 </string>
+	<string>939 994 796 486 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1633 1042 825 502 0 0 2560 1577 </string>
+	<string>416 525 810 502 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>655 140 825 502 0 0 2560 1577 </string>
+	<string>0 525 2505 939 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>1731 398 833 502 0 0 2560 1577 </string>
+	<string>629 941 1545 502 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>293 747 825 502 0 0 2560 1577 </string>
 	<key>New Bookmarks</key>
@@ -704,6 +706,8 @@
 			<string>/Users/fabricio</string>
 		</dict>
 	</array>
+	<key>NoSyncHaveRequestedFullDiskAccess</key>
+	<true/>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
@@ -779,7 +783,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-04-23T22:36:03Z</date>
+	<date>2019-01-30T19:08:56Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -831,6 +835,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.1.6</string>
+	<string>3.2.7</string>
 </dict>
 </plist>
