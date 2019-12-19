@@ -41,6 +41,7 @@ fi
 
 alias grep='grep --color=always'
 
+alias s='screen'
 alias ll='ls -l'
 alias la='ls -al'
 alias l='ls -CF'
@@ -223,7 +224,7 @@ if [ "$(uname)" == "Darwin" ]; then  # Mac
 else
   # Linux & others
   node=`uname --nodename | cut -f2 -d'.'`
-  if [ "$node" == "nyc" ] || [ "$node" == "hot" ]; then
+  if [ "$node" == "nyc" ] || [ "$node" == "c" ]; then
     ps1_user="$node"
     ps1_user_color="$pink"
   else  # Uknown Linux
