@@ -227,6 +227,9 @@ else
   if [ "$node" == "nyc" ] || [ "$node" == "c" ]; then
     ps1_user="$node"
     ps1_user_color="$pink"
+  elif [ "$node" == "penguin" ]; then
+    ps1_user="ChromeOS"
+    ps1_user_color="$green"
   else  # Uknown Linux
     ps1_user="Linux?"
     ps1_user_color="$red"
