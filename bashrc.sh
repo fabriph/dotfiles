@@ -100,7 +100,9 @@ git_commit_all () {
   gc $files_to_commit
 }
 
-if [ -f ~/.git-completion.bash ]; then
+if [ -f /usr/share/bash-completion/completions/git ]; then
+  source /usr/share/bash-completion/completions/git
+elif [ -f ~/.git-completion.bash ]; then
   source ~/.git-completion.bash
 else
   missing+=("git-completion.bash")
