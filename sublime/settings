@@ -1,18 +1,28 @@
 {
+	"added_words":
+	[
+		"hashtag",
+		"hashtags",
+		"popup",
+		"js",
+		"utf",
+		"https",
+		"instagram",
+		"timestamp",
+		"webpage"
+	],
 	"auto_match_enabled": false,
-	"font_size": 17.0,
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+	"font_size": 15.0,
 	"ignored_packages":
 	[
 		"Vintage"
 	],
+	"ignored_words":
+	[
+		"button1"
+	],
 	"open_files_in_new_window": false,
+	"theme": "Default.sublime-theme",
 	"word_wrap": true
-/*
-   "ensure_newline_at_eof_on_save": true,
-   "trim_trailing_white_space_on_save": true,
-   "tab_size": 2,
-   "translate_tabs_to_spaces": true,
-   "detect_indentation": false,
-   "auto_match_enabled": false,
-*/
 }
