@@ -3,8 +3,6 @@
 #  - Promt to initialize ~/.gitconfig with username and email
 #  - Be able to install it as a remote curl, something like curl -fsSL https://raw.githubusercontent.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
 #  - Install vimrc for root user.
-#  - Option to restore backup files.
-#  - Detect if Sublime 2 or 3.
 #  - Remove git completion from the repo and download it every time from git.
 #  - Add hosts as a copy, or maybe a softlink?
 
@@ -90,12 +88,17 @@ install_package "VIM config file" "$INSTALL_DIR/vimrc" ~/.vimrc
 install_package "Git prompt" "$INSTALL_DIR/git/git-prompt.sh" ~/.git-prompt.sh
 install_package "Git completition" "$INSTALL_DIR/git/git-completion.bash" ~/.git-completion.bash
 
+
+## Sublime ##
+
+# Sublime 2 - Mac
 if [ -d ~/Library/Application\ Support/Sublime\ Text\ 2 ]; then
   install_package "Sublime 2 config" "$INSTALL_DIR/sublime/settings" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Preferences.sublime-settings
   install_package "Sublime 2 keyboard" "$INSTALL_DIR/sublime/keyboard" ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Default\ \(OSX\).sublime-keymap
   echo "You may want to run: sudo ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl"
 fi
 
+# Sublime 3 - Mac
 if [ -d ~/Library/Application\ Support/Sublime\ Text\ 3 ]; then
   install_package "Sublime 3 config" "$INSTALL_DIR/sublime/settings" ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
   install_package "Sublime 3 keyboard" "$INSTALL_DIR/sublime/keyboard" ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Default\ \(OSX\).sublime-keymap
