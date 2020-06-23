@@ -104,3 +104,9 @@ if [ -d ~/Library/Application\ Support/Sublime\ Text\ 3 ]; then
   install_package "Sublime 3 keyboard" "$INSTALL_DIR/sublime/keyboard" ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Default\ \(OSX\).sublime-keymap
   echo "You may want to run: sudo ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl"
 fi
+
+# Sublime 3 - Linux
+if [ -d ~/.config/sublime-text-3 ]; then
+  install_package "Sublime 3 config" "$INSTALL_DIR/sublime/settings" ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
+  install_package "Sublime 3 keyboard" "$INSTALL_DIR/sublime/keyboard" ~/.config/sublime-text-3/Packages/User/Default\ \(Linux\).sublime-keymap
+fi
