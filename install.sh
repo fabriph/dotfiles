@@ -65,7 +65,7 @@ install_package () {
         fi
         if [[ $REPLY =~ ^[Bb]$ ]]
         then
-            handle_backup $destination
+            handle_backup "$destination"
         fi
         if [[ $REPLY =~ ^[Rr]$ ]]
         then
