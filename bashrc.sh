@@ -231,10 +231,9 @@ else
     ps1_user="ChromeOS"
     ps1_user_color="$green"
   else  # Uknown Linux
-    ps1_user="Linux?"
-    ps1_user_color="$red"
+    ps1_user="$node"
+    ps1_user_color="$green"
   fi
-  ps1_user_color="$pink"
 fi
 
 # Normal PS:
