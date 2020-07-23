@@ -19,8 +19,8 @@
     { "keys": ["ctrl+t"], "command": "new_file" },
 
 // Linux: Navegation
-    { "keys": ["ctrl+right"], "command": "move_to", "args": {"to": "eol", "extend": false} },
-    { "keys": ["ctrl+left"], "command": "move_to", "args": {"to": "bol", "extend": false} },
+    { "keys": ["alt+right"], "command": "move_to", "args": {"to": "eol", "extend": false} },
+    { "keys": ["alt+left"], "command": "move_to", "args": {"to": "bol", "extend": false} },
     { "keys": ["ctrl+up"], "command": "move_to", "args": {"to": "bof", "extend": false} },
     { "keys": ["ctrl+down"], "command": "move_to", "args": {"to": "eof", "extend": false} },
 
