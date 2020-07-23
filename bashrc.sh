@@ -18,6 +18,9 @@ missing=()
 if [ -d "$HOME/bin" ]; then
   export PATH=$HOME/bin:$PATH
 fi
+if [ -d "$HOME/.local/bin" ]; then
+  export PATH=$HOME/.local/bin:$PATH
+fi
 if [ -d "/usr/local/sbin" ]; then
   export PATH=/usr/local/sbin:$PATH
 fi
@@ -41,6 +44,7 @@ fi
 
 alias grep='grep --color=always'
 
+alias open='nautilus . > /dev/null 2>&1 &'
 alias s='screen'
 alias ll='ls -l'
 alias la='ls -al'
@@ -78,6 +82,7 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # GIT
+alias push='git push origin master'
 alias ga="git add"
 alias gb="git branch"
 alias gc="git commit -m 'autocommit' ${@:2}"
@@ -100,7 +105,9 @@ git_commit_all () {
   gc $files_to_commit
 }
 
-if [ -f ~/.git-completion.bash ]; then
+if [ -f /usr/share/bash-completion/completions/git ]; then
+  source /usr/share/bash-completion/completions/git
+elif [ -f ~/.git-completion.bash ]; then
   source ~/.git-completion.bash
 else
   missing+=("git-completion.bash")
@@ -231,10 +238,9 @@ else
     ps1_user="ChromeOS"
     ps1_user_color="$green"
   else  # Uknown Linux
-    ps1_user="Linux?"
-    ps1_user_color="$red"
+    ps1_user="$node"
+    ps1_user_color="$green"
   fi
-  ps1_user_color="$pink"
 fi
 
 # Normal PS:
