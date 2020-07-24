@@ -7,5 +7,6 @@ do
 	echo
 	date
 	ping "$1" -c 10
+	sleep 1
 done
 
