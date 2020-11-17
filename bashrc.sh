@@ -44,7 +44,7 @@ fi
 
 alias grep='grep --color=always'
 
-alias open='nautilus . > /dev/null 2>&1 &'
+#alias open='nautilus . > /dev/null 2>&1 &'
 alias s='screen'
 alias ll='ls -l'
 alias la='ls -al'
