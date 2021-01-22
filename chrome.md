@@ -1,5 +1,9 @@
 Tips regarding using Chrome in Mac.
 
+
+⇧+Delete: delete the overlayed entry of the auto-complete fields history.
+
+
 I particularly find really dangerous to accidentally press ⌘Q. A way to disable this is:
 - Go to System Preferences > Keyboard > Shortcuts > App Shortcuts
 - **Application**: Google Chrome.app
