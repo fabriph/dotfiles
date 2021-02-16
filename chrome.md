@@ -2,6 +2,7 @@ Tips regarding using Chrome in Mac.
 
 
 ⇧+Delete: delete the overlayed entry of the auto-complete fields history.
+⇧+Fn+Delete: delete an entry from the auto-complete in the URL bar.
 
 
 I particularly find really dangerous to accidentally press ⌘Q. A way to disable this is:
