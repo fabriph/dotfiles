@@ -44,7 +44,7 @@ fi
 
 alias grep='grep --color=always'
 
-alias open='nautilus . > /dev/null 2>&1 &'
+#alias open='nautilus . > /dev/null 2>&1 &'
 alias s='screen'
 alias ll='ls -l'
 alias la='ls -al'
@@ -221,7 +221,7 @@ if [ "$(uname)" == "Darwin" ]; then  # Mac
   i=$((${#serial}-3))
   if [ "${serial:$i:3}" == "R53" ]; then  # Mac personal
     ps1_user_color="$green"
-  elif [  "${serial:$i:3}" == "TF1" ]; then  # Mac G
+  elif [  "${serial:$i:3}" == "VDL" ]; then  # Mac G
     ps1_user="Mac"
     #ps1_user_color="$cyan"
   else  # Unkown Mac

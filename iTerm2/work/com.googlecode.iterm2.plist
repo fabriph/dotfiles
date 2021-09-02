@@ -146,15 +146,15 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>0 125 224 275 0 0 2048 1129 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>970 899 620 392 0 0 2560 1577 </string>
+	<string>714 563 620 392 0 0 2048 1129 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>587 466 796 486 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>70 78 1481 502 0 0 2048 1129 </string>
+	<string>38 85 1705 961 0 0 2048 1129 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 42 1017 1087 0 0 2048 1129 </string>
+	<string>472 448 825 502 0 0 2048 1129 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 42 1017 1087 0 0 2048 1129 </string>
+	<string>42 601 1289 502 0 0 2048 1129 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>275 304 1305 825 0 0 2048 1129 </string>
 	<key>New Bookmarks</key>
@@ -561,7 +561,7 @@
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
-			<integer>20000</integer>
+			<integer>50000</integer>
 			<key>Scrollback With Status Bar</key>
 			<false/>
 			<key>Scrollback in Alternate Screen</key>
@@ -726,23 +726,26 @@
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
-		<string>3.3.6</string>
-		<string>3.3.8</string>
-		<string>3.3.4</string>
-		<string>3.3.1</string>
 		<string>3.3.3</string>
-		<string>3.3.7</string>
+		<string>3.3.1</string>
+		<string>3.3.8</string>
+		<string>3.3.12</string>
+		<string>3.3.6</string>
+		<string>3.3.11</string>
+		<string>3.3.4</string>
+		<string>3.3.10</string>
+		<string>3.3.2</string>
 		<string>3.3.9</string>
 		<string>3.2.9</string>
-		<string>3.3.2</string>
 		<string>3.3.0</string>
+		<string>3.3.7</string>
 	</array>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
 		<string>{{0, 0}, {2048, 1152}}</string>
 		<key>topLeft</key>
-		<string>{375, 929}</string>
+		<string>{801, 1098}</string>
 	</dict>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
 	<true/>
@@ -751,9 +754,13 @@
 	<key>NoSyncInstallationId</key>
 	<string>9E41E885-1DE5-44FB-8602-2B47FF32F08A</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>45</integer>
+	<integer>65</integer>
 	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
 	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
 	<real>586532046.15321505</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
@@ -1523,9 +1530,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-04-01T18:22:15Z</date>
+	<date>2020-09-14T19:42:27Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
+	<key>SUUpdateGroupIdentifier</key>
+	<integer>81284395</integer>
 	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -1583,6 +1592,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.9</string>
+	<string>3.3.12</string>
 </dict>
 </plist>

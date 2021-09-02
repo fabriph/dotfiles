@@ -13,7 +13,15 @@
 	],
 	"auto_match_enabled": false,
 	"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
-	"font_size": 14.0,
+	"font_size": 15.0,
+
+	"gnc_001": true,
+	"gnc_002": false,
+	"gnc_h12": true,
+	"gnc_m01": true,
+	"gnc_w2m12": true,
+	"gnwidgx": true,
+
 	"ignored_packages":
 	[
 		"Vintage"
