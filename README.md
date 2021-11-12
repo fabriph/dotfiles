@@ -9,12 +9,3 @@ cd ~
 
 
 This repo holds scripts used in Linux and OS X for general purpose.
-
-Author:
-
-Fabricio Pontes Harsich
-
-fabricio.pontesharsich@gmail.com
-
-http://fabricioph.com
-
