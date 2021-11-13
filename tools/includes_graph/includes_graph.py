@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 """
 ************************************************************************************************
@@ -80,28 +80,29 @@ import os
 
 INCLUDE_TAG = '#include'
 FLAG_MERGE_CC_H_FILES = True
+CHARACTERS_TO_IGNORE = ' <>"'
 
 # don't do this at home (global variables):
 global_found_first_current_directory_include = False
 global_unknown_path_part = ""
 
 def GetFilesRecursively(directory_to_inspect, relative_path=""):
-	print "GetFilesRecursively():"
-	print "directory_to_inspect " + directory_to_inspect
-	print "relative_path " + relative_path
+	# print "GetFilesRecursively():"
+	# print "directory_to_inspect " + directory_to_inspect
+	# print "relative_path " + relative_path
 	files = list()
 	currenty_directory_full_path = os.path.join(directory_to_inspect, relative_path)
 	for entry in os.listdir(currenty_directory_full_path):
 		entry_full_path = os.path.join(currenty_directory_full_path, entry)
 		entry_relative_path = os.path.join(relative_path, entry)
-		print "  entry " + entry
-		print "  entry_full_path " + entry_full_path
-		print "  entry_relative_path " + entry_relative_path
+		# print "  entry " + entry
+		# print "  entry_full_path " + entry_full_path
+		# print "  entry_relative_path " + entry_relative_path
 		if os.path.isdir(entry_full_path):
-			print "    folder"
+			# print "    folder"
 			files += GetFilesRecursively(directory_to_inspect, entry_relative_path)
 		else:
-			print "    file"
+			# print "    file"
 			files.append(entry_relative_path)
 				
 	return files
@@ -121,13 +122,13 @@ def FilterFileExtensions(all_files, set_of_allowed_extensions):
 
 
 def PopulateUnkownPathPart(directory_to_inspect, line):
-	line = line.translate(None, ' <>"')
+	line = line.translate({ord(c): None for c in CHARACTERS_TO_IGNORE})
 
 
 def ParseFileAndExtractDependencies(directory_to_inspect, filename):
-	print "ParseFileAndExtractDependencies():"
-	print "  directory_to_inspect " + directory_to_inspect
-	print "  filename " + filename
+	# print "ParseFileAndExtractDependencies():"
+	# print "  directory_to_inspect " + directory_to_inspect
+	# print "  filename " + filename
 	dependencies = set()
 	with open(os.path.join(directory_to_inspect, filename)) as file_handler:
 		for line in file_handler:
@@ -140,8 +141,8 @@ def ParseFileAndExtractDependencies(directory_to_inspect, filename):
 			# 	global_found_first_current_directory_include = True
 			# 	PopulateUnkownPathPart(directory_to_inspect, line)
 
-			line = line.translate(None, ' <>"')
-			print line
+			line = line.translate({ord(c): None for c in CHARACTERS_TO_IGNORE})
+			# print line
 
 			if FLAG_MERGE_CC_H_FILES:
 				line = DropExtension(line)
@@ -152,7 +153,7 @@ def ParseFileAndExtractDependencies(directory_to_inspect, filename):
 
 
 def BuildGraph(directory_to_inspect, all_files):
-	print "BuildGraph()"
+	# print "BuildGraph()"
 	dependency_graph = dict()
 	for file in all_files:
 		dependencies = ParseFileAndExtractDependencies(directory_to_inspect, file)
@@ -212,14 +213,14 @@ def CreateDotGraphFile(dependency_graph):
 def main(argv):
 	directory_to_inspect = argv[0]
 	all_files = GetFilesRecursively(directory_to_inspect)
-	print "all files:"
-	print all_files
+	# print "all files:"
+	# print all_files
 	all_files = FilterFileExtensions(all_files, {'cc', 'h'})
-	print "filtered files:"
-	print all_files
+	# print "filtered files:"
+	# print all_files
 
 	dependency_graph = BuildGraph(directory_to_inspect, all_files)
-	print dependency_graph
+	# print dependency_graph
 	CreateDotGraphFile(dependency_graph)
 
 
