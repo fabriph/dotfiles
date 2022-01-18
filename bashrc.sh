@@ -258,9 +258,9 @@ if [[ "$?" -eq 0 ]]; then
     # Normal Git
     #PS1='\[$ps1_user_color\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
     # Compound Git + Perforce
-    PS1='\[$ps1_user_color\]$ps1_user\[$reset\]:\[$cyan\]$(perforce_client)\[$blue$bold\]$(my_ps_dir)\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
+    PS1='[\D{%Y%m%d-%H:%M:%S}] \[$ps1_user_color\]$ps1_user\[$reset\]:\[$cyan\]$(perforce_client)\[$blue$bold\]$(my_ps_dir)\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
 else
-    PS1='\[$ps1_user_color\]$ps1_user\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
+    PS1='[\D{%Y%m%d-%H:%M:%S}] \[$ps1_user_color\]$ps1_user\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
     missing+=("__git_ps1")
 fi
 
