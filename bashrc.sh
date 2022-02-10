@@ -163,6 +163,36 @@ fi
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Prompt
 
+function preexec_promt_stats() {
+  # TODO maybe append the return value of whatever was called before ($?)
+  # currentdatetime=`TZ=":US/Eastern" date "+%Y.%m.%d-%H:%M:%S"`
+  # echo "[${currentdatetime} EST]"
+  # currentdatetime=`TZ=":US/Western" date "+%Y.%m.%d-%H:%M:%S"`
+  # echo "[${currentdatetime} PST]"
+  currentdatetime=`date "+%Y.%m.%d-%H:%M:%S"`
+  echo "[${currentdatetime} loc] started "
+  echo ""
+}
+
+function precmd_promt_stats() {
+  # TODO maybe append the return value of whatever was called before ($?)
+  # currentdatetime=`TZ=":US/Eastern" date "+%Y.%m.%d-%H:%M:%S"`
+  # echo "[${currentdatetime} EST] ^ finished ^"
+  # currentdatetime=`TZ=":US/Western" date "+%Y.%m.%d-%H:%M:%S"`
+  # echo "[${currentdatetime} PST]"
+  echo ""
+  currentdatetime=`date "+%Y.%m.%d-%H:%M:%S"`
+  echo "[${currentdatetime} loc] ^ finished ^"
+}
+
+
+if [ -z ${preexec_functions+x} ]; then
+  echo "Promt timestampt not configured. Use PROMPT_COMMAND or install bash-preexec"
+else
+  preexec_functions+=(preexec_promt_stats)
+  precmd_functions+=(precmd_promt_stats)
+fi
+
 function perforce_client() {
   pwd | awk -F '/' '{
     n = split($0,a,"/");
@@ -258,9 +288,9 @@ if [[ "$?" -eq 0 ]]; then
     # Normal Git
     #PS1='\[$ps1_user_color\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
     # Compound Git + Perforce
-    PS1='[\D{%Y%m%d-%H:%M:%S}] \[$ps1_user_color\]$ps1_user\[$reset\]:\[$cyan\]$(perforce_client)\[$blue$bold\]$(my_ps_dir)\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
+    PS1='\[$ps1_user_color\]$ps1_user\[$reset\]:\[$cyan\]$(perforce_client)\[$blue$bold\]$(my_ps_dir)\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
 else
-    PS1='[\D{%Y%m%d-%H:%M:%S}] \[$ps1_user_color\]$ps1_user\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
+    PS1='\[$ps1_user_color\]$ps1_user\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
     missing+=("__git_ps1")
 fi
 
