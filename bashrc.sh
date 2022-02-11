@@ -13,6 +13,11 @@ case $- in
       *) return;;
 esac
 
+# Constants
+ECHO_LIGHT_GREY='\033[0;37m'
+ECHO_DARK_GREY='\033[1;30m'
+ECHO_NO_COLOR='\033[0m'
+
 missing=()
 
 if [ -d "$HOME/bin" ]; then
@@ -164,25 +169,19 @@ fi
 # Prompt
 
 function preexec_promt_stats() {
-  # TODO maybe append the return value of whatever was called before ($?)
-  # currentdatetime=`TZ=":US/Eastern" date "+%Y.%m.%d-%H:%M:%S"`
-  # echo "[${currentdatetime} EST]"
-  # currentdatetime=`TZ=":US/Western" date "+%Y.%m.%d-%H:%M:%S"`
-  # echo "[${currentdatetime} PST]"
-  currentdatetime=`date "+%Y.%m.%d-%H:%M:%S"`
-  echo "[${currentdatetime} loc] started "
-  echo ""
+  datetime_local=`date "+%Y.%m.%d-%H:%M:%S"`
+  datetime_pst=`TZ=":US/Pacific" date "+%Y.%m.%d-%H:%M:%S"`
+  datetime_est=`TZ=":US/Eastern" date "+%Y.%m.%d-%H:%M:%S"`
+  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_est} EST] [${datetime_pst} PST]"
 }
 
 function precmd_promt_stats() {
   # TODO maybe append the return value of whatever was called before ($?)
-  # currentdatetime=`TZ=":US/Eastern" date "+%Y.%m.%d-%H:%M:%S"`
-  # echo "[${currentdatetime} EST] ^ finished ^"
-  # currentdatetime=`TZ=":US/Western" date "+%Y.%m.%d-%H:%M:%S"`
-  # echo "[${currentdatetime} PST]"
-  echo ""
-  currentdatetime=`date "+%Y.%m.%d-%H:%M:%S"`
-  echo "[${currentdatetime} loc] ^ finished ^"
+
+  datetime_local=`date "+%Y.%m.%d-%H:%M:%S"`
+  datetime_pst=`TZ=":US/Pacific" date "+%Y.%m.%d-%H:%M:%S"`
+  datetime_est=`TZ=":US/Eastern" date "+%Y.%m.%d-%H:%M:%S"`
+  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_est} EST] [${datetime_pst} PST]"
 }
 
 
@@ -192,6 +191,8 @@ else
   preexec_functions+=(preexec_promt_stats)
   precmd_functions+=(precmd_promt_stats)
 fi
+
+
 
 function perforce_client() {
   pwd | awk -F '/' '{
