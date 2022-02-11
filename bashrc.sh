@@ -172,7 +172,7 @@ function preexec_promt_stats() {
   datetime_local=`date "+%Y.%m.%d-%H:%M:%S"`
   datetime_pst=`TZ=":US/Pacific" date "+%Y.%m.%d-%H:%M:%S"`
   datetime_est=`TZ=":US/Eastern" date "+%Y.%m.%d-%H:%M:%S"`
-  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_est} EST] [${datetime_pst} PST]"
+  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_est} EST] [${datetime_pst} PST]${ECHO_NO_COLOR}"
 }
 
 function precmd_promt_stats() {
@@ -181,7 +181,7 @@ function precmd_promt_stats() {
   datetime_local=`date "+%Y.%m.%d-%H:%M:%S"`
   datetime_pst=`TZ=":US/Pacific" date "+%Y.%m.%d-%H:%M:%S"`
   datetime_est=`TZ=":US/Eastern" date "+%Y.%m.%d-%H:%M:%S"`
-  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_est} EST] [${datetime_pst} PST]"
+  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_est} EST] [${datetime_pst} PST]${ECHO_NO_COLOR}"
 }
 
 
@@ -191,8 +191,6 @@ else
   preexec_functions+=(preexec_promt_stats)
   precmd_functions+=(precmd_promt_stats)
 fi
-
-
 
 function perforce_client() {
   pwd | awk -F '/' '{
