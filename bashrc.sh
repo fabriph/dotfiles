@@ -13,6 +13,11 @@ case $- in
       *) return;;
 esac
 
+# Constants
+ECHO_LIGHT_GREY='\033[0;37m'
+ECHO_DARK_GREY='\033[1;30m'
+ECHO_NO_COLOR='\033[0m'
+
 missing=()
 
 if [ -d "$HOME/bin" ]; then
@@ -28,7 +33,7 @@ fi
 # Check window size after every command. If necessary, updates the values of LINES and COLUMNS.
 shopt -s checkwinsize
 # History size
-HISTSIZE=5000
+HISTSIZE=10000
 # Ignore and delete duplicate bash history entries.
 export HISTCONTROL=ignoredups:erasedups
 # Append to the history file, don't overwrite it
@@ -51,6 +56,8 @@ alias la='ls -al'
 alias l='ls -CF'
 alias ..='cd ..'
 alias ...='cd ...'
+
+alias lst='python ~/dev/scripts/ls_tests.py'
 
 # Grep Recursive
 alias gr='grep -RnIf /dev/stdin . <<<'
@@ -161,6 +168,30 @@ fi
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Prompt
 
+function preexec_promt_stats() {
+  datetime_local=`date "+%Y-%m-%d %H:%M:%S"`
+  datetime_pst=`TZ=":US/Pacific" date "+%Y-%m-%d %H:%M:%S"`
+  datetime_est=`TZ=":US/Eastern" date "+%Y-%m-%d %H:%M:%S"`
+  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_est} EST] [${datetime_pst} PST]${ECHO_NO_COLOR}"
+}
+
+function precmd_promt_stats() {
+  # TODO maybe append the return value of whatever was called before ($?)
+
+  datetime_local=`date "+%Y-%m-%d %H:%M:%S"`
+  datetime_pst=`TZ=":US/Pacific" date "+%Y-%m-%d %H:%M:%S"`
+  datetime_est=`TZ=":US/Eastern" date "+%Y-%m-%d %H:%M:%S"`
+  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_est} EST] [${datetime_pst} PST]${ECHO_NO_COLOR}"
+}
+
+
+if [ -z ${preexec_functions+x} ]; then
+  echo "Promt timestampt not configured. Use PROMPT_COMMAND or install bash-preexec"
+else
+  preexec_functions+=(preexec_promt_stats)
+  precmd_functions+=(precmd_promt_stats)
+fi
+
 function perforce_client() {
   pwd | awk -F '/' '{
     n = split($0,a,"/");
@@ -241,6 +272,7 @@ else
     ps1_user="$node"
     ps1_user_color="$green"
   fi
+  ps1_user_color="$pink"
 fi
 
 # Normal PS:
@@ -274,42 +306,3 @@ fi
 #  output=${output:1}
 #  echo "Missing: ${output[*]}"
 #fi
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# DEPRECATED: Stuff used at previous jobs.
-  # Iats Switch: Easily exchange between local branches.
-  # function iswitch {
-  #   #  iatsSwitch `iatsListBranches | cut -d"/" -f 2 | peco`
-  #   if [ "$#" -eq 0 ]; then
-  #     target=`git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
-  #     if [ "$target" ]; then
-  #       iatsSwitch "$target"
-  #     fi
-  #   else
-  #     iatsSwitch "$@"
-  #   fi
-  # }
-
-  # function iListTests {
-  #   vim `find . -name "*unit.cpp" | peco`
-  # }
-
-  # function ideleteLocalBranch {
-  #   # TODO: remove master from the list.
-  #   # TODO: maybe allow the user to delete it remotely:
-  #   #   git push origin --delete REMOTE_BRANCH_TO_DELETE
-  #   target=`git branch | awk -F ' +' '! /\(no branch\)/ {print $2}' | peco`
-  #   if [ "$target" == "" ]; then
-  #     return
-  #   fi
-  #   REPLY=""
-  #   while [[ ! $REPLY =~ ^[YyNn]$ ]]
-  #   do
-  #     read -p "Sure you want to delete $target ? (Y/n)" -n 1 -r
-  #     echo
-  #   done
-  #   if [[ $REPLY =~ ^[Yy]$ ]]; then
-  #     git branch -D "$target"
-  #   fi
-  # }
