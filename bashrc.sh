@@ -13,6 +13,11 @@ case $- in
       *) return;;
 esac
 
+# Constants
+ECHO_LIGHT_GREY='\033[0;37m'
+ECHO_DARK_GREY='\033[1;30m'
+ECHO_NO_COLOR='\033[0m'
+
 missing=()
 
 if [ -d "$HOME/bin" ]; then
@@ -162,6 +167,30 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Prompt
+
+function preexec_promt_stats() {
+  datetime_local=`date "+%Y-%m-%d %H:%M:%S"`
+  datetime_pst=`TZ=":US/Pacific" date "+%Y-%m-%d %H:%M:%S"`
+  datetime_est=`TZ=":US/Eastern" date "+%Y-%m-%d %H:%M:%S"`
+  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_est} EST] [${datetime_pst} PST]${ECHO_NO_COLOR}"
+}
+
+function precmd_promt_stats() {
+  # TODO maybe append the return value of whatever was called before ($?)
+
+  datetime_local=`date "+%Y-%m-%d %H:%M:%S"`
+  datetime_pst=`TZ=":US/Pacific" date "+%Y-%m-%d %H:%M:%S"`
+  datetime_est=`TZ=":US/Eastern" date "+%Y-%m-%d %H:%M:%S"`
+  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_est} EST] [${datetime_pst} PST]${ECHO_NO_COLOR}"
+}
+
+
+if [ -z ${preexec_functions+x} ]; then
+  echo "Promt timestampt not configured. Use PROMPT_COMMAND or install bash-preexec"
+else
+  preexec_functions+=(preexec_promt_stats)
+  precmd_functions+=(precmd_promt_stats)
+fi
 
 function perforce_client() {
   pwd | awk -F '/' '{

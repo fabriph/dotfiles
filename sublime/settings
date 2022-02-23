@@ -13,7 +13,7 @@
 	],
 	"auto_match_enabled": false,
 	"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
-	"font_size": 15.0,
+	"font_size": 19.0,
 	"gnc_001": true,
 	"gnc_002": false,
 	"gnc_h12": true,
@@ -30,5 +30,5 @@
 	],
 	"open_files_in_new_window": false,
 	"theme": "Default.sublime-theme",
-	"word_wrap": true
+	"word_wrap": true,
 }

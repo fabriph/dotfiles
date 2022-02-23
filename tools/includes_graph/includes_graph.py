@@ -9,6 +9,14 @@ cat output.graph | dot -Tsvg -o ./output.svg
 Always execute from the root directory of your project (at least for now, until I have time to improve this).
 
 ************************************************************************************************
+
+
+OSError: [Errno 27] File too large
+During handling of the above exception, another exception occurred:
+
+
+
+************************************************************************************************
 Whiteboard space I've been using for ideas:
 
 If we find a file that has both the .h and .cc, it is easy to figure what is the actual root path of a project.

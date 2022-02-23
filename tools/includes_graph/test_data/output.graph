@@ -1,0 +1,16 @@
+digraph mygraph {
+  "a" -> "foo/c"
+
+  "b" -> "string"
+
+  "baz1/baz2/dog/puppy/puppy" -> "baz1/baz2/dog/dog"
+
+  "baz1/baz2/dog/doggo/doggo" -> "baz1/baz2/dog/puppy/puppy"
+
+
+  "foo/c" -> "math"
+  "foo/c" -> "bar/d"
+
+  "bar/d" -> "math"
+  "bar/d" -> "string"
+}
