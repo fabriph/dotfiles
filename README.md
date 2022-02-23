@@ -2,9 +2,9 @@ Usage:
 ```
 mkdir -p ~/dev
 cd ~/dev
-git clone https://github.com/fabriph/scripts.git
+git clone https://github.com/fabriph/dotfiles.git
 cd ~
-./dev/scripts/install.sh
+./dev/dotfiles/install.sh
 ```
 
 
