@@ -131,6 +131,9 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Homebrew
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 export PATH=$HOME/homebrew/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/homebrew/lib:$LD_LIBRARY_PATH
 
@@ -248,17 +251,17 @@ ps1_user=$USER
 ps1_user_color="$green"
 if [ "$(uname)" == "Darwin" ]; then  # Mac
   # Switch on serial number
-  serial="$(system_profiler SPHardwareDataType | awk '/Serial/ {print $4}')"
-  i=$((${#serial}-3))
-  if [ "${serial:$i:3}" == "R53" ]; then  # Mac personal
+  # serial="$(system_profiler SPHardwareDataType | awk '/Serial/ {print $4}')"
+  # i=$((${#serial}-3))
+  # if [ "${serial:$i:3}" == "R53" ]; then  # Mac personal
+  #   ps1_user_color="$green"
+  # elif [  "${serial:$i:3}" == "VDL" ]; then  # Mac G
+  #   ps1_user="Mac"
+  #   #ps1_user_color="$cyan"
+  # else  # Unkown Mac
+    # ps1_user="Mac"
     ps1_user_color="$green"
-  elif [  "${serial:$i:3}" == "VDL" ]; then  # Mac G
-    ps1_user="Mac"
-    #ps1_user_color="$cyan"
-  else  # Unkown Mac
-    ps1_user="Mac?"
-    ps1_user_color="$red"
-  fi
+  # fi
 else
   # Linux & others
   node=`uname --nodename | cut -f2 -d'.'`
@@ -270,9 +273,9 @@ else
     ps1_user_color="$green"
   else  # Uknown Linux
     ps1_user="$node"
-    ps1_user_color="$green"
+    ps1_user_color="$pink"
   fi
-  ps1_user_color="$pink"
+  # ps1_user_color="$pink"
 fi
 
 # Normal PS:
