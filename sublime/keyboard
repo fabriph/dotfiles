@@ -12,7 +12,7 @@
 
 // Duplicate line
     { "keys": ["ctrl+shift+d"], "command": "duplicate_line" },
-    { "keys": ["ctrl+shift+c"], "command": "duplicate_line" },
+    { "keys": ["super+shift+c"], "command": "duplicate_line" },
 
 // Linux:
     { "keys": ["ctrl+g"], "command": "find_next" },
