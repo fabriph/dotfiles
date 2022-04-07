@@ -7,6 +7,6 @@ cd ~
 ./dev/dotfiles/install.sh
 ```
 
-git clone https://github.com/fabriph/dotfiles.git
+Legacy: `git clone https://github.com/fabriph/dotfiles.git`
 
 This repo holds scripts used in Linux and OS X for general purpose.

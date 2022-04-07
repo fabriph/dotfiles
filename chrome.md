@@ -1,4 +1,13 @@
-Tips regarding using Chrome in Mac.
+Chrome
+
+# Setting up
+
+- Disable background sync for websites.
+- Enable sync.
+- Enable enhanced spellchecker.
+
+
+# Tips
 
 
 ⇧+Delete: delete the overlayed entry of the auto-complete fields history.
