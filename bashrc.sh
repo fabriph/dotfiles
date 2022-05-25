@@ -132,7 +132,9 @@ fi
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Homebrew
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ -f /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 export PATH=$HOME/homebrew/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/homebrew/lib:$LD_LIBRARY_PATH
@@ -160,16 +162,18 @@ fi
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# Google
-if [ -f ~/.bash_google.sh ]; then
-  source ~/.bash_google.sh
+# Pinterest
+if [ -f ~/.bash_pinterest.sh ]; then
+  source ~/.bash_pinterest.sh
 else
-  missing+=("bash_google")
+  missing+=("bash_pinterest")
 fi
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Prompt
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 
 function preexec_promt_stats() {
   datetime_local=`date "+%Y-%m-%d %H:%M:%S"`
@@ -188,11 +192,11 @@ function precmd_promt_stats() {
 }
 
 
-if [ -z ${preexec_functions+x} ]; then
-  echo "Promt timestampt not configured. Use PROMPT_COMMAND or install bash-preexec"
-else
+if [ -f ~/.bash-preexec.sh ]; then
   preexec_functions+=(preexec_promt_stats)
   precmd_functions+=(precmd_promt_stats)
+else
+  echo "Promt timestampt not configured. Use PROMPT_COMMAND or install bash-preexec"
 fi
 
 function perforce_client() {
@@ -309,3 +313,7 @@ fi
 #  output=${output:1}
 #  echo "Missing: ${output[*]}"
 #fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
