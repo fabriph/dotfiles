@@ -6,6 +6,8 @@
 #  - Remove git completion from the repo and download it every time from git.
 #  - Add hosts as a copy, or maybe a softlink?
 
+TRASH_DIR=~/tmp-trash
+
 # A soft version of rm.
 rmsoft () {
     mkdir -p $TRASH_DIR
@@ -77,7 +79,6 @@ install_package () {
 }
 
 INSTALL_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-TRASH_DIR=~/tmp-trash
 today=`date +%Y-%m-%d.%H:%M:%S`
 
 install_package "Bash profile (.bashrc)" "$INSTALL_DIR/bashrc.sh" ~/.bashrc

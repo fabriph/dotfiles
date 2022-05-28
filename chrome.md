@@ -3,8 +3,8 @@ Chrome
 # Setting up
 
 - Disable background sync for websites.
-- Enable sync.
-- Enable enhanced spellchecker.
+- Enable gmail sync but disable passwords.
+- Enable enhanced spell checker.
 
 
 # Tips

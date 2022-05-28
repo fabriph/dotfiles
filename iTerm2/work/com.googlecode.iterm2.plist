@@ -9,7 +9,7 @@
 	<key>AdjustWindowForFontSizeChange</key>
 	<true/>
 	<key>AllowClipboardAccess</key>
-	<false/>
+	<true/>
 	<key>AnimateDimming</key>
 	<false/>
 	<key>AskAboutOutdatedKeyMappingForGuid062B23D3-3119-4873-80E2-8E7EFEABB219</key>
@@ -27,7 +27,7 @@
 	<key>CopyLastNewline</key>
 	<false/>
 	<key>CopySelection</key>
-	<false/>
+	<true/>
 	<key>Default Bookmark Guid</key>
 	<string>062B23D3-3119-4873-80E2-8E7EFEABB219</string>
 	<key>DimBackgroundWindows</key>
