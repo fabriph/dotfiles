@@ -7,6 +7,7 @@
 #  - Add hosts as a copy, or maybe a softlink?
 
 TRASH_DIR=~/tmp-trash
+today=`date +%Y-%m-%d.%H:%M:%S`
 
 # A soft version of rm.
 rmsoft () {
@@ -79,7 +80,6 @@ install_package () {
 }
 
 INSTALL_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-today=`date +%Y-%m-%d.%H:%M:%S`
 
 install_package "Bash profile (.bashrc)" "$INSTALL_DIR/bashrc.sh" ~/.bashrc
 install_package "Bash SSH placebo (.bash_profile)" "$INSTALL_DIR/bash_profile.sh" ~/.bash_profile
