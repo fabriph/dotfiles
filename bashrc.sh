@@ -43,13 +43,13 @@ if [ "$(uname)" == "Darwin" ]; then  # Mac
   export CLICOLOR=1
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   alias ls="ls --color=auto"
+  alias open='nautilus . > /dev/null 2>&1 &'
 else
   missing+=("LS coloring")
 fi
 
 alias grep='grep --color=always'
 
-#alias open='nautilus . > /dev/null 2>&1 &'
 alias s='screen'
 alias ll='ls -l'
 alias la='ls -al'
@@ -57,7 +57,7 @@ alias l='ls -CF'
 alias ..='cd ..'
 alias ...='cd ...'
 
-alias lst='python ~/dev/scripts/ls_tests.py'
+alias lst='python ~/dev/dotfiles/ls_tests.py'
 
 # Grep Recursive
 alias gr='grep -RnIf /dev/stdin . <<<'
@@ -89,17 +89,6 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # GIT
-alias push='git push origin master'
-alias ga="git add"
-alias gb="git branch"
-alias gc="git commit -m 'autocommit' ${@:2}"
-alias gd="git diff"
-alias gs="git status"
-alias gap=git_add_part
-alias gca=git_commit_all
-alias gcp=git_add_part
-alias gco="git checkout"
-alias gst="git stash"
 
 git_add_part () {
   git add --patch "$1"
@@ -111,6 +100,17 @@ git_commit_all () {
   files_to_commit=`git status -s | awk '{if ($1 == "M") print $2}' | paste -s -d' ' -`
   gc $files_to_commit
 }
+
+alias ga="git add"
+alias gb="git branch"
+alias gc="git commit -m 'autocommit' ${@:2}"
+alias gd="git diff"
+alias gs="git status"
+alias gca=git_commit_all
+#alias gap=git_add_part
+#alias gcp=git_add_part
+#alias gco="git checkout"
+#alias gst="git stash"
 
 if [ -f /usr/share/bash-completion/completions/git ]; then
   source /usr/share/bash-completion/completions/git
@@ -132,13 +132,6 @@ fi
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Homebrew
 
-if [ -f /opt/homebrew/bin/brew ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
-export PATH=$HOME/homebrew/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/homebrew/lib:$LD_LIBRARY_PATH
-
 brew_completion () {
   if [ -f `brew --repository`/Library/Contributions/brew_bash_completion.sh ]; then
     source `brew --repository`/Library/Contributions/brew_bash_completion.sh
@@ -146,6 +139,7 @@ brew_completion () {
     missing+=("brew-bash")
   fi
 }
+
 vagrant_completion () {
   if [ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; then
     source `brew --prefix`/etc/bash_completion.d/vagrant
@@ -156,8 +150,14 @@ vagrant_completion () {
 
 command -v brew >/dev/null 2>&1
 if [[ "$?" -eq 0 ]]; then
+  export PATH=$HOME/homebrew/bin:$PATH
+  export LD_LIBRARY_PATH=$HOME/homebrew/lib:$LD_LIBRARY_PATH
   brew_completion
   vagrant_completion
+fi
+
+if [ -f /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 
@@ -263,8 +263,8 @@ if [ "$(uname)" == "Darwin" ]; then  # Mac
   #   ps1_user="Mac"
   #   #ps1_user_color="$cyan"
   # else  # Unkown Mac
-    # ps1_user="Mac"
-    ps1_user_color="$green"
+  ps1_user="Mac"
+  ps1_user_color="$green"
   # fi
 else
   # Linux & others
@@ -282,38 +282,39 @@ else
   # ps1_user_color="$pink"
 fi
 
-# Normal PS:
-#PS1='\[$ps1_user_color$bold\]\u\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
-
-# Perforce PS:
-#PS1='\[$green\]\u\[$reset\]:\[$cyan\]$(perforce_client)\[$blue$bold\]$(my_ps_dir)\[$reset\]\$ '
-
-# Git PS:
+# Custom PS1:
 command -v __git_ps1 >/dev/null 2>&1
 if [[ "$?" -eq 0 ]]; then
-    # Normal Git
-    #PS1='\[$ps1_user_color\]\u\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
-    # Compound Git + Perforce
-    PS1='\[$ps1_user_color\]$ps1_user\[$reset\]:\[$cyan\]$(perforce_client)\[$blue$bold\]$(my_ps_dir)\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
-else
-    PS1='\[$ps1_user_color\]$ps1_user\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
-    missing+=("__git_ps1")
-fi
+  # Path compression is temporarely disabled (`$(my_ps_dir)` vs `\w`)
 
-# Custom PS:
-#PS1='\[$ps1_user_color\]\u\[$reset\]:\[$blue$bold\]$(my_ps_dir)\[$reset\]\$ '
+  # PS1 Git
+  PS1='\[$ps1_user_color\]$ps1_user\[$reset\]:\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
+
+  # PS1 Git + Perforce
+  #PS1='\[$ps1_user_color\]$ps1_user\[$reset\]:\[$cyan\]$(perforce_client)\[$blue$bold\]\w\[$grey\]$(__git_ps1 " %s")\[$reset\]\$ '
+else
+  PS1='\[$ps1_user_color\]$ps1_user\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ '
+  missing+=("__git_ps1")
+fi
 
 # Try colors:
 #PS1='\[$grey\]grey\[$red\]red\[$green\]green\[$yellow\]yellow\[$blue\]blue\[$pink\]pink\[$cyan\]cyan\[$white\]white\[$bold\]\[$grey\]grey\[$red\]red\[$green\]green\[$yellow\]yellow\[$blue\]blue\[$pink\]pink\[$cyan\]cyan\[$white\]white\[$reset\]'
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# Show missing files
-#if [ ! ${#missing[@]} -eq 0 ]; then
-#  output=$(printf ", %s" "${missing[@]}")
-#  output=${output:1}
-#  echo "Missing: ${output[*]}"
-#fi
+# NVM
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Show missing files
+if [ ! ${#missing[@]} -eq 0 ]; then
+  output=$(printf ", %s" "${missing[@]}")
+  output=${output:1}
+  echo "bashrc.sh: missing ${output[*]}"
+else
+  echo "bashrc.sh: nothing missing"
+fi
