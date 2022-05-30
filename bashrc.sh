@@ -13,6 +13,10 @@ case $- in
       *) return;;
 esac
 
+# I got this line from AWS sudo bashrc
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
 # Constants
 ECHO_LIGHT_GREY='\033[0;37m'
 ECHO_DARK_GREY='\033[1;30m'
@@ -34,6 +38,7 @@ fi
 shopt -s checkwinsize
 # History size
 HISTSIZE=10000
+HISTFILESIZE=20000
 # Ignore and delete duplicate bash history entries.
 export HISTCONTROL=ignoredups:erasedups
 # Append to the history file, don't overwrite it
@@ -56,6 +61,9 @@ alias la='ls -al'
 alias l='ls -CF'
 alias ..='cd ..'
 alias ...='cd ...'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
 
 alias lst='python ~/dev/dotfiles/ls_tests.py'
 
@@ -163,11 +171,11 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Pinterest
-if [ -f ~/.bash_pinterest.sh ]; then
-  source ~/.bash_pinterest.sh
-else
-  missing+=("bash_pinterest")
-fi
+# if [ -f ~/.bash_pinterest.sh ]; then
+#   source ~/.bash_pinterest.sh
+# else
+#   missing+=("bash_pinterest")
+# fi
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
