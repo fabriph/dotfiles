@@ -46,6 +46,7 @@ shopt -s histappend
 
 if [ "$(uname)" == "Darwin" ]; then  # Mac
   export CLICOLOR=1
+  export BASH_SILENCE_DEPRECATION_WARNING=1  # Disable the ZSH warninig.
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   alias ls="ls --color=auto"
   alias open='nautilus . > /dev/null 2>&1 &'
