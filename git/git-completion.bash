@@ -2,6 +2,7 @@
 
 # Downloaded from https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
 
+# bash/zsh completion support for core Git.
 #
 # Copyright (C) 2006,2007 Shawn O. Pearce <spearce@spearce.org>
 # Conceptually based on gitcompletion (http://gitweb.hawaga.org.uk/).
@@ -51,6 +52,11 @@
 #     When set to "1", do not include "DWIM" suggestions in git-checkout
 #     and git-switch completion (e.g., completing "foo" when "origin/foo"
 #     exists).
+#
+#   GIT_COMPLETION_SHOW_ALL_COMMANDS
+#
+#     When set to "1" suggest all commands, including plumbing commands
+#     which are hidden by default (e.g. "cat-file" on "git ca<TAB>").
 #
 #   GIT_COMPLETION_SHOW_ALL
 #
@@ -1569,7 +1575,7 @@ _git_checkout ()
 
 	case "$cur" in
 	--conflict=*)
-		__gitcomp "diff3 merge" "" "${cur##--conflict=}"
+		__gitcomp "diff3 merge zdiff3" "" "${cur##--conflict=}"
 		;;
 	--*)
 		__gitcomp_builtin checkout
@@ -2004,7 +2010,7 @@ __git_log_shortlog_options="
 "
 
 __git_log_pretty_formats="oneline short medium full fuller reference email raw format: tformat: mboxrd"
-__git_log_date_formats="relative iso8601 iso8601-strict rfc2822 short local default raw unix format:"
+__git_log_date_formats="relative iso8601 iso8601-strict rfc2822 short local default human raw unix auto: format:"
 
 _git_log ()
 {
@@ -2362,16 +2368,7 @@ _git_send_email ()
 		return
 		;;
 	--*)
-		__gitcomp_builtin send-email "--annotate --bcc --cc --cc-cmd --chain-reply-to
-			--compose --confirm= --dry-run --envelope-sender
-			--from --identity
-			--in-reply-to --no-chain-reply-to --no-signed-off-by-cc
-			--no-suppress-from --no-thread --quiet --reply-to
-			--signed-off-by-cc --smtp-pass --smtp-server
-			--smtp-server-port --smtp-encryption= --smtp-user
-			--subject --suppress-cc= --suppress-from --thread --to
-			--validate --no-validate
-			$__git_format_patch_extra_options"
+		__gitcomp_builtin send-email "$__git_format_patch_extra_options"
 		return
 		;;
 	esac
@@ -2449,7 +2446,7 @@ _git_switch ()
 
 	case "$cur" in
 	--conflict=*)
-		__gitcomp "diff3 merge" "" "${cur##--conflict=}"
+		__gitcomp "diff3 merge zdiff3" "" "${cur##--conflict=}"
 		;;
 	--*)
 		__gitcomp_builtin switch
@@ -2889,7 +2886,7 @@ _git_restore ()
 
 	case "$cur" in
 	--conflict=*)
-		__gitcomp "diff3 merge" "" "${cur##--conflict=}"
+		__gitcomp "diff3 merge zdiff3" "" "${cur##--conflict=}"
 		;;
 	--source=*)
 		__git_complete_refs --cur="${cur##--source=}"
@@ -2897,6 +2894,10 @@ _git_restore ()
 	--*)
 		__gitcomp_builtin restore
 		;;
+	*)
+		if __git rev-parse --verify --quiet HEAD >/dev/null; then
+			__git_complete_index_file "--modified"
+		fi
 	esac
 }
 
@@ -2998,9 +2999,37 @@ _git_show_branch ()
 	__git_complete_revlist
 }
 
+__gitcomp_directories ()
+{
+	local _tmp_dir _tmp_completions _found=0
+
+	# Get the directory of the current token; this differs from dirname
+	# in that it keeps up to the final trailing slash.  If no slash found
+	# that's fine too.
+	[[ "$cur" =~ .*/ ]]
+	_tmp_dir=$BASH_REMATCH
+
+	# Find possible directory completions, adding trailing '/' characters,
+	# de-quoting, and handling unusual characters.
+	while IFS= read -r -d $'\0' c ; do
+		# If there are directory completions, find ones that start
+		# with "$cur", the current token, and put those in COMPREPLY
+		if [[ $c == "$cur"* ]]; then
+			COMPREPLY+=("$c/")
+			_found=1
+		fi
+	done < <(git ls-tree -z -d --name-only HEAD $_tmp_dir)
+
+	if [[ $_found == 0 ]] && [[ "$cur" =~ /$ ]]; then
+		# No possible further completions any deeper, so assume we're at
+		# a leaf directory and just consider it complete
+		__gitcomp_direct_append "$cur "
+	fi
+}
+
 _git_sparse_checkout ()
 {
-	local subcommands="list init set disable"
+	local subcommands="list init set disable add reapply"
 	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
@@ -3008,14 +3037,14 @@ _git_sparse_checkout ()
 	fi
 
 	case "$subcommand,$cur" in
-	init,--*)
-		__gitcomp "--cone"
+	*,--*)
+		__gitcomp_builtin sparse-checkout_$subcommand "" "--"
 		;;
-	set,--*)
-		__gitcomp "--stdin"
-		;;
-	*)
-		;;
+	set,*|add,*)
+		if [ "$(__git config core.sparseCheckoutCone)" == "true" ] ||
+		[ -n "$(__git_find_on_cmdline --cone)" ]; then
+			__gitcomp_directories
+		fi
 	esac
 }
 
@@ -3467,7 +3496,13 @@ __git_main ()
 			then
 				__gitcomp "$GIT_TESTING_PORCELAIN_COMMAND_LIST"
 			else
-				__gitcomp "$(__git --list-cmds=list-mainporcelain,others,nohelpers,alias,list-complete,config)"
+				local list_cmds=list-mainporcelain,others,nohelpers,alias,list-complete,config
+
+				if test "${GIT_COMPLETION_SHOW_ALL_COMMANDS-}" = "1"
+				then
+					list_cmds=builtins,$list_cmds
+				fi
+				__gitcomp "$(__git --list-cmds=$list_cmds)"
 			fi
 			;;
 		esac
