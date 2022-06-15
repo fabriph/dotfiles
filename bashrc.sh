@@ -43,6 +43,8 @@ HISTFILESIZE=20000
 export HISTCONTROL=ignoredups:erasedups
 # Append to the history file, don't overwrite it
 shopt -s histappend
+# Print timestamp when showing history
+export HISTTIMEFORMAT="%F %T "
 
 if [ "$(uname)" == "Darwin" ]; then  # Mac
   export CLICOLOR=1
