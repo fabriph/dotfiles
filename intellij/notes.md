@@ -4,10 +4,12 @@
 
 ## Keymaps
 
-"Delete Line": ⌘D
-"Delete to Line Start": ⌘ Backspace
-"Duplicate Line or Selection": ⌘⇧C
-"Sort Lines": ⌘⇧S
+- "Delete Line": ⌘D
+- "Delete to Line Start": ⌘ Backspace
+- "Duplicate Line or Selection": ⌘⇧C
+- "Sort Lines": ⌘⇧S
+- "Move Line Down": ⌥↓
+- "Move Line Up": ⌥↑
 
 diff in editor? ⌘⇧D
 
