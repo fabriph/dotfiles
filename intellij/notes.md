@@ -7,6 +7,7 @@
 "Delete Line": ⌘D
 "Delete to Line Start": ⌘ Backspace
 "Duplicate Line or Selection": ⌘⇧C
+"Sort Lines": ⌘⇧S
 
 diff in editor? ⌘⇧D
 
