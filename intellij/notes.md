@@ -4,9 +4,11 @@
 
 ## Keymaps
 
-change "Delete Line" to "Delete to Line Start"
-
+"Delete Line": ⌘D
+"Delete to Line Start": ⌘ Backspace
 "Duplicate Line or Selection": ⌘⇧C
+
+diff in editor? ⌘⇧D
 
 ## Editor
 General > Smart Keys:
