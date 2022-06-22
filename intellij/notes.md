@@ -7,9 +7,10 @@
 - "Delete Line": ⌘D
 - "Delete to Line Start": ⌘ Backspace
 - "Duplicate Line or Selection": ⌘⇧C
-- "Sort Lines": ⌘⇧S
 - "Move Line Down": ⌥↓
 - "Move Line Up": ⌥↑
+- "Search Everywhere": ⌘O
+- "Sort Lines": ⌘⇧S
 
 diff in editor? ⌘⇧D
 
