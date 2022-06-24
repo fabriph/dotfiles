@@ -9,6 +9,7 @@
 - "Duplicate Line or Selection": ⌘⇧C
 - "Move Line Down": ⌥↓
 - "Move Line Up": ⌥↑
+- "Reopen Closed Tab": ⌘⇧W
 - "Search Everywhere": ⌘O
 - "Sort Lines": ⌘⇧S
 
