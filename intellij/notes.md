@@ -7,8 +7,11 @@
 - "Delete Line": ⌘D
 - "Delete to Line Start": ⌘ Backspace
 - "Duplicate Line or Selection": ⌘⇧C
+- "Move Caret to Text End": ⌘↓
+- "Move Caret to Text Start": ⌘↑
 - "Move Line Down": ⌥↓
 - "Move Line Up": ⌥↑
+- "Reopen Closed Tab": ⌘⇧W
 - "Search Everywhere": ⌘O
 - "Sort Lines": ⌘⇧S
 
