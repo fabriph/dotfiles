@@ -14,6 +14,8 @@
 - "Reopen Closed Tab": ⌘⇧W
 - "Search Everywhere": ⌘O
 - "Sort Lines": ⌘⇧S
+- "Indent Line or Selection": ⌘]
+- "Unindent Line or Selection": ⌘[
 
 diff in editor? ⌘⇧D
 
