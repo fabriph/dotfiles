@@ -22,3 +22,6 @@ diff in editor? ⌘⇧D
 ## Editor
 General > Smart Keys:
 Surround selection on typing quote or brace
+
+General > Soft Wraps
+check `Soft-wrap these files:` and input `*`
