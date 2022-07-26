@@ -19,6 +19,9 @@
 
 diff in editor? ⌘⇧D
 
+- "Replace": ⌘H
+  - Remap OS level: System Preferences > Keyboard Shortcuts: Hide PyCharm set to something odd, like ⌘⇧⌥H
+
 ## Editor
 General > Smart Keys:
 Surround selection on typing quote or brace
