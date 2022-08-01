@@ -120,8 +120,9 @@ alias gs="git status"
 alias gca=git_commit_all
 #alias gap=git_add_part
 #alias gcp=git_add_part
-#alias gco="git checkout"
+alias gco="git checkout"
 #alias gst="git stash"
+alias gsync="git fetch origin && git rebase origin/master"
 
 if [ -f /usr/share/bash-completion/completions/git ]; then
   source /usr/share/bash-completion/completions/git
