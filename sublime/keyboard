@@ -15,8 +15,8 @@
     { "keys": ["super+shift+c"], "command": "duplicate_line" },
 
 // Linux:
-    { "keys": ["ctrl+g"], "command": "find_next" },
-    { "keys": ["ctrl+t"], "command": "new_file" },
+    // { "keys": ["ctrl+g"], "command": "find_next" },
+    // { "keys": ["ctrl+t"], "command": "new_file" },
 
 // Linux: Navegation
     // { "keys": ["alt+right"], "command": "move_to", "args": {"to": "eol", "extend": false} },
@@ -25,7 +25,7 @@
     // { "keys": ["ctrl+down"], "command": "move_to", "args": {"to": "eof", "extend": false} },
 
 // Macros
-	{ "keys": ["super+d"], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete Line.sublime-macro"} },
+    { "keys": ["super+d"], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete Line.sublime-macro"} },
     { "keys": ["ctrl+d"], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete Line.sublime-macro"} },
     { "keys": ["super+shift+s"], "command": "sort_lines", "args": {"case_sensitive": false} },
     { "keys": ["ctrl+shift+s"], "command": "sort_lines", "args": {"case_sensitive": false} }
