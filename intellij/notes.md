@@ -8,7 +8,9 @@
 - "Delete to Line Start": ⌘ Backspace
 - "Duplicate Line or Selection": ⌘⇧C
 - "Move Caret to Text End": ⌘↓
+- "Move Caret to Text End with Selection": ⌘⇧↓
 - "Move Caret to Text Start": ⌘↑
+- "Move Caret to Text Start with Selection": ⌘⇧↑
 - "Move Line Down": ⌥↓
 - "Move Line Up": ⌥↑
 - "Reopen Closed Tab": ⌘⇧W
