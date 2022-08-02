@@ -189,18 +189,20 @@ fi
 
 function preexec_promt_stats() {
   datetime_local=`date "+%Y-%m-%d %H:%M:%S"`
-  datetime_pst=`TZ=":US/Pacific" date "+%Y-%m-%d %H:%M:%S"`
+  datetime_utc=`date -u "+%Y-%m-%d %H:%M:%S"`
   datetime_est=`TZ=":US/Eastern" date "+%Y-%m-%d %H:%M:%S"`
-  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_est} EST] [${datetime_pst} PST]${ECHO_NO_COLOR}"
+  datetime_pst=`TZ=":US/Pacific" date "+%Y-%m-%d %H:%M:%S"`
+  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_utc} UTC] [${datetime_est} EST] [${datetime_pst} PST]${ECHO_NO_COLOR}"
 }
 
 function precmd_promt_stats() {
   # TODO maybe append the return value of whatever was called before ($?)
 
   datetime_local=`date "+%Y-%m-%d %H:%M:%S"`
-  datetime_pst=`TZ=":US/Pacific" date "+%Y-%m-%d %H:%M:%S"`
+  datetime_utc=`date -u "+%Y-%m-%d %H:%M:%S"`
   datetime_est=`TZ=":US/Eastern" date "+%Y-%m-%d %H:%M:%S"`
-  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_est} EST] [${datetime_pst} PST]${ECHO_NO_COLOR}"
+  datetime_pst=`TZ=":US/Pacific" date "+%Y-%m-%d %H:%M:%S"`
+  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_utc} UTC] [${datetime_est} EST] [${datetime_pst} PST]${ECHO_NO_COLOR}"
 }
 
 
