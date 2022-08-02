@@ -18,6 +18,7 @@
 - "Sort Lines": ⌘⇧S
 - "Indent Line or Selection": ⌘]
 - "Unindent Line or Selection": ⌘[
+- "Auto-Indent LineS": ⌘⇧F
 
 diff in editor? ⌘⇧D
 
