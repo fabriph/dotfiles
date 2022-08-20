@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# git mail and user
+# Fab <fabriph@users.noreply.github.com>
+# git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Fab'; GIT_AUTHOR_EMAIL='fabriph@users.noreply.github.com'; GIT_COMMITTER_NAME='Fab'; GIT_COMMITTER_EMAIL='fabriph@users.noreply.github.com';" HEAD
+# git push --force --tags origin master
+
+
+
 # TO DO list:
 # - Improve TAB compeltion:
 #   - http://stackoverflow.com/questions/10942919/customize-tab-completion-in-shell
