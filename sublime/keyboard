@@ -1,6 +1,7 @@
 [
     { "keys": ["super+h"], "command": "show_panel", "args": {"panel": "replace"} },
     { "keys": ["super+shift+f"], "command": "js_format" },
+    { "keys": ["super+t"], "command": "new_file" },
 
 // Swaps
     { "keys": ["alt+up"], "command": "swap_line_up" },
