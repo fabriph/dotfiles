@@ -124,6 +124,7 @@ alias gb="git branch"
 alias gc="git commit -m 'autocommit' ${@:2}"
 alias gd="git diff"
 alias gs="git status"
+alias gt="git stash"
 alias gca=git_commit_all
 #alias gap=git_add_part
 #alias gcp=git_add_part
