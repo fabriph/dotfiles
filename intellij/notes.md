@@ -16,6 +16,8 @@
 - "Reopen Closed Tab": ⌘⇧W
 - "Search Everywhere": ⌘O
 - "Sort Lines": ⌘⇧S
+- "Select Next Tab": ⌘⇧→
+- "Select Previous Tab": ⌘⇧←
 - "Indent Line or Selection": ⌘]
 - "Unindent Line or Selection": ⌘[
 - "Auto-Indent LineS": ⌘⇧F
