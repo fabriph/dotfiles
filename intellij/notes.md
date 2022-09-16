@@ -33,3 +33,6 @@ Surround selection on typing quote or brace
 
 General > Soft Wraps
 check `Soft-wrap these files:` and input `*`
+
+## Other
+Hide all Code Vision: Code Author
