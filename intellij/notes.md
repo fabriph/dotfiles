@@ -20,7 +20,12 @@
 - "Select Previous Tab": ⌘⇧←
 - "Indent Line or Selection": ⌘]
 - "Unindent Line or Selection": ⌘[
-- "Auto-Indent LineS": ⌘⇧F
+- "Reformat Code": ⌘⇧F
+- "Run": ⌘R
+- "Replace": ?
+- "Clear All": ⌘K
+- "Select Next Tab": ⌘⌥→
+- "Select Previous Tab": ⌘⌥←
 
 diff in editor? ⌘⇧D
 
@@ -29,7 +34,7 @@ diff in editor? ⌘⇧D
 
 ## Editor
 General > Smart Keys:
-Surround selection on typing quote or brace
+uncheck `Surround selection on typing quote or brace`
 
 General > Soft Wraps
 check `Soft-wrap these files:` and input `*`
