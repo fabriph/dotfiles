@@ -40,5 +40,5 @@ General > Soft Wraps
 check `Soft-wrap these files:` and input `*`
 
 ## Other
-Hide all Code Vision: Code Author
-Show class outline window: ⌘7    (popup ⌘ + F12)
+ - Hide all Code Vision: Code Author
+ - Show class outline window: ⌘7    (popup ⌘ + F12)
