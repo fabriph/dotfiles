@@ -29,8 +29,9 @@
 
 diff in editor? ⌘⇧D
 
-- "Replace": ⌘H
+  - "Replace": ⌘H
   - Remap OS level: System Preferences > Keyboard Shortcuts: Hide PyCharm set to something odd, like ⌘⇧⌥H
+  - Disable git inline author: Settings -> Inlay Hints -> Code vision -> Code author
 
 ## Editor
 General > Smart Keys:
