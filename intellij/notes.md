@@ -19,7 +19,7 @@
 - "Select Next Tab": ⌘⇧→
 - "Select Previous Tab": ⌘⇧←
 - "Indent Line or Selection": ⌘]
-- "Unindent Line or Selection": ⌘[
+- "Unindent Line or Selection": ⌘\[
 - "Reformat Code": ⌘⇧F
 - "Run": ⌘R
 - "Replace": ?
@@ -30,15 +30,15 @@
 diff in editor? ⌘⇧D
 
   - "Replace": ⌘H
-  - Remap OS level: System Preferences > Keyboard Shortcuts: Hide PyCharm set to something odd, like ⌘⇧⌥H
-  - Disable git inline author: Settings -> Inlay Hints -> Code vision -> Code author
+    - You need to remap OS level: `System Preferences > Keyboard Shortcuts` with title `Hide IntelliJ IDEA` / `Hide PyCharm` to something odd, like ⌘⇧⌥H
+
 
 ## Editor
-General > Smart Keys:
-uncheck `Surround selection on typing quote or brace`
+ - General > Smart Keys: uncheck `Surround selection on typing quote or brace`
 
-General > Soft Wraps
-check `Soft-wrap these files:` and input `*`
+ - General > Soft: Wraps check `Soft-wrap these files:` and input `*`
+
+  - Disable git inline author: Settings -> Inlay Hints -> Code vision -> Code author
 
 ## Other
  - Hide all Code Vision: Code Author
