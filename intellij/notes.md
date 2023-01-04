@@ -35,10 +35,9 @@ diff in editor? ⌘⇧D
 
 ## Editor
  - General > Smart Keys: uncheck `Surround selection on typing quote or brace`
-
  - General > Soft: Wraps check `Soft-wrap these files:` and input `*`
-
-  - Disable git inline author: Settings -> Inlay Hints -> Code vision -> Code author
+ - Disable git inline author: Settings -> Inlay Hints -> Code vision -> Code author
+ - Smart Keys: disable `Insert pair quote`.
 
 ## Other
  - Hide all Code Vision: Code Author
