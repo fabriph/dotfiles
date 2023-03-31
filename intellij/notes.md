@@ -16,18 +16,29 @@
 - "Reopen Closed Tab": ⌘⇧W
 - "Search Everywhere": ⌘O
 - "Sort Lines": ⌘⇧S
+- "Select Next Tab": ⌘⇧→
+- "Select Previous Tab": ⌘⇧←
 - "Indent Line or Selection": ⌘]
-- "Unindent Line or Selection": ⌘[
-- "Auto-Indent LineS": ⌘⇧F
+- "Unindent Line or Selection": ⌘\[
+- "Reformat Code": ⌘⇧F
+- "Run": ⌘R
+- "Replace": ?
+- "Clear All": ⌘K
+- "Select Next Tab": ⌘⌥→
+- "Select Previous Tab": ⌘⌥←
 
 diff in editor? ⌘⇧D
 
-- "Replace": ⌘H
-  - Remap OS level: System Preferences > Keyboard Shortcuts: Hide PyCharm set to something odd, like ⌘⇧⌥H
+  - "Replace": ⌘H
+    - You need to remap OS level: `System Preferences > Keyboard Shortcuts` with title `Hide IntelliJ IDEA` / `Hide PyCharm` to something odd, like ⌘⇧⌥H
+
 
 ## Editor
-General > Smart Keys:
-Surround selection on typing quote or brace
+ - General > Smart Keys: uncheck `Surround selection on typing quote or brace`
+ - General > Soft: Wraps check `Soft-wrap these files:` and input `*`
+ - Disable git inline author: Settings -> Inlay Hints -> Code vision -> Code author
+ - Smart Keys: disable `Insert pair quote`.
 
-General > Soft Wraps
-check `Soft-wrap these files:` and input `*`
+## Other
+ - Hide all Code Vision: Code Author
+ - Show class outline window: ⌘7    (popup ⌘ + F12)
