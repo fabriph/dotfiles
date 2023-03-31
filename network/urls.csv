@@ -1,11 +1,15 @@
-connectivitycheck.gstatic.com,http://connectivitycheck.gstatic.com/,
-wifi.mercury.ibahn.com,https://wifi.mercury.ibahn.com/en/login/index,Hilton,https://wifi.mercury.ibahn.com/en/login/form
-captive.apple.com,captive.apple.com/hotspot-detect.html,Safari
-clients3.google.com,http://clients3.google.com/generate_204,
-portal.boingohotspot.net,https://portal.boingohotspot.net/en/ewr.tb/welcome,
-thecenturionlounge.com,https://thecenturionlounge.com/,
-weblogin.americanexpress.com,https://weblogin.americanexpress.com/,Amex SFO
-nmd.amexmia.dal.wayport.net,http://nmd.amexmia.dal.wayport.net/,
-www.business.att.com,www.business.att.com,
-airborne.gogoinflight.com,http://airborne.gogoinflight.com/abp/ampConnecting.jsp,
-portal.boingohotspot.net,https://portal.boingohotspot.net/en/jfk/sales,Boingo JFK
+http://connectivitycheck.gstatic.com/,
+https://wifi.mercury.ibahn.com/en/login/index,Hilton
+https://wifi.mercury.ibahn.com/en/login/form
+captive.apple.com/hotspot-detect.html,Safari
+http://clients3.google.com/generate_204,
+https://portal.boingohotspot.net/en/ewr.tb/welcome,
+https://thecenturionlounge.com/,
+https://weblogin.americanexpress.com/,Amex SFO
+http://nmd.amexmia.dal.wayport.net/,
+www.business.att.com,
+http://airborne.gogoinflight.com/abp/ampConnecting.jsp,
+https://portal.boingohotspot.net/en/jfk/sales,Boingo JFK
+http://wifionice.de,
+https://iceportal.de,
+https://login.wifionice.de/en/,
