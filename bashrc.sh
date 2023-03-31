@@ -13,12 +13,17 @@
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
 #   - Maybe taking a look at ~/.git-completion.bash helps
 # - Compress paths of PS1 if it's too long or too many directories.
+# - Format cmd runtime in hours/min/sec... instead of just seconds.
 
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
+
+
+bashrc_start=`date +%s.%N`
+fph_cmd_start=`date +%s.%N`
 
 # I got this line from AWS sudo bashrc
 # If not running interactively, don't do anything
@@ -201,16 +206,21 @@ function preexec_promt_stats() {
   datetime_est=`TZ=":US/Eastern" date "+%Y-%m-%d %H:%M:%S"`
   datetime_pst=`TZ=":US/Pacific" date "+%Y-%m-%d %H:%M:%S"`
   echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_utc} UTC] [${datetime_est} EST] [${datetime_pst} PST]${ECHO_NO_COLOR}"
+
+  fph_cmd_start=`date +%s.%N`
 }
 
 function precmd_promt_stats() {
   # TODO maybe append the return value of whatever was called before ($?)
 
+  fph_cmd_end=`date +%s.%N`
+  runtime=$(echo "$fph_cmd_end - $fph_cmd_start" | bc -l)
+
   datetime_local=`date "+%Y-%m-%d %H:%M:%S"`
   datetime_utc=`date -u "+%Y-%m-%d %H:%M:%S"`
   datetime_est=`TZ=":US/Eastern" date "+%Y-%m-%d %H:%M:%S"`
   datetime_pst=`TZ=":US/Pacific" date "+%Y-%m-%d %H:%M:%S"`
-  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_utc} UTC] [${datetime_est} EST] [${datetime_pst} PST]${ECHO_NO_COLOR}"
+  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_utc} UTC] [${datetime_est} EST] [${datetime_pst} PST][$runtime seconds]${ECHO_NO_COLOR}"
 }
 
 
@@ -340,3 +350,7 @@ if [ ! ${#missing[@]} -eq 0 ]; then
 else
   echo "bashrc.sh: nothing missing"
 fi
+
+bashrc_end=`date +%s.%N`
+runtime=$(echo "$bashrc_end - $bashrc_start" | bc -l)
+echo "bashrc.sh: loaded in $runtime seconds"
