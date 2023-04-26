@@ -113,29 +113,41 @@ fi
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # GIT
 
+git_autocommit () {
+  if [ $# -eq 1 ]; then
+    git commit -m "$1"
+  else
+    git commit -m 'autocommit'
+  fi
+}
+
 git_add_part () {
   git add --patch "$1"
 }
 
 # Commits all modified files.
-# TODO: support an optional message for the commit.
 git_commit_all () {
   files_to_commit=`git status -s | awk '{if ($1 == "M") print $2}' | paste -s -d' ' -`
-  gc $files_to_commit
+  git add $files_to_commit
+  if [ $# -eq 1 ]; then
+    git commit -m '$1'
+  else
+    git commit -m "autocommit"
+  fi
 }
 
+alias gl="git log"
 alias ga="git add"
 alias gb="git branch"
-alias gc="git commit -m 'autocommit' ${@:2}"
-alias gd="git diff"
+alias gc=git_autocommit
+alias gd="git --no-pager diff"
 alias gs="git status"
 alias gt="git stash"
 alias gca=git_commit_all
 #alias gap=git_add_part
 #alias gcp=git_add_part
 alias gco="git checkout"
-#alias gst="git stash"
-alias gsync="git fetch origin && git rebase origin/master"
+# alias gsync="git fetch origin && git rebase origin/master"
 
 if [ -f /usr/share/bash-completion/completions/git ]; then
   source /usr/share/bash-completion/completions/git
