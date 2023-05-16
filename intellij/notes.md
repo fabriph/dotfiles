@@ -26,6 +26,7 @@
 - "Clear All": ⌘K
 - "Select Next Tab": ⌘⌥→
 - "Select Previous Tab": ⌘⌥←
+- "Paste as plain text": ⌘⇧V
 
 diff in editor? ⌘⇧D
 
