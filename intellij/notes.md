@@ -39,6 +39,7 @@ diff in editor? ⌘⇧D
  - General > Soft: Wraps check `Soft-wrap these files:` and input `*`
  - Disable git inline author: Settings -> Inlay Hints -> Code vision -> Code author
  - Smart Keys: disable `Insert pair quote`.
+ - Settings | Editor | General | Code Folding | Imports
 
 ## Other
  - Hide all Code Vision: Code Author
