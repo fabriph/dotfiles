@@ -223,16 +223,24 @@ function preexec_promt_stats() {
 }
 
 function precmd_promt_stats() {
-  # TODO maybe append the return value of whatever was called before ($?)
+  exit_code="$?"
 
   fph_cmd_end=`date +%s.%N`
   runtime=$(echo "$fph_cmd_end - $fph_cmd_start" | bc -l)
+
+  precmd_output=""
+  if [ $exit_code -ne 0 ]; then
+    precmd_output="${precmd_output}${bold}${red}[\$?:$exit_code]${reset}"
+  fi
 
   datetime_local=`date "+%Y-%m-%d %H:%M:%S"`
   datetime_utc=`date -u "+%Y-%m-%d %H:%M:%S"`
   datetime_est=`TZ=":US/Eastern" date "+%Y-%m-%d %H:%M:%S"`
   datetime_pst=`TZ=":US/Pacific" date "+%Y-%m-%d %H:%M:%S"`
-  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_utc} UTC] [${datetime_est} EST] [${datetime_pst} PST][$runtime seconds]${ECHO_NO_COLOR}"
+  wall_times="${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_utc} UTC] [${datetime_est} EST] [${datetime_pst} PST]"
+
+  precmd_output="${precmd_output}${wall_times}[$runtime seconds]${ECHO_NO_COLOR}"
+  echo -e "${precmd_output}"
 }
 
 
