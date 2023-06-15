@@ -368,6 +368,24 @@ export NVM_DIR="$HOME/.nvm"
 # eval "$(pyenv init -)"
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# bazel
+# https://github.com/bazelbuild/buildtools
+
+BUILD_TOOLS_BAZEL_BIN="/Users/fabricioph/code/buildtools/bazel-bin"
+export PATH=$BUILD_TOOLS_BAZEL_BIN/buildozer/buildozer_:$PATH
+export PATH=$BUILD_TOOLS_BAZEL_BIN/buildifier/buildifier_:$PATH
+export PATH=$BUILD_TOOLS_BAZEL_BIN/unused_deps/unused_deps_:$PATH
+
+lint () {
+  lint_start=`date +%s.%N`
+  bazel lint --no-polite
+  lint_end=`date +%s.%N`
+  lint_runtime=$(echo "$lint_end - $lint_start" | bc -l)
+  echo "lint took $lint_runtime seconds"
+}
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Show missing files
 if [ ! ${#missing[@]} -eq 0 ]; then
   output=$(printf ", %s" "${missing[@]}")
