@@ -24,8 +24,8 @@
 - "Run": ⌘R
 - "Replace": ?
 - "Clear All": ⌘K
-- "Select Next Tab": ⌘⌥→
-- "Select Previous Tab": ⌘⌥←
+- "Navigate Forward": ⌘⌥→
+- "Navigate Back": ⌘⌥←
 - "Paste as plain text": ⌘⇧V
 
 diff in editor? ⌘⇧D
