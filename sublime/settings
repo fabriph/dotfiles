@@ -33,4 +33,7 @@
 	"open_files_in_new_window": false,
 	"theme": "Default.sublime-theme",
 	"word_wrap": true,
+
+	"find_highlight_matches_max_size": 134217728, // 128MiB
+	"find_regex_highlight_matches_max_size": 67108864, // 64MiB
 }

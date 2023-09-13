@@ -13,12 +13,17 @@
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
 #   - Maybe taking a look at ~/.git-completion.bash helps
 # - Compress paths of PS1 if it's too long or too many directories.
+# - Format cmd runtime in hours/min/sec... instead of just seconds.
 
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
+
+
+bashrc_start=`date +%s.%N`
+fph_cmd_start=`date +%s.%N`
 
 # I got this line from AWS sudo bashrc
 # If not running interactively, don't do anything
@@ -108,29 +113,41 @@ fi
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # GIT
 
+git_autocommit () {
+  if [ $# -eq 1 ]; then
+    git commit -m "$1"
+  else
+    git commit -m 'autocommit'
+  fi
+}
+
 git_add_part () {
   git add --patch "$1"
 }
 
 # Commits all modified files.
-# TODO: support an optional message for the commit.
 git_commit_all () {
   files_to_commit=`git status -s | awk '{if ($1 == "M") print $2}' | paste -s -d' ' -`
-  gc $files_to_commit
+  git add $files_to_commit
+  if [ $# -eq 1 ]; then
+    git commit -m '$1'
+  else
+    git commit -m "autocommit"
+  fi
 }
 
+alias gl="git log"
 alias ga="git add"
 alias gb="git branch"
-alias gc="git commit -m 'autocommit' ${@:2}"
-alias gd="git diff"
+alias gc=git_autocommit
+alias gd="git --no-pager diff"
 alias gs="git status"
 alias gt="git stash"
 alias gca=git_commit_all
 #alias gap=git_add_part
 #alias gcp=git_add_part
 alias gco="git checkout"
-#alias gst="git stash"
-alias gsync="git fetch origin && git rebase origin/master"
+# alias gsync="git fetch origin && git rebase origin/master"
 
 if [ -f /usr/share/bash-completion/completions/git ]; then
   source /usr/share/bash-completion/completions/git
@@ -201,16 +218,29 @@ function preexec_promt_stats() {
   datetime_est=`TZ=":US/Eastern" date "+%Y-%m-%d %H:%M:%S"`
   datetime_pst=`TZ=":US/Pacific" date "+%Y-%m-%d %H:%M:%S"`
   echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_utc} UTC] [${datetime_est} EST] [${datetime_pst} PST]${ECHO_NO_COLOR}"
+
+  fph_cmd_start=`date +%s.%N`
 }
 
 function precmd_promt_stats() {
-  # TODO maybe append the return value of whatever was called before ($?)
+  exit_code="$?"
+
+  fph_cmd_end=`date +%s.%N`
+  runtime=$(echo "$fph_cmd_end - $fph_cmd_start" | bc -l)
+
+  precmd_output=""
+  if [ $exit_code -ne 0 ]; then
+    precmd_output="${precmd_output}${bold}${red}[\$?:$exit_code]${reset}"
+  fi
 
   datetime_local=`date "+%Y-%m-%d %H:%M:%S"`
   datetime_utc=`date -u "+%Y-%m-%d %H:%M:%S"`
   datetime_est=`TZ=":US/Eastern" date "+%Y-%m-%d %H:%M:%S"`
   datetime_pst=`TZ=":US/Pacific" date "+%Y-%m-%d %H:%M:%S"`
-  echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_utc} UTC] [${datetime_est} EST] [${datetime_pst} PST]${ECHO_NO_COLOR}"
+  wall_times="${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_utc} UTC] [${datetime_est} EST] [${datetime_pst} PST]"
+
+  precmd_output="${precmd_output}${wall_times}[$runtime seconds]${ECHO_NO_COLOR}"
+  echo -e "${precmd_output}"
 }
 
 
@@ -330,6 +360,30 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# pyenv
+
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# bazel
+# https://github.com/bazelbuild/buildtools
+
+BUILD_TOOLS_BAZEL_BIN="/Users/fabricioph/code/buildtools/bazel-bin"
+export PATH=$BUILD_TOOLS_BAZEL_BIN/buildozer/buildozer_:$PATH
+export PATH=$BUILD_TOOLS_BAZEL_BIN/buildifier/buildifier_:$PATH
+export PATH=$BUILD_TOOLS_BAZEL_BIN/unused_deps/unused_deps_:$PATH
+
+lint () {
+  lint_start=`date +%s.%N`
+  bazel lint --no-polite
+  lint_end=`date +%s.%N`
+  lint_runtime=$(echo "$lint_end - $lint_start" | bc -l)
+  echo "lint took $lint_runtime seconds"
+}
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Show missing files
@@ -340,3 +394,7 @@ if [ ! ${#missing[@]} -eq 0 ]; then
 else
   echo "bashrc.sh: nothing missing"
 fi
+
+bashrc_end=`date +%s.%N`
+runtime=$(echo "$bashrc_end - $bashrc_start" | bc -l)
+echo "bashrc.sh: loaded in $runtime seconds"
