@@ -248,11 +248,11 @@
 			<key>Background Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<string>0</string>
+				<string>1</string>
 				<key>Green Component</key>
-				<string>0</string>
+				<string>1</string>
 				<key>Red Component</key>
-				<string>0</string>
+				<string>1</string>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
@@ -284,11 +284,11 @@
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<string>1</string>
+				<string>0</string>
 				<key>Green Component</key>
-				<string>1</string>
+				<string>0</string>
 				<key>Red Component</key>
-				<string>1</string>
+				<string>0</string>
 			</dict>
 			<key>Character Encoding</key>
 			<integer>4</integer>
@@ -301,11 +301,11 @@
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<string>1</string>
+				<string>0</string>
 				<key>Green Component</key>
-				<string>1</string>
+				<string>0</string>
 				<key>Red Component</key>
-				<string>1</string>
+				<string>0</string>
 			</dict>
 			<key>Cursor Guide Color</key>
 			<dict>
@@ -323,11 +323,11 @@
 			<key>Cursor Text Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<string>0</string>
+				<string>1</string>
 				<key>Green Component</key>
-				<string>0</string>
+				<string>1</string>
 				<key>Red Component</key>
-				<string>0</string>
+				<string>1</string>
 			</dict>
 			<key>Cursor Type</key>
 			<integer>2</integer>
@@ -348,11 +348,11 @@
 			<key>Foreground Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<string>1</string>
+				<string>0</string>
 				<key>Green Component</key>
-				<string>1</string>
+				<string>0</string>
 				<key>Red Component</key>
-				<string>1</string>
+				<string>0</string>
 			</dict>
 			<key>Guid</key>
 			<string>062B23D3-3119-4873-80E2-8E7EFEABB219</string>
