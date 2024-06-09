@@ -105,6 +105,8 @@ export EDITOR="vim"
 
 if [ -f /etc/bash_completion ]; then
   source /etc/bash_completion
+elif [ -f /opt/homebrew/etc/profile.d/bash_completion.sh ]; then
+  source /opt/homebrew/etc/profile.d/bash_completion.sh
 else
   missing+=("bash-completion")
 fi
@@ -151,6 +153,8 @@ alias gco="git checkout"
 
 if [ -f /usr/share/bash-completion/completions/git ]; then
   source /usr/share/bash-completion/completions/git
+elif [ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash ]; then
+  source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
 elif [ -f ~/.git-completion.bash ]; then
   source ~/.git-completion.bash
 else
@@ -210,8 +214,6 @@ fi
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Prompt
 
-[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-
 function preexec_promt_stats() {
   datetime_local=`date "+%Y-%m-%d %H:%M:%S"`
   datetime_utc=`date -u "+%Y-%m-%d %H:%M:%S"`
@@ -243,12 +245,19 @@ function precmd_promt_stats() {
   echo -e "${precmd_output}"
 }
 
-
-if [ -f ~/.bash-preexec.sh ]; then
+function configure_preexec() {
   preexec_functions+=(preexec_promt_stats)
   precmd_functions+=(precmd_promt_stats)
+}
+
+if [ -f ~/.bash-preexec.sh ]; then
+  source ~/.bash-preexec.sh
+  configure_preexec
+elif [ -f /opt/homebrew/etc/profile.d/bash-preexec.sh ]; then
+  source /opt/homebrew/etc/profile.d/bash-preexec.sh
+  configure_preexec
 else
-  echo "Promt timestampt not configured. Use PROMPT_COMMAND or install bash-preexec"
+  missing+=("bash-preexec")
 fi
 
 function perforce_client() {
