@@ -124,14 +124,14 @@
   <action id="ResizeToolWindowLeft" />
   <action id="ResizeToolWindowRight" />
   <action id="RunDashboard.CopyConfiguration" />
+  <action id="SearchEverywhere">
+    <keyboard-shortcut first-keystroke="meta o" />
+  </action>
   <action id="SearchEverywhere.NavigateToNextGroup">
     <keyboard-shortcut first-keystroke="page_down" />
   </action>
   <action id="SearchEverywhere.NavigateToPrevGroup">
     <keyboard-shortcut first-keystroke="page_up" />
-  </action>
-  <action id="SearchEverywhereNewToolbarAction">
-    <keyboard-shortcut first-keystroke="meta o" />
   </action>
   <action id="SendEOF" />
   <action id="ShowNavBar">
