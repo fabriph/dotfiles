@@ -88,6 +88,9 @@ install_package "VIM config file" "$INSTALL_DIR/vimrc" ~/.vimrc
 
 install_package "Git prompt" "$INSTALL_DIR/git/git-prompt.sh" ~/.git-prompt.sh
 install_package "Git completition" "$INSTALL_DIR/git/git-completion.bash" ~/.git-completion.bash
+echo "************************************************************"
+echo "TODO https://github.com/fabriph/dotfiles/blob/master/git/gitconfig.sh"
+echo "************************************************************"
 
 install_package "screenrc" "$INSTALL_DIR/screenrc" ~/.screenrc
 
