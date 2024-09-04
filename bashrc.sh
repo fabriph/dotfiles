@@ -199,6 +199,8 @@ fi
 
 if [ -f /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+  missing+=("homebrew/bin/brew")
 fi
 
 
@@ -213,6 +215,9 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Prompt
+
+# preexec can exist via Homebrew or via ~/.bash-preexec.sh
+[ -f $HOMEBREW_PREFIX/etc/profile.d/bash-preexec.sh ] && . $HOMEBREW_PREFIX/etc/profile.d/bash-preexec.sh
 
 function preexec_promt_stats() {
   datetime_local=`date "+%Y-%m-%d %H:%M:%S"`
@@ -250,10 +255,12 @@ function configure_preexec() {
   precmd_functions+=(precmd_promt_stats)
 }
 
+# Try 1 to find preexec.sh
 if [ -f ~/.bash-preexec.sh ]; then
   source ~/.bash-preexec.sh
   configure_preexec
-elif [ -f /opt/homebrew/etc/profile.d/bash-preexec.sh ]; then
+# Try 2 to find preexec.sh
+elif [ -f $HOMEBREW_PREFIX/etc/profile.d/bash-preexec.sh ]; then
   source /opt/homebrew/etc/profile.d/bash-preexec.sh
   configure_preexec
 else

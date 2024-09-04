@@ -116,3 +116,5 @@ if [ -d ~/.config/sublime-text-3 ]; then
   install_package "Sublime 3 config" "$INSTALL_DIR/sublime/settings" ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
   install_package "Sublime 3 keyboard" "$INSTALL_DIR/sublime/keyboard" ~/.config/sublime-text-3/Packages/User/Default\ \(Linux\).sublime-keymap
 fi
+
+echo "You may want to run: ln -s ~/dev/dotfiles/intellij/pycharm-keyboard.xml ~/Library/Application\ Support/JetBrains/PyCharmCE2024.1/keymaps/pycharm-keyboard.xml"
