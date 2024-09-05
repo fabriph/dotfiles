@@ -140,11 +140,11 @@ git_commit_all () {
 
 alias gl="git log"
 alias ga="git add"
-alias gb="git branch"
+alias gb="git --no-pager branch"
 alias gc=git_autocommit
 alias gd="git --no-pager diff"
 alias gs="git status"
-alias gt="git stash"
+alias gt="git --no-pager stash"
 alias gca=git_commit_all
 #alias gap=git_add_part
 #alias gcp=git_add_part
