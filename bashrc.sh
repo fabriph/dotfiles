@@ -402,6 +402,13 @@ lint () {
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Notion
+# eval "$(rbenv init -)"
+# eval "$(direnv hook bash)"
+# eval "$(notion completion --install)"
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Show missing files
 if [ ! ${#missing[@]} -eq 0 ]; then
   output=$(printf ", %s" "${missing[@]}")
