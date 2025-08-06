@@ -13,7 +13,6 @@
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
 #   - Maybe taking a look at ~/.git-completion.bash helps
 # - Compress paths of PS1 if it's too long or too many directories.
-# - Format cmd runtime in hours/min/sec... instead of just seconds.
 
 # If not running interactively, don't do anything
 case $- in
@@ -218,6 +217,37 @@ fi
 # preexec can exist via Homebrew or via ~/.bash-preexec.sh
 [ -f $HOMEBREW_PREFIX/etc/profile.d/bash-preexec.sh ] && . $HOMEBREW_PREFIX/etc/profile.d/bash-preexec.sh
 
+function format_runtime() {
+  local runtime="$1"
+  local seconds
+  seconds=$(printf "%.0f" "$runtime")
+  
+  if [ "$seconds" -lt 60 ]; then
+    echo "$seconds seconds"
+  elif [ "$seconds" -lt 3600 ]; then
+    local minutes=$((seconds / 60))
+    local remaining_seconds=$((seconds % 60))
+    if [ "$remaining_seconds" -eq 0 ]; then
+      echo "$minutes min"
+    else
+      echo "$minutes min $remaining_seconds sec"
+    fi
+  else
+    local hours=$((seconds / 3600))
+    local remaining_minutes=$(((seconds % 3600) / 60))
+    local remaining_seconds=$((seconds % 60))
+    
+    local output="$hours hours"
+    if [ "$remaining_minutes" -gt 0 ]; then
+      output="$output $remaining_minutes min"
+    fi
+    if [ "$remaining_seconds" -gt 0 ]; then
+      output="$output $remaining_seconds sec"
+    fi
+    echo "$output"
+  fi
+}
+
 function preexec_promt_stats() {
   datetime_local=$(date "+%Y-%m-%d %H:%M:%S")
   datetime_utc=$(date -u "+%Y-%m-%d %H:%M:%S")
@@ -245,7 +275,8 @@ function precmd_promt_stats() {
   datetime_pst=$(TZ=":US/Pacific" date "+%Y-%m-%d %H:%M:%S")
   wall_times="${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_utc} UTC] [${datetime_est} EST] [${datetime_pst} PST]"
 
-  precmd_output="${precmd_output}${wall_times}[$runtime seconds]${ECHO_NO_COLOR}"
+  formatted_runtime=$(format_runtime "$runtime")
+  precmd_output="${precmd_output}${wall_times}[$formatted_runtime]${ECHO_NO_COLOR}"
   echo -e "${precmd_output}"
 }
 
