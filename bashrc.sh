@@ -248,7 +248,7 @@ function format_runtime() {
   fi
 }
 
-function preexec_promt_stats() {
+function preexec_prompt_stats() {
   datetime_local=$(date "+%Y-%m-%d %H:%M:%S")
   datetime_utc=$(date -u "+%Y-%m-%d %H:%M:%S")
   datetime_est=$(TZ=":US/Eastern" date "+%Y-%m-%d %H:%M:%S")
@@ -258,7 +258,7 @@ function preexec_promt_stats() {
   fph_cmd_start=$(date +%s.%N)
 }
 
-function precmd_promt_stats() {
+function precmd_prompt_stats() {
   exit_code="$?"
 
   fph_cmd_end=$(date +%s.%N)
@@ -281,8 +281,8 @@ function precmd_promt_stats() {
 }
 
 function configure_preexec() {
-  preexec_functions+=(preexec_promt_stats)
-  precmd_functions+=(precmd_promt_stats)
+  preexec_functions+=(preexec_prompt_stats)
+  precmd_functions+=(precmd_prompt_stats)
 }
 
 # Try 1 to find preexec.sh
