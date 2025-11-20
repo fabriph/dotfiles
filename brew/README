@@ -1,6 +1,8 @@
 Package manager for OS X.
 
 Favorite packages:
+  - bash-completion
+  - bash-preexec
   - brew-cask
   - colordiff
   - peco
