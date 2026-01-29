@@ -167,6 +167,10 @@ else
   # curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -OL
 fi
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Graphite
+
+alias gtms="gt m && gt s"
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Homebrew
@@ -436,6 +440,8 @@ lint () {
 # eval "$(rbenv init -)"
 # eval "$(direnv hook bash)"
 # eval "$(notion completion --install)"
+# export PATH="/usr/local/opt/libpq/bin:$PATH"
+# PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
