@@ -118,3 +118,7 @@ if [ -d ~/.config/sublime-text-3 ]; then
 fi
 
 echo "You may want to run: ln -s ~/dev/dotfiles/intellij/pycharm-keyboard.xml ~/Library/Application\ Support/JetBrains/PyCharmCE2024.1/keymaps/pycharm-keyboard.xml"
+echo "ln -s ~/dev/dotfiles/claude/CLAUDE.md ~/.claude/CLAUDE.md"
+echo "ln -s ~/dev/dotfiles/codex/config.toml ~/.codex/config.toml"
+echo "ln -s ~/dev/dotfiles/codex/AGENTS.md ~/.codex/AGENTS.md"
+
