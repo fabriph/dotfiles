@@ -456,6 +456,13 @@ lint () {
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# CODEX
+
+codex2() {
+  command codex __CODEX_STARTUP_HANDSHAKE__ --add-dir /Users/fabricio/dev/dotfiles-private/ai-tools/runs "$@"
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Notion
 # eval "$(rbenv init -)"
 # eval "$(direnv hook bash)"
