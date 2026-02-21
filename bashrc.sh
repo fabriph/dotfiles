@@ -13,6 +13,8 @@
 #   - http://superuser.com/questions/289539/custom-bash-tab-completion
 #   - Maybe taking a look at ~/.git-completion.bash helps
 # - Compress paths of PS1 if it's too long or too many directories.
+# - Save VSCode config
+# - Save Cursor config
 
 # If not running interactively, don't do anything
 case $- in
@@ -21,8 +23,22 @@ case $- in
 esac
 
 
-bashrc_start=`date +%s.%N`
-fph_cmd_start=`date +%s.%N`
+if [ -n "${EPOCHREALTIME-}" ]; then
+  echo "speedup available"
+  fph_now() { printf '%s' "${EPOCHREALTIME/./}"; }
+  fph_runtime_seconds() {
+    local end_us="$1"
+    local start_us="$2"
+    local delta_us=$((10#$end_us - 10#$start_us))
+    printf '%s' $(( (delta_us + 500000) / 1000000 ))
+  }
+else
+  echo "speedup NOT available"
+  fph_now() { date +%s.%N; }
+  fph_runtime_seconds() { echo "$1 - $2" | bc -l; }
+fi
+bashrc_start=$(fph_now)
+fph_cmd_start=$bashrc_start
 
 # I got this line from AWS sudo bashrc
 # If not running interactively, don't do anything
@@ -56,15 +72,19 @@ shopt -s histappend
 # Print timestamp when showing history
 export HISTTIMEFORMAT="%F %T "
 
-if [ "$(uname)" == "Darwin" ]; then  # Mac
-  export CLICOLOR=1
-  export BASH_SILENCE_DEPRECATION_WARNING=1  # Disable the ZSH warninig.
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  alias ls="ls --color=auto"
-  alias open='nautilus . > /dev/null 2>&1 &'
-else
-  missing+=("LS coloring")
-fi
+case "$OSTYPE" in
+  darwin*)  # Mac
+    export CLICOLOR=1
+    export BASH_SILENCE_DEPRECATION_WARNING=1  # Disable the ZSH warninig.
+    ;;
+  linux*)
+    alias ls="ls --color=auto"
+    alias open='nautilus . > /dev/null 2>&1 &'
+    ;;
+  *)
+    missing+=("LS coloring")
+    ;;
+esac
 
 alias grep='grep --color=always'
 
@@ -130,7 +150,7 @@ git_commit_all () {
   files_to_commit=`git status -s | awk '{if ($1 == "M") print $2}' | paste -s -d' ' -`
   git add $files_to_commit
   if [ $# -eq 1 ]; then
-    git commit -m '$1'
+    git commit -m "$1"
   else
     git commit -m "autocommit"
   fi
@@ -259,14 +279,14 @@ function preexec_prompt_stats() {
   datetime_pst=$(TZ=":US/Pacific" date "+%Y-%m-%d %H:%M:%S")
   echo -e "${ECHO_LIGHT_GREY}[${datetime_local} local] [${datetime_utc} UTC] [${datetime_est} EST] [${datetime_pst} PST]${ECHO_NO_COLOR}"
 
-  fph_cmd_start=$(date +%s.%N)
+  fph_cmd_start=$(fph_now)
 }
 
 function precmd_prompt_stats() {
   exit_code="$?"
 
-  fph_cmd_end=$(date +%s.%N)
-  runtime=$(echo "$fph_cmd_end - $fph_cmd_start" | bc -l)
+  fph_cmd_end=$(fph_now)
+  runtime=$(fph_runtime_seconds "$fph_cmd_end" "$fph_cmd_start")
 
   precmd_output=""
   if [ $exit_code -ne 0 ]; then
@@ -430,7 +450,7 @@ lint () {
   lint_start=`date +%s.%N`
   bazel lint --no-polite
   lint_end=`date +%s.%N`
-  lint_runtime=$(echo "$lint_end - $lint_start" | bc -l)
+  lint_runtime=$(fph_runtime_seconds "$lint_end" "$lint_start")
   echo "lint took $lint_runtime seconds"
 }
 
@@ -455,5 +475,5 @@ else
 fi
 
 bashrc_end=`date +%s.%N`
-runtime=$(echo "$bashrc_end - $bashrc_start" | bc -l)
+runtime=$(fph_runtime_seconds "$bashrc_end" "$bashrc_start")
 echo "bashrc.sh: loaded in $runtime seconds"
