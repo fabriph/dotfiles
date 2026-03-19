@@ -1,0 +1,38 @@
+{
+  "editor.fontSize": 14,
+  "editor.wordWrap": "on",
+  "editor.accessibilitySupport": "off",
+  "editor.autoClosingDelete": "never",
+  "editor.autoClosingQuotes": "never",
+  "editor.scrollBeyondLastLine": false,
+  "workbench.colorTheme": "Default Light+",
+  "workbench.colorCustomizations": {
+    "[Abyss]": {}
+  },
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.enabled": false,
+  "githubPullRequests.pullBranch": "never",
+  "gitlens.hovers.pullRequests.enabled": false,
+  "gitlens.hovers.avatars": false,
+  "gitlens.codeLens.enabled": false,
+  "editor.codeActionsOnSave": {
+
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.biome": "explicit"
+  },
+  "editor.pasteAs.enabled": false,
+  "editor.rulers": [
+
+    80,
+  ],
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "json.schemaDownload.trustedDomains": {
+    "https://schemastore.azurewebsites.net/": true,
+    "https://raw.githubusercontent.com/": true,
+    "https://www.schemastore.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://json-schema.org/": true,
+    "https://biomejs.dev": true
+  }
+}
