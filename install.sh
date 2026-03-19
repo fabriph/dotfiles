@@ -35,7 +35,7 @@ Options:
   -y, --yes          Install without prompts (conflicts => timestamped backup).
   -n, --dry-run      Print intended actions without modifying anything.
   --check            Like --dry-run --yes, but exits 1 if changes are needed.
-  --only LIST        Comma-separated categories: bash,vim,git,screen,sublime
+  --only LIST        Comma-separated categories: bash,vim,git,screen,sublime,vscode
   -h, --help         Show this help.
 EOF
 }
@@ -462,6 +462,31 @@ install_sublime_linux() {
   fi
 }
 
+# Installs VS Code user config files.
+install_vscode() {
+  local user_dir=""
+
+  case "$(uname -s)" in
+    Darwin)
+      user_dir="${HOME}/Library/Application Support/Code/User"
+      ;;
+    Linux)
+      user_dir="${HOME}/.config/Code/User"
+      ;;
+    *)
+      warn "VS Code install is only supported on macOS and Linux"
+      return 0
+      ;;
+  esac
+
+  local entries=(
+    "vscode|VS Code settings|${INSTALL_DIR}/vscode/settings.json|${user_dir}/settings.json"
+    "vscode|VS Code keybindings|${INSTALL_DIR}/vscode/keybindings.json|${user_dir}/keybindings.json"
+  )
+
+  install_entries "${entries[@]}"
+}
+
 # Prints non-automated post-install notes (manual symlinks, git config reminder).
 print_post_install_notes() {
   log "Notes:"
@@ -522,6 +547,8 @@ main() {
     Darwin) install_sublime_macos ;;
     Linux) install_sublime_linux ;;
   esac
+
+  install_vscode
 
   print_post_install_notes
 
