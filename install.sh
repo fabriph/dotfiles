@@ -35,7 +35,7 @@ Options:
   -y, --yes          Install without prompts (conflicts => timestamped backup).
   -n, --dry-run      Print intended actions without modifying anything.
   --check            Like --dry-run --yes, but exits 1 if changes are needed.
-  --only LIST        Comma-separated categories: bash,vim,git,screen,sublime,vscode
+  --only LIST        Comma-separated categories: bash,vim,git,screen,sublime,vscode,zed
   -h, --help         Show this help.
 EOF
 }
@@ -487,6 +487,18 @@ install_vscode() {
   install_entries "${entries[@]}"
 }
 
+# Installs Zed user config files.
+install_zed() {
+  local zed_dir="${HOME}/.config/zed"
+
+  local entries=(
+    "zed|Zed settings|${INSTALL_DIR}/zed/settings.json|${zed_dir}/settings.json"
+    "zed|Zed keymap|${INSTALL_DIR}/zed/keymap.json|${zed_dir}/keymap.json"
+  )
+
+  install_entries "${entries[@]}"
+}
+
 # Prints non-automated post-install notes (manual symlinks, git config reminder).
 print_post_install_notes() {
   log "Notes:"
@@ -549,6 +561,7 @@ main() {
   esac
 
   install_vscode
+  install_zed
 
   print_post_install_notes
 
