@@ -7,16 +7,152 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "agent_servers": {
-    "codex-acp": {
-      "type": "registry"
+  "auto_install_extensions": {
+    "biome": true,
+    "dockerfile": true,
+    "docker-compose": true,
+    "kotlin": true,
+    "scss": true,
+    "swift": true,
+    "terraform": true,
+    "tsgo": true,
+    "oxc": true
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/build",
+    "**/ios/vendor",
+    "**/android/vendor",
+    "**/node_modules"
+  ],
+  "languages": {
+    "JavaScript": {
+      "language_servers": ["!vtsls"],
+      "format_on_save": "on",
+      "formatter": [
+        { "language_server": { "name": "biome" } },
+        { "code_action": "source.fixAll.eslint" },
+        { "code_action": "source.fixAll.oxc" }
+      ]
     },
-    "claude-acp": {
-      "type": "registry"
+    "TypeScript": {
+      "language_servers": ["tsgo", "!vtsls"],
+      "format_on_save": "on",
+      "formatter": [
+        { "language_server": { "name": "biome" } },
+        { "code_action": "source.fixAll.eslint" },
+        { "code_action": "source.fixAll.oxc" }
+      ]
+    },
+    "TSX": {
+      "language_servers": ["tsgo", "!vtsls"],
+      "format_on_save": "on",
+      "formatter": [
+        { "language_server": { "name": "biome" } },
+        { "code_action": "source.fixAll.eslint" },
+        { "code_action": "source.fixAll.oxc" }
+      ]
+    },
+    "JSON": {
+      "format_on_save": "on",
+      "formatter": [
+        { "language_server": { "name": "biome" } },
+        { "code_action": "source.fixAll.eslint" }
+      ]
+    },
+    "JSONC": {
+      "format_on_save": "on",
+      "formatter": [
+        { "language_server": { "name": "biome" } },
+        { "code_action": "source.fixAll.eslint" }
+      ]
+    },
+    "CSS": {
+      "format_on_save": "on",
+      "formatter": [
+        { "language_server": { "name": "biome" } },
+        { "code_action": "source.fixAll.eslint" }
+      ]
     }
   },
+  "lsp": {
+    "tsgo": {
+      "binary": {
+        "path": "bash",
+        "arguments": ["./src/cli/tsgo", "--lsp", "--stdio"]
+      },
+      "settings": {
+        "autoUseWorkspaceTsdk": true,
+        "experimental": {
+          "completion": {
+            "enableServerSideFuzzyMatch": true
+          }
+        },
+        "typescript": {
+          "tsdk": "node_modules/typescript/lib",
+          "tsserver": {
+            "maxTsServerMemory": 24276,
+            "nodePath": "./src/cli/tsserverNode"
+          }
+        }
+      }
+    },
+    "oxlint": {
+      "binary": {
+        "path": "bash",
+        "arguments": ["./src/tools-lint/cli/oxlint-lsp-proxy"]
+      }
+    },
+    "vtsls": {
+      "settings": {
+        "autoUseWorkspaceTsdk": true,
+        "experimental": {
+          "completion": {
+            "enableServerSideFuzzyMatch": true
+          }
+        },
+        "typescript": {
+          "tsdk": "node_modules/typescript/lib",
+          "tsserver": {
+            "maxTsServerMemory": 24276,
+            "nodePath": "./src/cli/tsserverNode"
+          }
+        }
+      }
+    }
+  },
+
+  "soft_wrap": "editor_width",
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "proxy": "",
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry",
+    },
+    "claude-acp": {
+      "type": "registry",
+    },
+  },
   "session": {
-    "trust_all_worktrees": true
+    "trust_all_worktrees": true,
   },
   "base_keymap": "SublimeText",
   "ui_font_size": 16,
@@ -26,4 +162,6 @@
     "light": "One Light",
     "dark": "One Dark",
   },
+
+  "scroll_beyond_last_line": "off",
 }

@@ -24,7 +24,7 @@
 
 	"ignored_packages":
 	[
-		"Vintage"
+		"Vintage",
 	],
 	"ignored_words":
 	[
