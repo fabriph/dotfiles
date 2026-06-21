@@ -6,45 +6,45 @@
 // To see the default key bindings run `zed: open default keymap`
 // from the command palette.
 [
-  {
-    "context": "Workspace",
-    "bindings": {
-      // "shift shift": "file_finder::Toggle"
-    },
-  },
-  {
-    "context": "Editor && vim_mode == insert",
-    "bindings": {
-      // "j k": "vim::NormalBefore"
-    },
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      "cmd-shift-c": "editor::DuplicateLineDown",
-    },
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      "ctrl-cmd-shift-d": "editor::DuplicateSelection",
-    },
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      "cmd-d": "editor::DeleteLine",
-    },
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      "alt-n": [
-        "editor::SelectNext",
-        {
-          "replace_newest": false,
-        },
-      ],
-    },
-  },
+	{
+		"context": "Workspace",
+		"bindings": {
+			// "shift shift": "file_finder::Toggle"
+		}
+	},
+	{
+		"context": "Editor && vim_mode == insert",
+		"bindings": {
+			// "j k": "vim::NormalBefore"
+		}
+	},
+	{
+		"context": "Editor",
+		"bindings": {
+			"cmd-shift-c": "editor::DuplicateLineDown"
+		}
+	},
+	{
+		"context": "Editor",
+		"bindings": {
+			"ctrl-cmd-shift-d": "editor::DuplicateSelection"
+		}
+	},
+	{
+		"context": "Editor",
+		"bindings": {
+			"cmd-d": "editor::DeleteLine"
+		}
+	},
+	{
+		"context": "Editor",
+		"bindings": {
+			"alt-n": [
+				"editor::SelectNext",
+				{
+					"replace_newest": false
+				}
+			]
+		}
+	}
 ]

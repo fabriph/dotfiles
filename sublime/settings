@@ -13,7 +13,7 @@
 	],
 	"auto_match_enabled": false,
 	"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
-	"font_size": 18,
+	"font_size": 21,
 
 	"gnc_001": true,
 	"gnc_002": false,
@@ -36,4 +36,5 @@
 
 	/*"find_highlight_matches_max_size": 134217728,*/ // 128MiB
 	/*"find_regex_highlight_matches_max_size": 67108864,*/ // 64MiB
+	"index_files": true,
 }

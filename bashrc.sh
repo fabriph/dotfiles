@@ -470,6 +470,15 @@ codex2() {
 # export PATH="/usr/local/opt/libpq/bin:$PATH"
 # PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Other
+
+
+if [ -f $HOME/.iterm2_shell_integration.bash ]; then
+  source "${HOME}/.iterm2_shell_integration.bash"
+else
+  missing+=("iterm2_shell_integration")
+fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Show missing files
