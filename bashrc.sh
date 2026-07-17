@@ -468,8 +468,10 @@ codex2() {
 # eval "$(rbenv init -)"
 # eval "$(direnv hook bash)"
 # eval "$(notion completion --install)"
-# export PATH="/usr/local/opt/libpq/bin:$PATH"
+# export NOTION_COMMIT_MAIN=1
+
 # PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+# Not used: export PATH="/usr/local/opt/libpq/bin:$PATH"
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Other
