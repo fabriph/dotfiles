@@ -158,6 +158,7 @@ git_commit_all () {
 
 alias gl="git log"
 alias ga="git add"
+alias gaa="git add --all"
 alias gb="git --no-pager branch"
 alias gc=git_autocommit
 alias gd="git --no-pager diff"
@@ -473,6 +474,9 @@ codex2() {
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Other
 
+eval "$('/usr/local/bin/node' -r '/Users/fabricio/code/notion-next/esbuild-runner.js' '/Users/fabricio/code/notion-next/src/cli/main/notion.ts' completion --install)"
+
+export RIPGREP_CONFIG_PATH="/Users/fabricio/code/notion-next/.ripgreprc"
 
 if [ -f $HOME/.iterm2_shell_integration.bash ]; then
   source "${HOME}/.iterm2_shell_integration.bash"
