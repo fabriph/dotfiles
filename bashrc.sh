@@ -469,7 +469,7 @@ codex2() {
 # eval "$(direnv hook bash)"
 # eval "$(notion completion --install)"
 # export NOTION_COMMIT_MAIN=1
-alias nb='notion boxy'
+# alias nb='notion boxy'
 
 # PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 # Not used: export PATH="/usr/local/opt/libpq/bin:$PATH"
