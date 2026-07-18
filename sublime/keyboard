@@ -3,6 +3,9 @@
     { "keys": ["super+shift+f"], "command": "js_format" },
     { "keys": ["super+t"], "command": "new_file" },
 
+// Navigation
+    { "keys": ["super+alt+up"], "command": "prev_view" },
+    { "keys": ["super+alt+down"], "command": "next_view" },
 // Swaps
     { "keys": ["alt+up"], "command": "swap_line_up" },
     { "keys": ["alt+down"], "command": "swap_line_down" },
