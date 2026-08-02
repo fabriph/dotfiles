@@ -278,11 +278,27 @@ list_mas() {
 	}'
 }
 
-# Shared by npm and pnpm: parseable output is one install path per line, ending
-# in node_modules/<pkg> or node_modules/@scope/<pkg>. Splitting on
-# "/node_modules/" keeps scoped names intact and drops the root-prefix line.
+# Shared by npm and pnpm: list the global node_modules directory instead of
+# asking `<pm> ls -g`, which builds the full dependency tree — one `npm link`ed
+# monorepo makes that crawl the project's node_modules indefinitely. The
+# directory entries are the same top-level package names.
 list_node_globals() {
-	"$1" ls -g --depth=0 --parseable | awk -F '/node_modules/' 'NF > 1 && $NF != "" { print $NF }'
+	local root
+	root="$("$1" root -g 2>/dev/null)"
+	[ -n "$root" ] && [ -d "$root" ] || return 0
+	local entry sub
+	for entry in "$root"/*; do
+		{ [ -e "$entry" ] || [ -L "$entry" ]; } || continue
+		case "$(basename "$entry")" in
+			@*)
+				for sub in "$entry"/*; do
+					{ [ -e "$sub" ] || [ -L "$sub" ]; } || continue
+					printf '%s/%s\n' "$(basename "$entry")" "$(basename "$sub")"
+				done
+				;;
+			*) basename "$entry" ;;
+		esac
+	done
 }
 
 list_yarn_globals() {

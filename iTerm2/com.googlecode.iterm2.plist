@@ -56,6 +56,8 @@
 	<false/>
 	<key>Default Bookmark Guid</key>
 	<string>062B23D3-3119-4873-80E2-8E7EFEABB219</string>
+	<key>Default Browser Profile Guid</key>
+	<string>062B23D3-3119-4873-80E2-8E7EFEABB219</string>
 	<key>DimBackgroundWindows</key>
 	<false/>
 	<key>DimInactiveSplitPanes</key>
@@ -72,6 +74,19 @@
 	<real>0.10000000149011612</real>
 	<key>GlobalKeyMap</key>
 	<dict>
+		<key>0x73-0x100000-0x1</key>
+		<dict>
+			<key>Action</key>
+			<integer>28</integer>
+			<key>Apply Mode</key>
+			<integer>0</integer>
+			<key>Escaping</key>
+			<integer>2</integer>
+			<key>Text</key>
+			<string>062B23D3-3119-4873-80E2-8E7EFEABB219</string>
+			<key>Version</key>
+			<integer>2</integer>
+		</dict>
 		<key>0xd-0x20000-0x24</key>
 		<dict>
 			<key>Action</key>
@@ -280,7 +295,7 @@
 				<string>0.9372549</string>
 			</dict>
 			<key>Automatically Log</key>
-			<false/>
+			<true/>
 			<key>BM Growl</key>
 			<false/>
 			<key>Background Color</key>
@@ -331,7 +346,7 @@
 			<key>Character Encoding</key>
 			<integer>4</integer>
 			<key>Close Sessions On End</key>
-			<true/>
+			<integer>1</integer>
 			<key>Columns</key>
 			<integer>160</integer>
 			<key>Command</key>
@@ -398,6 +413,8 @@
 			<false/>
 			<key>Horizontal Spacing</key>
 			<real>1</real>
+			<key>Icon</key>
+			<integer>1</integer>
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Text</key>
@@ -468,6 +485,19 @@
 					<integer>11</integer>
 					<key>Text</key>
 					<string>0x7f</string>
+				</dict>
+				<key>0x54-0x120000-0x11</key>
+				<dict>
+					<key>Action</key>
+					<integer>44</integer>
+					<key>Apply Mode</key>
+					<integer>0</integer>
+					<key>Escaping</key>
+					<integer>2</integer>
+					<key>Text</key>
+					<string></string>
+					<key>Version</key>
+					<integer>2</integer>
 				</dict>
 				<key>0x7f-0x100000</key>
 				<dict>
@@ -562,7 +592,9 @@
 				<real>0.0</real>
 			</dict>
 			<key>Log Directory</key>
-			<string></string>
+			<string>/Users/fabricio/dev/dotfiles-private/iterm2-sessions</string>
+			<key>Log Filename Format</key>
+			<string>\(creationTimeString).\(profileName).\(termid).\(iterm2.pid).\(autoLogId).log</string>
 			<key>Minimum Contrast</key>
 			<real>0.0</real>
 			<key>Mouse Reporting</key>
@@ -577,8 +609,12 @@
 			<string>Monaco 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
+			<key>Plain Text Logging</key>
+			<integer>1</integer>
+			<key>Progress Bar Height</key>
+			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>Right Option Key Sends</key>
 			<integer>0</integer>
 			<key>Rows</key>
@@ -620,6 +656,8 @@
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
+			<key>Session Close Undo Timeout</key>
+			<integer>60</integer>
 			<key>Set Local Environment Vars</key>
 			<true/>
 			<key>Shortcut</key>
@@ -725,6 +763,8 @@
 			<array/>
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
+			<key>Timestamps Style</key>
+			<integer>1</integer>
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Triggers</key>
@@ -742,7 +782,7 @@
 			<key>Vertical Spacing</key>
 			<real>1</real>
 			<key>Visual Bell</key>
-			<true/>
+			<false/>
 			<key>Window Type</key>
 			<integer>0</integer>
 			<key>Working Directory</key>
@@ -806,7 +846,7 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<true/>
+	<false/>
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>SmartPlacement</key>
