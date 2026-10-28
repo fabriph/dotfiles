@@ -192,6 +192,8 @@ fi
 # Graphite
 
 alias gtms="gt m && gt s"
+alias gtc="gt continue"
+alias gtr="gt restack"
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Homebrew
@@ -465,19 +467,56 @@ codex2() {
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Notion
-# eval "$(rbenv init -)"
-# eval "$(direnv hook bash)"
-# eval "$(notion completion --install)"
-# export NOTION_COMMIT_MAIN=1
-# alias nb='notion boxy'
+eval "$(rbenv init -)"
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook bash)"
+command -v notion >/dev/null 2>&1 && eval "$(notion completion --install)"
+export NOTION_COMMIT_MAIN=1
+alias nb='notion boxy'
+alias cx='notion local codex --model gpt-6.1-sol -c model_reasoning_effort=xhigh'
 
-# PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+# skipped: socket cloudflare-api cloudflare-observability
+alias cxl='for mcp_name in admin-mode-dev admin-mode-prod honeycomb incident-io notion-dev pganalyze polarsignals sentry statsig; do if [ "$mcp_name" = honeycomb ]; then cx mcp login "$mcp_name" --scopes mcp:read; else cx mcp login "$mcp_name"; fi; done; unset mcp_name'
+
+_notion_worktree_number() {
+  local command_name root name number
+  command_name=$1
+  root=$(git rev-parse --show-toplevel 2>/dev/null) || root=$PWD
+  name=${root##*/}
+  number=${name%-notion-next}
+  if [ "$name" = notion-next ]; then
+    number=1
+  elif [ "$name" = "$number" ] || [ -z "$number" ] || [ -n "${number//[0-9]/}" ]; then
+    printf '%s: %s is not a notion-next worktree\n' "$command_name" "$root" >&2
+    return 1
+  fi
+  printf '%s\n' "$number"
+}
+
+# Runs the local dev server on this worktree's fixed port, 3X00, where X is the
+# worktree number: ~/code/notion-next is 1, ~/code/N-notion-next is N.
+nr() {
+  local number
+  number=$(_notion_worktree_number nr) || return
+  notion run --debug --portOffset "$((number * 100))" "$@"
+}
+
+# Notion run open
+nro() {
+  local number port
+  number=$(_notion_worktree_number nrp) || return
+  port=$((3000 + number * 100))
+  open -na "Google Chrome" --args --incognito --new-window "http://localhost:$port/"
+}
+
+PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 # Not used: export PATH="/usr/local/opt/libpq/bin:$PATH"
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Other
 
-eval "$('/usr/local/bin/node' -r '/Users/fabricio/code/notion-next/esbuild-runner.js' '/Users/fabricio/code/notion-next/src/cli/main/notion.ts' completion --install)"
+if [ -x /usr/local/bin/node ] && [ -f /Users/fabricio/code/notion-next/esbuild-runner.js ]; then
+  eval "$('/usr/local/bin/node' -r '/Users/fabricio/code/notion-next/esbuild-runner.js' '/Users/fabricio/code/notion-next/src/cli/main/notion.ts' completion --install)"
+fi
 
 export RIPGREP_CONFIG_PATH="/Users/fabricio/code/notion-next/.ripgreprc"
 
@@ -497,6 +536,23 @@ else
   echo "bashrc.sh: nothing missing"
 fi
 
-bashrc_end=`date +%s.%N`
+bashrc_end=$(fph_now)
 runtime=$(fph_runtime_seconds "$bashrc_end" "$bashrc_start")
 echo "bashrc.sh: loaded in $runtime seconds"
+export PNPM_HOME=/Users/fabricio/Library/pnpm/
+export PATH="/Users/fabricio/Library/pnpm//bin:/Users/fabricio/Library/pnpm/:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+export PATH="${CARGO_HOME:-$HOME/.cargo}/bin:$PATH"
+if command -v rv >/dev/null 2>&1; then eval "$(rv shell init bash)"; fi
+if [ -x /Users/fabricio/.local/share/mise/shims/node ] && [ -f /Users/fabricio/code/notion-next/esbuild-runner.js ]; then
+  eval "$('/Users/fabricio/.local/share/mise/shims/node' -r '/Users/fabricio/code/notion-next/esbuild-runner.js' '/Users/fabricio/code/notion-next/src/cli/main/notion.ts' completion --install)"
+fi
+eval "$(direnv hook bash)"
+. "$HOME/.cargo/env"
+ ### From notion android setup
+export ANDROID_HOME=/Users/fabricio/Library/Android/sdk
+export PATH="$PATH:$HOME/.jenv/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin"
+eval "$(jenv init -)"
+ ### notion android: trust remote emulator adb keys
+export ADB_VENDOR_KEYS="${ADB_VENDOR_KEYS:+$ADB_VENDOR_KEYS:}$HOME/.android/notion-adbkeys"

@@ -42,6 +42,8 @@
 	<false/>
 	<key>CheckTestRelease</key>
 	<false/>
+	<key>ClaudeCodeWorkgroupUpsellSuppressed</key>
+	<true/>
 	<key>ClickToSelectCommand</key>
 	<false/>
 	<key>ClosingHotkeySwitchesSpaces</key>
@@ -66,6 +68,8 @@
 	<false/>
 	<key>DisableFullscreenTransparency</key>
 	<false/>
+	<key>EnableAPIServer</key>
+	<false/>
 	<key>EnableRendezvous</key>
 	<false/>
 	<key>FocusFollowsMouse</key>
@@ -74,7 +78,7 @@
 	<real>0.10000000149011612</real>
 	<key>GlobalKeyMap</key>
 	<dict>
-		<key>0x73-0x100000-0x1</key>
+		<key>0x73-0x100000-0x1-0x1</key>
 		<dict>
 			<key>Action</key>
 			<integer>28</integer>
@@ -87,7 +91,7 @@
 			<key>Version</key>
 			<integer>2</integer>
 		</dict>
-		<key>0xd-0x20000-0x24</key>
+		<key>0xd-0x20000-0x24-0x1</key>
 		<dict>
 			<key>Action</key>
 			<integer>12</integer>
@@ -486,7 +490,7 @@
 					<key>Text</key>
 					<string>0x7f</string>
 				</dict>
-				<key>0x54-0x120000-0x11</key>
+				<key>0x54-0x120000-0x11-0x1</key>
 				<dict>
 					<key>Action</key>
 					<integer>44</integer>
@@ -506,7 +510,7 @@
 					<key>Text</key>
 					<string>0x15</string>
 				</dict>
-				<key>0x7f-0x40000-0x33</key>
+				<key>0x7f-0x40000-0x33-0x1</key>
 				<dict>
 					<key>Action</key>
 					<integer>11</integer>
@@ -517,7 +521,7 @@
 					<key>Version</key>
 					<integer>1</integer>
 				</dict>
-				<key>0x7f-0x80000-0x0</key>
+				<key>0x7f-0x80000</key>
 				<dict>
 					<key>Action</key>
 					<integer>11</integer>
@@ -598,15 +602,15 @@
 			<key>Minimum Contrast</key>
 			<real>0.0</real>
 			<key>Mouse Reporting</key>
-			<true/>
+			<false/>
 			<key>Name</key>
 			<string>fabricio</string>
 			<key>Non Ascii Font</key>
-			<string>Monaco 12</string>
+			<string>Monaco 16</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Monaco 14</string>
+			<string>Monaco 16</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Plain Text Logging</key>
@@ -779,6 +783,8 @@
 			<false/>
 			<key>Use Italic Font</key>
 			<true/>
+			<key>Use Non-ASCII Font</key>
+			<false/>
 			<key>Vertical Spacing</key>
 			<real>1</real>
 			<key>Visual Bell</key>
@@ -892,7 +898,7 @@
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
 	<key>findMode_iTerm</key>
-	<integer>0</integer>
+	<integer>2</integer>
 	<key>findRegex_iTerm</key>
 	<false/>
 </dict>

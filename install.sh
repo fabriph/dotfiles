@@ -35,7 +35,7 @@ Options:
   -y, --yes          Install without prompts (conflicts => timestamped backup).
   -n, --dry-run      Print intended actions without modifying anything.
   --check            Like --dry-run --yes, but exits 1 if changes are needed.
-  --only LIST        Comma-separated categories: bash,vim,git,screen,sublime,vscode,zed
+  --only LIST        Comma-separated categories: bash,vim,nvim,git,screen,sublime,vscode,zed
   -h, --help         Show this help.
 EOF
 }
@@ -414,6 +414,20 @@ install_core_packages() {
   install_entries "${entries[@]}"
 }
 
+# Installs Neovim user config files.
+#
+# Neovim reads its own config and ignores the vimrc, so the two live side by
+# side.
+install_nvim() {
+  local nvim_dir="${HOME}/.config/nvim"
+
+  local entries=(
+    "nvim|Neovim config file|${INSTALL_DIR}/nvim/init.lua|${nvim_dir}/init.lua"
+  )
+
+  install_entries "${entries[@]}"
+}
+
 # Installs Sublime config files for macOS if Sublime directories exist.
 install_sublime_macos() {
   local home_dir="${HOME}"
@@ -554,6 +568,7 @@ main() {
   fi
 
   install_core_packages
+  install_nvim
 
   case "$(uname -s)" in
     Darwin) install_sublime_macos ;;
